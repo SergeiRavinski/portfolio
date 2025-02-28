@@ -12,6 +12,7 @@ export function Post({ post }: { post: POST_QUERYResult }) {
 	return (
 		<main className="container mx-auto prose prose-lg p-4">
 			{title ? <h1>{title}</h1> : null}
+
 			{mainImage?.asset?._ref ? (
 				<Image
 					className="float-left m-0 w-1/3 mr-4 rounded-lg"
@@ -24,6 +25,7 @@ export function Post({ post }: { post: POST_QUERYResult }) {
 					alt={title || ""}
 				/>
 			) : null}
+
 			{body ? <PortableText value={body} /> : null}
 			<hr />
 			<Link className="text-lg" href="/">
