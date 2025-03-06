@@ -12,7 +12,7 @@ export default async function MainSection() {
 		<section className="flex flex-col min-h-screen w-full">
 			<Header />
 
-			<main className="container mx-auto bg-green-200 p-6 w-full h-full">
+			<main className="container mx-auto p-6 w-full h-full">
 				<Posts posts={posts} />
 			</main>
 		</section>
