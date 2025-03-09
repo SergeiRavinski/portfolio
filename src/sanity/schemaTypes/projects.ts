@@ -1,5 +1,40 @@
 import { defineField, defineType } from "sanity";
 
+const frontend = [
+	{ title: "HTML & CSS", value: "HTML & CSS" },
+	{ title: "JavaScript", value: "JavaScript" },
+	{ title: "TypeScript", value: "TypeScript" },
+	{ title: "Next.js", value: "Next.js" },
+	{ title: "React.js", value: "React.js" },
+	{ title: "Vue.js", value: "Vue.js" },
+	{ title: "Tailwind", value: "Tailwind" },
+	{ title: "MUI", value: "MUI" },
+	{ title: "Zustand", value: "Zustand" },
+	{ title: "Responsivt webdesign", value: "Responsivt webdesign" },
+	{ title: "Styled Components", value: "Styled Components" },
+	{ title: "Universell utforming (UU)", value: "Universell utforming (UU)" },
+];
+
+const backend = [
+	{ title: "Sanity", value: "Sanity" },
+	{ title: "Node.js", value: "Node.js" },
+	{ title: "Express.js", value: "Express.js" },
+	{ title: "MongoDB", value: "MongoDB" },
+	{ title: "REST API", value: "REST API" },
+	{ title: "Firebase", value: "Firebase" },
+	{ title: "GROQ", value: "GROQ" },
+	{ title: "SEO", value: "SEO" },
+];
+
+const tools = [
+	{ title: "Git", value: "Git" },
+	{ title: "Github", value: "Github" },
+	{ title: "VS Code", value: "VS Code" },
+	{ title: "Postman", value: "Postman" },
+	{ title: "Chrome DevTools", value: "Chrome DevTools" },
+	{ title: "Trello", value: "Trello" },
+];
+
 export const projects = defineType({
 	name: "projects",
 	title: "Projects",
@@ -51,26 +86,33 @@ export const projects = defineType({
 		}),
 
 		defineField({
-			name: "technologies",
-			title: "Teknologier",
-			type: "tags",
+			title: "Frontend teknologier",
+			name: "frontendTechnologies",
+			type: "array",
+			of: [{ type: "string" }],
 			options: {
-				includeFromRelated: "technologies",
+				list: frontend,
 			},
 		}),
 
-		// defineField({
-		// 	name: "tags",
-		// 	title: "Emner / Tags",
-		// 	group: "meta",
-		// 	type: "tags",
-		// 	options: {
-		// 		//includeFromRelated: 'tags',
-		// 		onCreate: (value) => ({
-		// 			label: value,
-		// 			value: value.toLowerCase().replace(/\W/g, "-"),
-		// 		}),
-		// 	},
-		// }),
+		defineField({
+			title: "Backend teknologier",
+			name: "backendTechnologies",
+			type: "array",
+			of: [{ type: "string" }],
+			options: {
+				list: backend,
+			},
+		}),
+
+		defineField({
+			title: "Verktøy",
+			name: "tools",
+			type: "array",
+			of: [{ type: "string" }],
+			options: {
+				list: tools,
+			},
+		}),
 	],
 });
