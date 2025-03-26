@@ -2,3 +2,12 @@
 
 /* // The new way to include Tailwind CSS plugins */
 @plugin "@tailwindcss/typography";
+
+@layer utilities {
+	.spacing-hover {
+		height: calc(100% - 2rem);
+		width: calc(100% - 2rem);
+		left: 1rem;
+		top: 1rem;
+	}
+}
