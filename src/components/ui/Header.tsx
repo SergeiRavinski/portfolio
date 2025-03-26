@@ -5,15 +5,14 @@ import { usePathname } from "next/navigation";
 
 export default function Header() {
 	const path = usePathname();
-	console.log(path);
 
 	return (
 		<header className="container mx-auto w-full p-6">
 			<ul className="flex flex-row gap-3 justify-self-end border-b-2 border-[#18161333] uppercase">
 				<li
-					className={` pb-2 ${path === "/" ? "border-b-2 border-black" : ""}`}
+					className={`${path === "/portfolio" ? "border-b-2 border-black" : ""}`}
 				>
-					<Link href="/">About</Link>
+					<Link href="/portfolio">Portfolio</Link>
 				</li>
 
 				<li
@@ -23,9 +22,9 @@ export default function Header() {
 				</li>
 
 				<li
-					className={`${path === "/portfolio" ? "border-b-2 border-black" : ""}`}
+					className={` pb-2 ${path === "/" ? "border-b-2 border-black" : ""}`}
 				>
-					<Link href="/portfolio">Portfolio</Link>
+					<Link href="/">About</Link>
 				</li>
 
 				<li
