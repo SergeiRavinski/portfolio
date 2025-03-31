@@ -40,7 +40,10 @@ export default async function MainSection() {
 									);
 
 								return (
-									<section className="p-6" key={item._id}>
+									<section
+										className="m-6 p-4 shadow-[0px_4px_20px_rgba(0,0,0,0.1)] transition-shadow duration-300 hover:shadow-[0px_10px_30px_rgba(0,0,0,0.15)]"
+										key={item._id}
+									>
 										<Link
 											href={item.link ? item.link : ""}
 											className={`${!item.link && "pointer-events-none"}`}
