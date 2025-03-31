@@ -41,7 +41,7 @@ export default async function MainSection() {
 
 								return (
 									<section
-										className="m-6 p-4 shadow-[0px_4px_20px_rgba(0,0,0,0.1)] transition-shadow duration-300 hover:shadow-[0px_10px_30px_rgba(0,0,0,0.15)]"
+										className="m-6 p-4 relative  transition-shadow duration-300 hover:shadow-lg"
 										key={item._id}
 									>
 										<Link
@@ -81,6 +81,7 @@ export default async function MainSection() {
 												{item.description && (
 													<>
 														<hr className="my-2 border-[#D2D2D5]" />
+
 														<p className="text-[1rem] leading-tight">
 															{item.description}
 														</p>
@@ -109,6 +110,14 @@ export default async function MainSection() {
 												</div>
 											)}
 										</div>
+
+										{/* Top-left & Bottom-right corners */}
+										<div className="absolute top-0 left-0 w-4 h-4 border-t-1 border-l-1 border-[#29292b]"></div>
+										<div className="absolute bottom-0 right-0 w-4 h-4 border-b-1 border-r-1 border-[#29292b]"></div>
+
+										{/* Top-right & Bottom-left corners */}
+										<div className="absolute top-0 right-0 w-4 h-4 border-t-1 border-r-1 border-[#29292b]"></div>
+										<div className="absolute bottom-0 left-0 w-4 h-4 border-b-1 border-l-1 border-[#29292b]"></div>
 									</section>
 								);
 							}
