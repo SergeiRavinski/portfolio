@@ -12,9 +12,17 @@ export default async function MainSection() {
 		<section className="flex flex-col sticky top-4 right-0 h-[calc(100vh-2rem)] w-full border-1 border-solid border-[#D2D2D5] m-4">
 			<Header />
 
-			<h2 className="font-extrabold text-[2rem] p-6 normal-case">
-				Prosjekter jeg har jobbet med
-			</h2>
+			<div className="p-6 flex flex-row justify-between">
+				<h2 className="font-extrabold text-[2rem] normal-case">
+					Prosjekter jeg har jobbet med
+				</h2>
+
+				<button className="lowercase relative border-1 group border-solid border-[#D2D2D5] transition-border duration-300 hover:border-[#969697] p-2 h-fit rounded-xs">
+					Change styling
+					<div className="absolute left-0 top-1/2 -translate-y-2/4 -translate-x-2/4 bg-red-500 w-[1px] h-4 group-hover:h-6"></div>
+					<div className="absolute right-0 top-1/2 -translate-y-2/4 translate-x-2/4 bg-red-500 w-[1px] h-4 group-hover:h-6 transition-h duration-300"></div>
+				</button>
+			</div>
 
 			<main className="container mx-auto w-full h-full overflow-scroll">
 				{data && (
@@ -41,7 +49,7 @@ export default async function MainSection() {
 
 								return (
 									<section
-										className="m-6 p-4 relative  transition-shadow duration-300 hover:shadow-lg"
+										className="m-6 p-4 relative transition-shadow duration-300 hover:shadow-lg group"
 										key={item._id}
 									>
 										<Link
@@ -112,12 +120,12 @@ export default async function MainSection() {
 										</div>
 
 										{/* Top-left & Bottom-right corners */}
-										<div className="absolute top-0 left-0 w-4 h-4 border-t-1 border-l-1 border-[#29292b]"></div>
-										<div className="absolute bottom-0 right-0 w-4 h-4 border-b-1 border-r-1 border-[#29292b]"></div>
+										<div className="absolute top-0 left-0 w-4 h-4 group-hover:w-6 group-hover:h-6 transition-all duration-300 border-t-1 border-l-1 border-[#29292b] rounded-xs"></div>
+										<div className="absolute bottom-0 right-0 w-4 h-4 border-b-1 border-r-1 border-[#29292b] group-hover:w-6 group-hover:h-6 transition-all duration-300 rounded-xs"></div>
 
 										{/* Top-right & Bottom-left corners */}
-										<div className="absolute top-0 right-0 w-4 h-4 border-t-1 border-r-1 border-[#29292b]"></div>
-										<div className="absolute bottom-0 left-0 w-4 h-4 border-b-1 border-l-1 border-[#29292b]"></div>
+										<div className="absolute top-0 right-0 w-4 h-4 border-t-1 border-r-1 border-[#29292b] group-hover:w-6 group-hover:h-6 transition-all duration-300 rounded-xs"></div>
+										<div className="absolute bottom-0 left-0 w-4 h-4 border-b-1 border-l-1 border-[#29292b] group-hover:w-6 group-hover:h-6 transition-all duration-300 rounded-xs"></div>
 									</section>
 								);
 							}
