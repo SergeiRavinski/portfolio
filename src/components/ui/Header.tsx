@@ -13,12 +13,8 @@ export default function Header() {
 			<nav>
 				<ul className="flex flex-row gap-3 justify-self-end border-b-2 border-[#D2D2D5] text-xl">
 					{/* TODO: Add active class to the current page using ref */}
-					<li
-						className={`${path === "/portfolio" ? styleActive : ""}`}
-					>
-						<Link href="/portfolio">
-							{path === "/portfolio" ? "." : ""}Portfolio
-						</Link>
+					<li className={`${path === "/" ? styleActive : ""}`}>
+						<Link href="/">{path === "/" ? "." : ""}Portfolio</Link>
 					</li>
 
 					<li className={`${path === "/resume" ? styleActive : ""}`}>
@@ -27,8 +23,12 @@ export default function Header() {
 						</Link>
 					</li>
 
-					<li className={` pb-2 ${path === "/" ? styleActive : ""}`}>
-						<Link href="/">{path === "/" ? "." : ""}About</Link>
+					<li
+						className={` pb-2 ${path === "/about" ? styleActive : ""}`}
+					>
+						<Link href="/about">
+							{path === "/about" ? "." : ""}About
+						</Link>
 					</li>
 
 					<li className={`${path === "/contact" ? styleActive : ""}`}>
