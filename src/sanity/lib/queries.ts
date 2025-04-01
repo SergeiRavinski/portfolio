@@ -10,7 +10,8 @@ export const POST_QUERY =
   title, body, mainImage
 }`);
 
-export const PROJECTS_QUERY = defineQuery(`*[_type == 'projects'] {
+export const PROJECTS_QUERY =
+	defineQuery(`*[_type == 'projects'] | order(date desc) {
 	_id,
 	title,
 	image,
