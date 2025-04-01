@@ -1,6 +1,9 @@
-// import Aside from "@/components/ui/Aside";
 import MainSection from "@/components/ui/MainSection";
+import { sanityFetch } from "@/sanity/lib/live";
+import { PROJECTS_QUERY } from "@/sanity/lib/queries";
 
 export default async function Page() {
-	return <MainSection />;
+	const { data } = await sanityFetch({ query: PROJECTS_QUERY });
+
+	return <MainSection data={data} />;
 }
