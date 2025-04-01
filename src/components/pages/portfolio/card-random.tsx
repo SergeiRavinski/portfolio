@@ -23,7 +23,7 @@ export default function CardRandom({
 	styles: string;
 }) {
 	return (
-		<section className={` ${styles} flex flex-col`} key={item._id}>
+		<section className={`h-fit ${styles} flex flex-col`} key={item._id}>
 			<Link
 				href={item.link ? item.link : ""}
 				className={`${!item.link && "pointer-events-none"} flex`}
