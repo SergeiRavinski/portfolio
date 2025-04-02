@@ -80,6 +80,13 @@ export const projects = defineType({
 		}),
 
 		defineField({
+			title: "Kort beskrivelse",
+			name: "short_description",
+			type: "text",
+			rows: 2,
+		}),
+
+		defineField({
 			title: "Lenke",
 			name: "link",
 			type: "string",

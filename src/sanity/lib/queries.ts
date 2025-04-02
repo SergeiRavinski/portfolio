@@ -17,6 +17,7 @@ export const PROJECTS_QUERY =
 	image,
 	date,
 	description,
+	short_description,
 	link,
 	frontendTechnologies,
 	backendTechnologies,
