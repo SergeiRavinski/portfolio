@@ -1,6 +1,7 @@
 import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
 import Image from "next/image";
+import { Data } from "@/types/main-section";
 
 export default function CardRandom({
 	// index,
@@ -9,19 +10,12 @@ export default function CardRandom({
 	styles,
 }: {
 	index: number;
-	item: {
-		image: { asset: { _ref: string } };
-		link: string;
-		_id: number;
-		title: string;
-		description: string;
-		frontendTechnologies: string[];
-		backendTechnologies: string[];
-		tools: string[];
-	};
+	item: Data;
 	technologies: string[];
 	styles: string;
 }) {
+	const year = new Date(item.date).getFullYear();
+
 	return (
 		<section className={`h-fit ${styles} flex flex-col`} key={item._id}>
 			<Link
@@ -30,7 +24,7 @@ export default function CardRandom({
 			>
 				{item?.image?.asset?._ref ? (
 					<Image
-						className=" m-0 mr-4 w-full object-cover"
+						className=" m-0 w-full object-cover"
 						src={urlFor(item?.image?.asset?._ref)
 							// .width(1000)
 							// .height(1000)
@@ -42,8 +36,13 @@ export default function CardRandom({
 				) : null}
 			</Link>
 
-			<span className="leading-4 flex flex-row justify-between my-2 uppercase text-[0.8rem]">
-				<h2>{item.title}. 2024</h2>
+			<span className="flex flex-col justify-between my-2 uppercase text-[0.8rem] w-full">
+				<h2 className="font-semibold">{item.title}</h2>
+
+				<div className="flex flex-row justify-between text-[0.7rem]">
+					<p>{item.short_description}.</p>
+					<span>{year}</span>
+				</div>
 			</span>
 
 			{/* <div className="flex flex-col h-full justify-between font-(family-name:--font-space-mono)">

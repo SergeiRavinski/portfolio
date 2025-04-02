@@ -32,54 +32,40 @@ export default function MainSection({ data }: { data: Data[] }) {
 					<section
 						className={`${styling ? "grid grid-cols-10 gap-5 grid-flow-col" : "flex flex-col"}`}
 					>
-						{data?.map(
-							(
-								item: {
-									image: { asset: { _ref: string } };
-									link: string;
-									_id: number;
-									title: string;
-									description: string;
-									frontendTechnologies: string[];
-									backendTechnologies: string[];
-									tools: string[];
-								},
-								index
-							) => {
-								const technologies: string[] =
-									item?.frontendTechnologies?.concat(
-										item?.backendTechnologies,
-										item?.tools
-									);
-
-								const position =
-									gridStyles[index % gridStyles.length];
-								const {
-									color,
-									gridColumnStart,
-									gridColumnEnd,
-									size,
-								} = position;
-								const styles = `${color} ${gridColumnStart} ${gridColumnEnd} ${size}`;
-
-								return !styling ? (
-									<CardDefault
-										key={item._id}
-										index={index}
-										item={item}
-										technologies={technologies}
-									/>
-								) : (
-									<CardRandom
-										key={item._id}
-										index={index}
-										item={item}
-										technologies={technologies}
-										styles={styles}
-									/>
+						{data?.map((item: Data, index) => {
+							const technologies: string[] =
+								item?.frontendTechnologies?.concat(
+									item?.backendTechnologies,
+									item?.tools
 								);
-							}
-						)}
+
+							const position =
+								gridStyles[index % gridStyles.length];
+							const {
+								color,
+								gridColumnStart,
+								gridColumnEnd,
+								size,
+							} = position;
+							const styles = `${color} ${gridColumnStart} ${gridColumnEnd} ${size}`;
+
+							return !styling ? (
+								<CardDefault
+									key={item._id}
+									index={index}
+									item={item}
+									technologies={technologies}
+								/>
+							) : (
+								<CardRandom
+									key={item._id}
+									index={index}
+									item={item}
+									technologies={technologies}
+									styles={styles}
+								/>
+							);
+						})}
 					</section>
 				)}
 			</main>

@@ -4,10 +4,12 @@ export interface Data {
 			_ref: string;
 		};
 	};
-	link: string;
+	link?: string;
 	_id: number;
-	title: string;
-	description: string;
+	title?: string;
+	date: string;
+	description?: string;
+	short_description?: string;
 	frontendTechnologies: string[];
 	backendTechnologies: string[];
 	tools: string[];

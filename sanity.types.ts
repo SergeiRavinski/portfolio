@@ -336,7 +336,7 @@ export type POST_QUERYResult = {
   } | null;
 } | null;
 // Variable: PROJECTS_QUERY
-// Query: *[_type == 'projects'] {	_id,	title,	image,	date,	description,	link,	frontendTechnologies,	backendTechnologies,	tools  }
+// Query: *[_type == 'projects'] | order(date desc) {	_id,	title,	image,	date,	description,	short_description,	link,	frontendTechnologies,	backendTechnologies,	tools  }
 export type PROJECTS_QUERYResult = Array<never>;
 
 // Query TypeMap
@@ -345,6 +345,6 @@ declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"post\" && defined(slug.current)][0...12]{\n  _id, title, slug\n}": POSTS_QUERYResult;
     "*[_type == \"post\" && slug.current == $slug][0]{\n  title, body, mainImage\n}": POST_QUERYResult;
-    "*[_type == 'projects'] {\n\t_id,\n\ttitle,\n\timage,\n\tdate,\n\tdescription,\n\tlink,\n\tfrontendTechnologies,\n\tbackendTechnologies,\n\ttools\n  }": PROJECTS_QUERYResult;
+    "*[_type == 'projects'] | order(date desc) {\n\t_id,\n\ttitle,\n\timage,\n\tdate,\n\tdescription,\n\tshort_description,\n\tlink,\n\tfrontendTechnologies,\n\tbackendTechnologies,\n\ttools\n  }": PROJECTS_QUERYResult;
   }
 }

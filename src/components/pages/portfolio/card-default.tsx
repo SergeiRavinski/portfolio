@@ -1,6 +1,7 @@
 import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
 import Image from "next/image";
+import { Data } from "@/types/main-section";
 
 export default function CardDefault({
 	index,
@@ -8,16 +9,7 @@ export default function CardDefault({
 	technologies,
 }: {
 	index: number;
-	item: {
-		image: { asset: { _ref: string } };
-		link: string;
-		_id: number;
-		title: string;
-		description: string;
-		frontendTechnologies: string[];
-		backendTechnologies: string[];
-		tools: string[];
-	};
+	item: Data;
 	technologies: string[];
 }) {
 	return (
