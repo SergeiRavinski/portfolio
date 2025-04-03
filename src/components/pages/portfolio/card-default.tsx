@@ -13,17 +13,14 @@ export default function CardDefault({
 	technologies: string[];
 }) {
 	return (
-		<section
-			className="m-6 p-4 relative transition-shadow duration-300 hover:shadow-[2px_2px_10px_rgba(0,0,0,0.1)] group"
-			key={item._id}
-		>
+		<section className="m-6 p-4 relative group" key={item._id}>
 			<Link
 				href={item.link ? item.link : ""}
 				className={`${!item.link && "pointer-events-none"}`}
 			>
 				{item?.image?.asset?._ref ? (
 					<Image
-						className="float-left m-0 w-1/3 mr-4 border-1 border-[#D2D2D5] border-solid"
+						className="float-left m-0 w-1/3 mr-4"
 						src={urlFor(item?.image?.asset?._ref)
 							// .width(600)
 							// .height(600)
@@ -77,12 +74,12 @@ export default function CardDefault({
 			</div>
 
 			{/* Top-left & Bottom-right corners */}
-			<div className="absolute top-0 left-0 w-4 h-4 group-hover:w-6 group-hover:h-6 transition-all duration-300 border-t-1 border-l-1 border-[#29292b] rounded-xs"></div>
-			<div className="absolute bottom-0 right-0 w-4 h-4 border-b-1 border-r-1 border-[#29292b] group-hover:w-6 group-hover:h-6 transition-all duration-300 rounded-xs"></div>
+			<div className="absolute top-0 left-0 pointer-events-none w-4 h-4 group-hover:w-1/2 group-hover:h-1/2 transition-all duration-300 border-t-1 border-l-1 border-[#29292b]"></div>
+			<div className="absolute bottom-0 right-0 w-4 h-4 pointer-events-none border-b-1 border-r-1 border-[#29292b] group-hover:w-1/2 group-hover:h-1/2 transition-all duration-300"></div>
 
 			{/* Top-right & Bottom-left corners */}
-			<div className="absolute top-0 right-0 w-4 h-4 border-t-1 border-r-1 border-[#29292b] group-hover:w-6 group-hover:h-6 transition-all duration-300 rounded-xs"></div>
-			<div className="absolute bottom-0 left-0 w-4 h-4 border-b-1 border-l-1 border-[#29292b] group-hover:w-6 group-hover:h-6 transition-all duration-300 rounded-xs"></div>
+			<div className="absolute top-0 right-0 w-4 h-4 pointer-events-none border-t-1 border-r-1 border-[#29292b] group-hover:w-1/2 group-hover:h-1/2 transition-all duration-300"></div>
+			<div className="absolute bottom-0 left-0 w-4 h-4 pointer-events-none border-b-1 border-l-1 border-[#29292b] group-hover:w-1/2 group-hover:h-1/2 transition-all duration-300"></div>
 		</section>
 	);
 }
