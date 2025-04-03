@@ -27,11 +27,15 @@ export default function MainSection({ data }: { data: Data[] }) {
 				<Button clickEvent={changeStyling} type={styling} />
 			</div>
 
-			<main className="container mx-auto w-full h-full overflow-scroll">
+			<main className="container mx-auto w-full h-full overflow-scroll px-6">
 				{data && (
 					<section
-						className={`${styling ? "grid grid-cols-10 gap-5 grid-flow-col" : "flex flex-col"}`}
+						className={`${styling ? "grid grid-cols-10 gap-5 grid-flow-col relative" : "flex flex-col"}`}
 					>
+						{/* <div className="absolute h-full w-full left-0 -z-10 grid grid-cols-10 gap-5 grid-flow-col">
+							<div className="h-full w-[0.1rem] col-end-7 -z-10 bg-[#D2D2D5]"></div>
+						</div> */}
+
 						{data?.map((item: Data, index) => {
 							const technologies: string[] =
 								item?.frontendTechnologies?.concat(
