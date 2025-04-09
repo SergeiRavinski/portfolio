@@ -5,8 +5,9 @@ import Button from "./Button";
 import { Data } from "@/types/main-section";
 import { useState } from "react";
 import { gridStyles } from "@/helpers/grid-styles";
-import CardDefault from "../pages/portfolio/card-default";
-import CardRandom from "../pages/portfolio/card-random";
+import CardDefault from "../pages/portfolio/CardDefault";
+import CardRandom from "../pages/portfolio/CardRandom";
+import SplitText from "../pages/portfolio/TitleAnimation";
 
 export default function MainSection({ data }: { data: Data[] }) {
 	const [styling, setStyling] = useState(false);
@@ -20,9 +21,7 @@ export default function MainSection({ data }: { data: Data[] }) {
 			<Header />
 
 			<div className="p-6 flex flex-row justify-between items-center">
-				<h2 className="text-[1.2rem] uppercase">
-					Prosjekter jeg har jobbet med
-				</h2>
+				<SplitText />
 
 				<Button clickEvent={changeStyling} type={styling} />
 			</div>
