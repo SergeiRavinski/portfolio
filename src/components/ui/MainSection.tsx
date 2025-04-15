@@ -44,7 +44,7 @@ export default function MainSection({ data }: { data: Data[] }) {
 						height: 2,
 						originX: 0,
 						zIndex: 10,
-						backgroundColor: "var(--color-primary-dark)",
+						backgroundColor: "var(--color-tertiary-dark)",
 					}}
 				/>
 

@@ -13,7 +13,7 @@ export default function CardDefault({
 	technologies: string[];
 }) {
 	return (
-		<section className="m-6 p-4 relative group" key={item._id}>
+		<section className="my-6 p-4 relative group" key={item._id}>
 			<Link
 				href={item.link ? item.link : ""}
 				className={`${!item.link && "pointer-events-none"}`}
