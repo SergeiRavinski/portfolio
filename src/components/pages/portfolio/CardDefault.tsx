@@ -35,18 +35,18 @@ export default function CardDefault({
 			<div className="flex flex-col h-full justify-between font-(family-name:--font-space-mono)">
 				<div>
 					<div className="flex flex-row justify-between">
-						<h2 className="font-bold text-[#29292B] text-2xl">
+						<h2 className="font-bold text-(--color-primary-dark) text-2xl">
 							{item.title}
 						</h2>
 
-						<span className="text-[#29292B] font-light">
+						<span className="text-(--color-primary-dark) font-light">
 							{index <= 9 ? `.0${index + 1}` : `.${index + 1}`}
 						</span>
 					</div>
 
 					{item.description && (
 						<>
-							<hr className="my-2 border-[#D2D2D5]" />
+							<hr className="my-2 border-(--color-secondary-dark)" />
 
 							<p className="text-[1rem] leading-tight">
 								{item.description}
@@ -63,7 +63,7 @@ export default function CardDefault({
 							{technologies?.map((tech, index) => (
 								<li
 									key={index}
-									className="p-1 bg-[#29292B] text-white font-medium text-xs rounded-xs"
+									className="p-1 bg-(--color-primary-dark) text-(--color-primary-light) font-medium text-xs rounded-xs"
 								>
 									{tech}
 								</li>
@@ -74,12 +74,12 @@ export default function CardDefault({
 			</div>
 
 			{/* Top-left & Bottom-right corners */}
-			<div className="absolute top-0 left-0 pointer-events-none w-4 h-4 group-hover:w-1/2 group-hover:h-1/2 transition-all duration-300 border-t-1 border-l-1 border-[#29292b]"></div>
-			<div className="absolute bottom-0 right-0 w-4 h-4 pointer-events-none border-b-1 border-r-1 border-[#29292b] group-hover:w-1/2 group-hover:h-1/2 transition-all duration-300"></div>
+			<div className="absolute top-0 left-0 pointer-events-none w-4 h-4 group-hover:w-1/2 group-hover:h-1/2 transition-all duration-300 border-t-1 border-l-1 border-(--color-primary-dark)"></div>
+			<div className="absolute bottom-0 right-0 w-4 h-4 pointer-events-none border-b-1 border-r-1 border-(--color-primary-dark) group-hover:w-1/2 group-hover:h-1/2 transition-all duration-300"></div>
 
 			{/* Top-right & Bottom-left corners */}
-			<div className="absolute top-0 right-0 w-4 h-4 pointer-events-none border-t-1 border-r-1 border-[#29292b] group-hover:w-1/2 group-hover:h-1/2 transition-all duration-300"></div>
-			<div className="absolute bottom-0 left-0 w-4 h-4 pointer-events-none border-b-1 border-l-1 border-[#29292b] group-hover:w-1/2 group-hover:h-1/2 transition-all duration-300"></div>
+			<div className="absolute top-0 right-0 w-4 h-4 pointer-events-none border-t-1 border-r-1 border-(--color-primary-dark) group-hover:w-1/2 group-hover:h-1/2 transition-all duration-300"></div>
+			<div className="absolute bottom-0 left-0 w-4 h-4 pointer-events-none border-b-1 border-l-1 border-(--color-primary-dark) group-hover:w-1/2 group-hover:h-1/2 transition-all duration-300"></div>
 		</section>
 	);
 }

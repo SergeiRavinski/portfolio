@@ -17,7 +17,7 @@ export default function MainSection({ data }: { data: Data[] }) {
 	};
 
 	return (
-		<section className="flex flex-col sticky top-4 right-0 h-[calc(100vh-2rem)] w-full border-1 border-solid border-[#D2D2D5] m-4">
+		<section className="flex flex-col sticky top-4 right-0 h-[calc(100vh-2rem)] w-full border-1 border-solid border-(--color-secondary-dark) m-4">
 			<Header />
 
 			<div className="p-6 flex flex-row justify-between items-center">
@@ -32,7 +32,7 @@ export default function MainSection({ data }: { data: Data[] }) {
 						className={`${styling ? "grid grid-cols-10 gap-5 grid-flow-col relative" : "flex flex-col"}`}
 					>
 						{/* <div className="absolute h-full w-full left-0 -z-10 grid grid-cols-10 gap-5 grid-flow-col">
-							<div className="h-full w-[0.1rem] col-end-7 -z-10 bg-[#D2D2D5]"></div>
+							<div className="h-full w-[0.1rem] col-end-7 -z-10 bg-(--color-secondary-dark)"></div>
 						</div> */}
 
 						{data?.map((item: Data, index) => {

@@ -59,7 +59,7 @@ export default function CardRandom({
 
 					{item.description && (
 						<>
-							<hr className="my-2 border-[#D2D2D5]" />
+							<hr className="my-2 border-(--color-primary-dark)" />
 
 							<p className="text-[1rem] leading-tight">
 								{item.description}
