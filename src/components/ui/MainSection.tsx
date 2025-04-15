@@ -26,7 +26,7 @@ export default function MainSection({ data }: { data: Data[] }) {
 				<Button clickEvent={changeStyling} type={styling} />
 			</div>
 
-			<main className="container mx-auto w-full h-full overflow-scroll px-6">
+				className="container relative mx-auto w-full h-full overflow-scroll px-6 hide-scrollbar"
 				{data && (
 					<section
 						className={`${styling ? "grid grid-cols-10 gap-5 grid-flow-col relative" : "flex flex-col"}`}
