@@ -1,9 +1,10 @@
 "use client";
 
+import { motion, useScroll } from "motion/react";
 import Header from "@/components/ui/Header";
 import Button from "./Button";
 import { Data } from "@/types/main-section";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { gridStyles } from "@/helpers/grid-styles";
 import CardDefault from "../pages/portfolio/CardDefault";
 import CardRandom from "../pages/portfolio/CardRandom";
@@ -11,6 +12,10 @@ import SplitText from "../pages/portfolio/TitleAnimation";
 
 export default function MainSection({ data }: { data: Data[] }) {
 	const [styling, setStyling] = useState(false);
+	const containerRef = useRef(null);
+	const { scrollYProgress } = useScroll({
+		container: containerRef, // track scroll of the main element
+	});
 
 	const changeStyling = () => {
 		return styling ? setStyling(false) : setStyling(true);
@@ -26,7 +31,25 @@ export default function MainSection({ data }: { data: Data[] }) {
 				<Button clickEvent={changeStyling} type={styling} />
 			</div>
 
+			<main
+				ref={containerRef}
 				className="container relative mx-auto w-full h-full overflow-scroll px-6 hide-scrollbar"
+			>
+				<motion.div
+					id="scroll-indicator"
+					style={{
+						scaleX: scrollYProgress,
+						position: "sticky",
+						top: 0,
+						left: 0,
+						right: 0,
+						height: 3,
+						originX: 0,
+						zIndex: 10,
+						backgroundColor: "var(--color-primary-dark)",
+					}}
+				/>
+
 				{data && (
 					<section
 						className={`${styling ? "grid grid-cols-10 gap-5 grid-flow-col relative" : "flex flex-col"}`}
