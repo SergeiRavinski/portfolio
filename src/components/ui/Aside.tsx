@@ -15,8 +15,8 @@ export default function Aside() {
 					>
 						<Image
 							src={"/github-svg.svg"}
-							width={22.5}
-							height={22.5}
+							width={25}
+							height={25}
 							alt="GitHub"
 						/>
 					</Link>
