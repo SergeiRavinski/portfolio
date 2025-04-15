@@ -10,7 +10,7 @@ export default async function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<div className="flex flex-row min-h-screen bg-[#f7f3ef] text-[#29292B] lowercase font-(family-name:--font-space-mono)">
+		<div className="flex flex-row min-h-screen bg-[#f7f3ef] text-[#29292B] lowercase font-(family-name:--font-space-mono) selection:bg-black selection:text-[#f7f3ef]">
 			<Aside />
 			{children}
 			<SanityLive />
