@@ -60,14 +60,17 @@ export default function CardDefault({
 						<ul className="flex flex-wrap gap-1">
 							<h2 className="font-semibold">Teknologier:</h2>
 
-							{technologies?.map((tech, index) => (
-								<li
-									key={index}
-									className="p-1 bg-(--color-primary-dark) text-(--color-primary-light) font-medium text-xs rounded-xs"
-								>
-									{tech}
-								</li>
-							))}
+							{technologies?.map(
+								(tech, index) =>
+									tech && (
+										<li
+											key={index}
+											className="p-1 bg-(--color-primary-dark) text-(--color-primary-light) font-medium text-xs rounded-xs"
+										>
+											{tech}
+										</li>
+									)
+							)}
 						</ul>
 					</div>
 				)}

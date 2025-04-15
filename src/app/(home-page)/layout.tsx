@@ -3,6 +3,9 @@ import { DisableDraftMode } from "@/components/DisableDraftMode";
 import { VisualEditing } from "next-sanity";
 import { draftMode } from "next/headers";
 import Aside from "@/components/ui/Aside";
+import MainContentWrapper from "@/components/global/MainContentWrapper";
+import Header from "@/components/ui/Header";
+import RootWrapper from "@/components/global/RootWrapper";
 
 export default async function RootLayout({
 	children,
@@ -10,9 +13,12 @@ export default async function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<div className="flex flex-row min-h-screen bg-(--color-primary-light) text-[--color-primary-dark] lowercase font-(family-name:--font-space-mono) selection:bg-(--color-primary-dark) selection:text-(--color-primary-light)">
+		<RootWrapper>
 			<Aside />
-			{children}
+			<MainContentWrapper>
+				<Header />
+				{children}
+			</MainContentWrapper>
 			<SanityLive />
 			{(await draftMode()).isEnabled && (
 				<>
@@ -20,6 +26,6 @@ export default async function RootLayout({
 					<VisualEditing />
 				</>
 			)}
-		</div>
+		</RootWrapper>
 	);
 }

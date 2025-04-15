@@ -1,0 +1,11 @@
+export default function RootWrapper({
+	children,
+}: {
+	children: React.ReactNode;
+}) {
+	return (
+		<div className="flex flex-row min-h-screen bg-(--color-primary-light) text-[--color-primary-dark] lowercase font-(family-name:--font-space-mono) selection:bg-(--color-primary-dark) selection:text-(--color-primary-light)">
+			{children}
+		</div>
+	);
+}

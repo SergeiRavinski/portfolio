@@ -1,4 +1,4 @@
-import Header from "@/components/ui/Header";
+import SplitText from "@/components/pages/portfolio/TitleAnimation";
 // import { sanityFetch } from "@/sanity/lib/live";
 // import { POSTS_QUERY } from "@/sanity/lib/queries";
 
@@ -8,12 +8,14 @@ export default async function Contact() {
 	// });
 
 	return (
-		<section className="flex flex-col min-h-screen w-full">
-			<Header />
+		<>
+			<div className="p-6 flex flex-row justify-between items-center">
+				<SplitText text="Contact" />
+			</div>
 
-			<main className="container mx-auto bg-green-200 p-6 w-full h-full">
-				<h1>Contact Page ...</h1>
+			<main className="container relative mx-auto w-full h-full overflow-scroll px-6 hide-scrollbar">
+				Content ...
 			</main>
-		</section>
+		</>
 	);
 }

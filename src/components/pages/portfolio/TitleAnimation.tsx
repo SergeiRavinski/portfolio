@@ -4,7 +4,7 @@ import { animate, stagger } from "motion";
 import { splitText } from "motion-plus";
 import { useEffect, useRef } from "react";
 
-export default function SplitText() {
+export default function SplitText({ text }: { text: string }) {
 	const containerRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
@@ -34,9 +34,7 @@ export default function SplitText() {
 
 	return (
 		<div className="container" ref={containerRef}>
-			<h2 className="text-[1.2rem] uppercase word">
-				Prosjektene jeg har jobbet med
-			</h2>
+			<h2 className="text-[1.2rem] uppercase word">{text}</h2>
 		</div>
 	);
 }

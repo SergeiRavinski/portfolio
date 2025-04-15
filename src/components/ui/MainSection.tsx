@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll } from "motion/react";
-import Header from "@/components/ui/Header";
+// import Header from "@/components/ui/Header";
 import Button from "./Button";
 import { Data } from "@/types/main-section";
 import { useRef, useState } from "react";
@@ -9,6 +9,7 @@ import { gridStyles } from "@/helpers/grid-styles";
 import CardDefault from "../pages/portfolio/CardDefault";
 import CardRandom from "../pages/portfolio/CardRandom";
 import SplitText from "../pages/portfolio/TitleAnimation";
+// import MainContentWrapper from "../global/MainContentWrapper";
 
 export default function MainSection({ data }: { data: Data[] }) {
 	const [styling, setStyling] = useState(false);
@@ -22,12 +23,9 @@ export default function MainSection({ data }: { data: Data[] }) {
 	};
 
 	return (
-		<section className="flex flex-col sticky top-4 right-0 h-[calc(100vh-2rem)] w-full border-1 border-solid border-(--color-secondary-dark) m-4">
-			<Header />
-
+		<>
 			<div className="p-6 flex flex-row justify-between items-center">
-				<SplitText />
-
+				<SplitText text="Prosjektene jeg har jobbet med" />
 				<Button clickEvent={changeStyling} type={styling} />
 			</div>
 
@@ -43,7 +41,7 @@ export default function MainSection({ data }: { data: Data[] }) {
 						top: 0,
 						left: 0,
 						right: 0,
-						height: 3,
+						height: 2,
 						originX: 0,
 						zIndex: 10,
 						backgroundColor: "var(--color-primary-dark)",
@@ -54,10 +52,6 @@ export default function MainSection({ data }: { data: Data[] }) {
 					<section
 						className={`${styling ? "grid grid-cols-10 gap-5 grid-flow-col relative" : "flex flex-col"}`}
 					>
-						{/* <div className="absolute h-full w-full left-0 -z-10 grid grid-cols-10 gap-5 grid-flow-col">
-							<div className="h-full w-[0.1rem] col-end-7 -z-10 bg-(--color-secondary-dark)"></div>
-						</div> */}
-
 						{data?.map((item: Data, index) => {
 							const technologies: string[] =
 								item?.frontendTechnologies?.concat(
@@ -95,6 +89,6 @@ export default function MainSection({ data }: { data: Data[] }) {
 					</section>
 				)}
 			</main>
-		</section>
+		</>
 	);
 }
