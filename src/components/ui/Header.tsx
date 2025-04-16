@@ -11,7 +11,7 @@ export default function Header() {
 	return (
 		<header className="container mx-auto w-full p-6">
 			<nav>
-				<ul className="flex flex-row gap-3 justify-self-end border-b-2 border-(--color-secondary-dark) text-xl tracking-tight">
+				<ul className="flex flex-row gap-4 justify-self-end border-b-2 border-(--color-secondary-dark) text-xl tracking-tight">
 					{/* TODO: Add active class to the current page using ref */}
 					<li className={`${path === "/" ? styleActive : ""}`}>
 						<Link href="/">{path === "/" ? "." : ""}Portfolio</Link>
