@@ -7,7 +7,7 @@ export default function HamburgerMenu() {
 
 	return (
 		<button
-			className={`relative w-9 h-8 flex flex-col justify-center z-50 ${open ? "gap-1" : "gap-[0.4rem]"}`}
+			className={`relative w-9 h-6 flex flex-col justify-center z-50 ${open ? "gap-1" : "gap-[0.4rem]"}`}
 			onClick={() => setOpen(!open)}
 			aria-label="Toggle menu"
 		>
