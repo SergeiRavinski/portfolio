@@ -11,7 +11,7 @@ export default function Header() {
 	return (
 		<header className="container mx-auto w-full p-6">
 			<nav>
-				<ul className="flex flex-row gap-4 justify-self-end border-b-2 border-(--color-secondary-dark) text-xl tracking-tight">
+				<ul className="flex flex-row gap-4 justify-self-end border-(--color-secondary-dark) text-xl tracking-tight">
 					{/* TODO: Add active class to the current page using ref */}
 					<FlipLink href="/" path="/">
 						Portfolio
@@ -44,18 +44,21 @@ const FlipLink = ({
 	path: string;
 }) => {
 	const pathName = usePathname();
-	const styleActive = "border-b-2 font-bold border-[#29292B]";
+	// const styleActive = "font-bold";
 
 	return (
 		<motion.li
 			initial="initial"
 			whileHover="hovered"
-			className={`${pathName === path ? styleActive : ""} overflow-hidden relative `}
-			// style={{ lineHeight: 0.75 }}
+			className={`overflow-hidden relative flex leading-none uppercase 
+	 
+			hover:opacity-100 transition-opacity duration-300
+		`}
 		>
-			<div>
+			<div
+				className={`${pathName === path ? "opacity-100 font-bold" : "opacity-60"}`}
+			>
 				<Link href={href}>
-					{pathName === path ? "." : ""}
 					{children.split("").map((letter, index) => {
 						return (
 							<motion.span
@@ -69,7 +72,7 @@ const FlipLink = ({
 									delay: STAGGER * index,
 								}}
 								key={index}
-								className="inline-block h-fit"
+								className="inline-block"
 							>
 								{letter}
 							</motion.span>
@@ -78,9 +81,10 @@ const FlipLink = ({
 				</Link>
 			</div>
 
-			<div className="absolute inset-0">
+			<div
+				className={`${pathName === path ? "opacity-100 font-bold" : "opacity-60"} absolute inset-0`}
+			>
 				<Link href={href}>
-					{pathName === path ? "." : ""}
 					{children.split("").map((letter, index) => {
 						return (
 							<motion.span
