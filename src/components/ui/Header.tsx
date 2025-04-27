@@ -2,50 +2,114 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
+
+const DURATION = 0.25;
+const STAGGER = 0.025;
 
 export default function Header() {
-	const path = usePathname();
-
-	const styleActive = "border-b-2 font-bold border-[#29292B]";
-
 	return (
 		<header className="container mx-auto w-full p-6">
 			<nav>
 				<ul className="flex flex-row gap-4 justify-self-end border-b-2 border-(--color-secondary-dark) text-xl tracking-tight">
 					{/* TODO: Add active class to the current page using ref */}
-					<li className={`${path === "/" ? styleActive : ""}`}>
-						<Link href="/">{path === "/" ? "." : ""}Portfolio</Link>
-					</li>
+					<FlipLink href="/" path="/">
+						Portfolio
+					</FlipLink>
 
-					<li className={`${path === "/resume" ? styleActive : ""}`}>
-						<Link href="/resume">
-							{path === "/resume" ? "." : ""}Resume
-						</Link>
-					</li>
+					<FlipLink href="/resume" path="/resume">
+						Resume
+					</FlipLink>
 
-					<li
-						className={` pb-2 ${path === "/about" ? styleActive : ""}`}
-					>
-						<Link href="/about">
-							{path === "/about" ? "." : ""}About
-						</Link>
-					</li>
+					<FlipLink href="/about" path="/about">
+						About
+					</FlipLink>
 
-					<li className={`${path === "/contact" ? styleActive : ""}`}>
-						<Link href="/contact">
-							{path === "/contact" ? "." : ""}Contact
-						</Link>
-					</li>
+					<FlipLink href="/contact" path="/contact">
+						Contact
+					</FlipLink>
 				</ul>
 			</nav>
 		</header>
 	);
 }
 
+const FlipLink = ({
+	href,
+	children,
+	path,
+}: {
+	href: string;
+	children: string;
+	path: string;
+}) => {
+	const pathName = usePathname();
+	const styleActive = "border-b-2 font-bold border-[#29292B]";
+
+	return (
+		<motion.li
+			initial="initial"
+			whileHover="hovered"
+			className={`${pathName === path ? styleActive : ""} overflow-hidden relative `}
+			// style={{ lineHeight: 0.75 }}
+		>
+			<div>
+				<Link href={href}>
+					{pathName === path ? "." : ""}
+					{children.split("").map((letter, index) => {
+						return (
+							<motion.span
+								variants={{
+									initial: { y: 0 },
+									hovered: { y: "-100%" },
+								}}
+								transition={{
+									duration: DURATION,
+									ease: "easeInOut",
+									delay: STAGGER * index,
+								}}
+								key={index}
+								className="inline-block h-fit"
+							>
+								{letter}
+							</motion.span>
+						);
+					})}
+				</Link>
+			</div>
+
+			<div className="absolute inset-0">
+				<Link href={href}>
+					{pathName === path ? "." : ""}
+					{children.split("").map((letter, index) => {
+						return (
+							<motion.span
+								variants={{
+									initial: { y: "100%" },
+									hovered: { y: 0 },
+								}}
+								transition={{
+									duration: DURATION,
+									ease: "easeInOut",
+									delay: STAGGER * index,
+								}}
+								key={index}
+								className="inline-block"
+							>
+								{letter}
+							</motion.span>
+						);
+					})}
+				</Link>
+			</div>
+		</motion.li>
+	);
+};
+
 //////////
 // import { AnimatePresence } from "motion/react";
 // import * as motion from "motion/react-client";
-// import { usePathname } from "next/navigation";
+// import { usePathNamename } from "next/navigation";
 // import { useState } from "react";
 
 // export default function Header() {
