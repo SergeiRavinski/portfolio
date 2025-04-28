@@ -1,18 +1,18 @@
 "use client";
 
+import { useTheme } from "next-themes";
 import * as motion from "motion/react-client";
-import { useState } from "react";
 
-export default function DarkModeToggle() {
-	const [isOn, setIsOn] = useState(false);
+export default function ThemeToggle() {
+	const { theme, setTheme } = useTheme();
 
-	const toggleSwitch = () => setIsOn(!isOn);
+	const toggleSwitch = () => setTheme(theme === "dark" ? "light" : "dark");
 
 	return (
 		<button
 			className="toggle-container flex w-10 h-6 border-1 border-(--color-dark-hover) inset-shadow cursor-pointer rounded-[50px] p-0.5"
 			style={{
-				justifyContent: "flex-" + (isOn ? "start" : "end"),
+				justifyContent: "flex-" + (theme === "light" ? "start" : "end"),
 				boxShadow: "inset 0 4px 2px var(--color-secondary-dark)",
 			}}
 			onClick={toggleSwitch}

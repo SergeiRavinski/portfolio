@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ThemeProvider from "@/theme/theme-provider";
 import { Geist, Geist_Mono, Space_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -29,12 +30,41 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="en" suppressHydrationWarning>
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} ${spaceMono.variable} antialiased`}
 			>
-				{children}
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="system"
+					enableSystem
+					disableTransitionOnChange
+				>
+					{children}
+				</ThemeProvider>
 			</body>
 		</html>
 	);
 }
+
+// export default function RootLayout({
+// 	children,
+// }: Readonly<{
+// 	children: React.ReactNode;
+// }>) {
+// 	return (
+// 		<html lang="en" suppressHydrationWarning>
+// 			<body className="bg-white dark:bg-[#191919] text-[#37352f] dark:text-[#ffffffcf]">
+// 				<ThemeProvider
+// 					attribute="class"
+// 					defaultTheme="system"
+// 					enableSystem
+// 					disableTransitionOnChange
+// 				>
+// 					<Navbar />
+// 					{children}
+// 				</ThemeProvider>
+// 			</body>
+// 		</html>
+// 	);
+// }

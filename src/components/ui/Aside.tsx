@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import DarkModeToggle from "./DarkModeToggle";
 import HamburgerMenu from "./HamburgerMenu";
 import ScatterText from "./ScatterText";
+import ThemeToggle from "@/theme/theme-toggle";
 
 export default function Aside() {
 	return (
@@ -10,7 +10,7 @@ export default function Aside() {
 			<div>
 				<section className="flex flex-row p-6 items-center text-xl tracking-tight gap-6">
 					<HamburgerMenu />
-					<DarkModeToggle />
+					<ThemeToggle />
 				</section>
 
 				<div className="flex flex-col justify-between text-[0.7rem] uppercase m-6 mt-8 mr-0 pb-6.5 border-b-solid border-b-1 border-(--color-secondary-dark)">
