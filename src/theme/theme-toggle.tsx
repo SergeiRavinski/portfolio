@@ -13,7 +13,7 @@ export default function ThemeToggle() {
 			className="toggle-container flex w-10 h-6 border-1 border-(--color-dark-hover) inset-shadow cursor-pointer rounded-[50px] p-0.5"
 			style={{
 				justifyContent: "flex-" + (theme === "light" ? "start" : "end"),
-				boxShadow: "inset 0 4px 2px var(--color-secondary-dark)",
+				// boxShadow: "inset 0 4px 2px var(--color-secondary-dark)",
 			}}
 			onClick={toggleSwitch}
 		>
