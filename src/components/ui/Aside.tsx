@@ -31,6 +31,7 @@ export default function Aside() {
 						className="mx-1"
 					>
 						<Image
+							className="dark:invert"
 							src={"/github-svg.svg"}
 							width={25}
 							height={25}
@@ -44,6 +45,7 @@ export default function Aside() {
 						className="mx-1"
 					>
 						<Image
+							className="dark:invert"
 							src={"/linkedin-svg.svg"}
 							width={25}
 							height={25}
@@ -57,6 +59,7 @@ export default function Aside() {
 						className="mx-1"
 					>
 						<Image
+							className="dark:invert"
 							src={"/instagram-svg.svg"}
 							width={25}
 							height={25}
