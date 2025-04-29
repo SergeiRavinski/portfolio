@@ -4,7 +4,7 @@ export default function RootWrapper({
 	children: React.ReactNode;
 }) {
 	return (
-		<div className="flex flex-row min-h-screen bg-(--color-primary-light) text-[--color-primary-dark] lowercase font-(family-name:--font-space-mono) selection:bg-(--color-primary-dark) selection:text-(--color-primary-light)">
+		<div className="flex flex-row min-h-screen bg-(--color-primary-light) lowercase font-(family-name:--font-space-mono) selection:bg-(--color-primary-dark) selection:text-(--color-primary-light) text-(--color-primary-dark)">
 			{children}
 		</div>
 	);
