@@ -46,25 +46,3 @@ export default function RootLayout({
 		</html>
 	);
 }
-
-// export default function RootLayout({
-// 	children,
-// }: Readonly<{
-// 	children: React.ReactNode;
-// }>) {
-// 	return (
-// 		<html lang="en" suppressHydrationWarning>
-// 			<body className="bg-white dark:bg-[#191919] text-[#37352f] dark:text-[#ffffffcf]">
-// 				<ThemeProvider
-// 					attribute="class"
-// 					defaultTheme="system"
-// 					enableSystem
-// 					disableTransitionOnChange
-// 				>
-// 					<Navbar />
-// 					{children}
-// 				</ThemeProvider>
-// 			</body>
-// 		</html>
-// 	);
-// }
