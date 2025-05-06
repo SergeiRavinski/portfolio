@@ -1,4 +1,6 @@
-export default function InputComponent() {
+import { Data } from "@/types/main-section";
+
+export default function InputComponent({ projects }: { projects: Data[] }) {
 	return (
 		<div className="relative group flex h-full min-w-[30%]">
 			<input

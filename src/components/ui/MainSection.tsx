@@ -27,7 +27,7 @@ export default function MainSection({ data }: { data: Data[] }) {
 		<>
 			<div className="p-6 flex flex-row justify-between items-center gap-4">
 				<SplitText text="Prosjektene jeg har jobbet med" />
-				<InputComponent />
+				<InputComponent projects={data} />
 				<Button clickEvent={changeStyling} type={styling} />
 			</div>
 
