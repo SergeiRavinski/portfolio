@@ -9,6 +9,7 @@ import { gridStyles } from "@/helpers/grid-styles";
 import CardDefault from "../pages/portfolio/CardDefault";
 import CardRandom from "../pages/portfolio/CardRandom";
 import SplitText from "../pages/portfolio/TitleAnimation";
+import InputComponent from "./Input";
 // import MainContentWrapper from "../global/MainContentWrapper";
 
 export default function MainSection({ data }: { data: Data[] }) {
@@ -24,8 +25,9 @@ export default function MainSection({ data }: { data: Data[] }) {
 
 	return (
 		<>
-			<div className="p-6 flex flex-row justify-between items-center">
+			<div className="p-6 flex flex-row justify-between items-center gap-4">
 				<SplitText text="Prosjektene jeg har jobbet med" />
+				<InputComponent />
 				<Button clickEvent={changeStyling} type={styling} />
 			</div>
 
