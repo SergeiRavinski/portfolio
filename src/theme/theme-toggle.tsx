@@ -9,7 +9,7 @@ export default function ThemeToggle() {
 	return (
 		<button
 			type="button"
-			className="cursor-pointer flex justify-center h-7 w-7 items-center bg-(--color-primary-light) text-[#37352f] dark:text-[#ffffffcf] hover:bg-hover-background active:bg-active-background rounded-md border-1 border-button-border-color p-1.5 [transition:background_20ms_ease-in,_color_0.15s]"
+			className="cursor-pointer flex justify-center h-7 w-7 items-center bg-(--color-primary-light) text-[#37352f] dark:text-[#ffffffcf] hover:bg-hover-background active:bg-active-background rounded-md border-1 border-button-border-color border-(--color-primary-dark) p-1.5 [transition:background_20ms_ease-in,_color_0.15s]"
 			title="Toggle theme"
 			aria-label="Toggle theme"
 			onClick={toggleSwitch}
