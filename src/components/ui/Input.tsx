@@ -10,6 +10,9 @@ export default function InputComponent({ projects }: { projects: Data[] }) {
 				aria-label="Search"
 				aria-describedby="search"
 				id="search"
+				autoComplete="off"
+				// value={searchTerm}
+				// onChange={(e) => setSearchTerm(e.target.value)}
 			/>
 			<div className="absolute top-0 left-0 h-full w-10 flex justify-center items-center">
 				<IoSearch className="text-(--color-primary-dark)" />
