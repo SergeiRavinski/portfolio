@@ -13,7 +13,7 @@ import InputComponent from "./Input";
 // import MainContentWrapper from "../global/MainContentWrapper";
 
 export default function MainSection({ data }: { data: Data[] }) {
-	const [styling, setStyling] = useState(false);
+	const [styling, setStyling] = useState(true);
 	const containerRef = useRef(null);
 	const { scrollYProgress } = useScroll({
 		container: containerRef, // track scroll of the main element
@@ -28,13 +28,18 @@ export default function MainSection({ data }: { data: Data[] }) {
 			<div className="p-6 flex flex-row justify-between items-center gap-4">
 				<SplitText text="Prosjektene jeg har jobbet med" />
 				<InputComponent projects={data} />
-				<Button clickEvent={changeStyling} type={styling} />
+				<Button
+					clickEvent={changeStyling}
+					styles={styling}
+					type={"styling"}
+				/>
 			</div>
 
 			<main
 				ref={containerRef}
 				className="container relative mx-auto w-full h-full overflow-scroll px-6 hide-scrollbar"
 			>
+				{/* Scroll indicator */}
 				<motion.div
 					id="scroll-indicator"
 					style={{
