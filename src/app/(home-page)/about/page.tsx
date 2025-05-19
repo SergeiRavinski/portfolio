@@ -19,14 +19,14 @@ export default async function About() {
 				<SplitText text="About" />
 			</div>
 
-			<section className="flex flex-row w-full text-(--color-primary-light) h-100 bg-(--color-primary-dark)">
-				<div className="flex flex-col justify-center w-1/2 h-full p-6">
-					<h1>
+			<section className="flex flex-row w-full text-(--color-primary-light) h-100 bg-(--color-primary-dark) mb-6">
+				<div className="flex flex-col gap-6 justify-center w-1/2 h-full p-6">
+					<h1 className="text-[1rem] uppercase">
 						Sergei Ravinski Frontend / Fullstack Utvikler | Next.js
 						| Sanity
 					</h1>
 
-					<p>
+					<p className="text-[0.8rem]">
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 						Quisquam, voluptatibus. Lorem ipsum dolor sit amet
 						consectetur adipisicing elit. Quisquam, voluptatibus.
@@ -34,7 +34,7 @@ export default async function About() {
 						Quisquam, voluptatibus.
 					</p>
 
-					<section className="flex mt-6">
+					<section className="flex">
 						<Button
 							// clickEvent={sendEmail}
 							type={"text"}
@@ -45,12 +45,47 @@ export default async function About() {
 
 				<div className="flex w-1/2 h-full">
 					<Image
-						className="dark:invert w-full object-cover"
+						className="w-full object-cover"
 						src={"/kristiania.png"}
 						width={250}
 						height={250}
 						alt="Default icon"
 					/>
+				</div>
+			</section>
+
+			<section className="flex flex-row w-full text-(--color-primary-light) h-100 bg-(--color-primary-dark) mb-6">
+				<div className="flex w-1/2 h-full">
+					<Image
+						className="w-full object-cover"
+						src={"/kristiania.png"}
+						width={250}
+						height={250}
+						alt="Default icon"
+					/>
+				</div>
+
+				<div className="flex flex-col gap-6 justify-center w-1/2 h-full p-6">
+					<h1 className="text-[1rem] uppercase">
+						Sergei Ravinski Frontend / Fullstack Utvikler | Next.js
+						| Sanity
+					</h1>
+
+					<p className="text-[0.8rem]">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Quisquam, voluptatibus. Lorem ipsum dolor sit amet
+						consectetur adipisicing elit. Quisquam, voluptatibus.
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Quisquam, voluptatibus.
+					</p>
+
+					<section className="flex">
+						<Button
+							// clickEvent={sendEmail}
+							type={"text"}
+							text={"Send en e-post"}
+						/>
+					</section>
 				</div>
 			</section>
 		</>
