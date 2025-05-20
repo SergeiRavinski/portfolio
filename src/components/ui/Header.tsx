@@ -1,12 +1,26 @@
 "use client";
 
+import ThemeToggle from "@/theme/theme-toggle";
 import FlipLink from "../pages/portfolio/FlipLink";
+import HamburgerMenu from "./HamburgerMenu";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
+	const path = usePathname();
+
 	return (
-		<header className="container mx-auto w-full p-6">
-			<nav>
-				<ul className="flex flex-row gap-4 justify-self-end border-(--color-secondary-dark) text-xl tracking-tight">
+		<header
+			className={`container mx-auto w-full p-6 flex ${path !== "/" ? "justify-between px-0" : "justify-end"}`}
+		>
+			{path !== "/" && (
+				<section className="flex flex-row items-center text-xl tracking-tight gap-6">
+					<HamburgerMenu />
+					<ThemeToggle />
+				</section>
+			)}
+
+			<nav className="flex justify-center h-full">
+				<ul className="flex flex-row gap-4 align-middle items-center justify-self-end border-(--color-secondary-dark) text-xl tracking-tight">
 					{/* TODO: Add active class to the current page using ref */}
 					<FlipLink href="/" path="/">
 						Portfolio

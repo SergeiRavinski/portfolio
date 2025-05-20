@@ -19,9 +19,7 @@ export default function FlipLink({
 		<motion.li
 			initial="initial"
 			whileHover="hovered"
-			className={`overflow-hidden relative flex leading-none uppercase 
-	 
-			hover:opacity-100 transition-opacity duration-300
+			className={`overflow-hidden relative flex leading-none uppercase hover:opacity-100 transition-opacity duration-300
 		`}
 		>
 			<div
