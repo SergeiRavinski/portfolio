@@ -19,6 +19,127 @@ export default async function About() {
 				<SplitText text="About" />
 			</div>
 
+			{/* Magazine */}
+			<section className="grid grid-cols-4 gap-3 grid-flow-row mb-6">
+				<div className="bg-red-200 h-full grid col-span-2 row-span-2">
+					<Image
+						className="w-full h-full object-cover"
+						src={"/kristiania.png"}
+						width={250}
+						height={250}
+						alt="Default icon"
+					/>
+				</div>
+
+				<div className="bg-red-700 h-full">
+					<Image
+						className="w-full h-full object-cover"
+						src={"/audi.png"}
+						width={250}
+						height={250}
+						alt="Default icon"
+					/>
+				</div>
+
+				<div className="bg-(--color-primary-dark) text-(--color-primary-light) p-4 h-full">
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					</p>
+				</div>
+
+				<div className="bg-red-700 h-full grid col-span-2 row-span-2">
+					<Image
+						className="w-full h-full object-cover"
+						src={"/audi.png"}
+						width={250}
+						height={250}
+						alt="Default icon"
+					/>
+				</div>
+
+				<div className="bg-red-700 h-full">
+					<Image
+						className="w-full h-full object-cover"
+						src={"/kristiania.png"}
+						width={250}
+						height={250}
+						alt="Default icon"
+					/>
+				</div>
+
+				<div className="bg-red-700 h-full">
+					<Image
+						className="w-full h-full object-cover"
+						src={"/audi.png"}
+						width={250}
+						height={250}
+						alt="Default icon"
+					/>
+				</div>
+
+				<div className="bg-red-700 h-full col-span-2 row-span-2">
+					<div className="bg-(--color-primary-dark) text-(--color-primary-light) p-4 h-full">
+						<p>
+							Lorem ipsum dolor sit amet consectetur adipisicing
+							elit. Lorem ipsum dolor sit amet consectetur
+							adipisicing elit. Lorem ipsum dolor sit amet
+							consectetur adipisicing elit. Lorem ipsum dolor sit
+							amet consectetur adipisicing elit.
+						</p>
+					</div>
+				</div>
+
+				<div className="bg-red-700 h-full">
+					<Image
+						className="w-full h-full object-cover"
+						src={"/kristiania.png"}
+						width={250}
+						height={250}
+						alt="Default icon"
+					/>
+				</div>
+
+				<div className="bg-red-700 h-full">
+					<Image
+						className="w-full h-full object-cover"
+						src={"/audi.png"}
+						width={250}
+						height={250}
+						alt="Default icon"
+					/>
+				</div>
+
+				<div className="bg-red-700 h-full col-span-2 row-span-2">
+					<Image
+						className="w-full h-full object-cover"
+						src={"/kristiania.png"}
+						width={250}
+						height={250}
+						alt="Default icon"
+					/>
+				</div>
+
+				<div className="bg-red-700 h-full">
+					<Image
+						className="w-full h-full object-cover"
+						src={"/kristiania.png"}
+						width={250}
+						height={250}
+						alt="Default icon"
+					/>
+				</div>
+
+				<div className="bg-red-700 h-full">
+					<Image
+						className="w-full h-full object-cover"
+						src={"/audi.png"}
+						width={250}
+						height={250}
+						alt="Default icon"
+					/>
+				</div>
+			</section>
+
 			<section className="flex flex-row w-full text-(--color-primary-light) h-100 bg-(--color-primary-dark) mb-6">
 				<div className="flex flex-col gap-6 justify-center w-1/2 h-full p-6">
 					<h1 className="text-[1rem] uppercase">
@@ -53,7 +174,6 @@ export default async function About() {
 					/>
 				</div>
 			</section>
-
 			<section className="flex flex-row w-full h-100 mb-6">
 				<div className="flex w-1/2 h-full">
 					<Image
