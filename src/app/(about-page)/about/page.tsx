@@ -21,7 +21,7 @@ export default async function About() {
 
 			{/* Magazine */}
 			<section className="grid grid-cols-4 gap-3 grid-flow-row mb-6">
-				<div className="bg-red-200 h-full grid col-span-2 row-span-2">
+				<div className="h-full grid col-span-2 row-span-2">
 					<Image
 						className="w-full h-full object-cover"
 						src={"/kristiania.png"}
@@ -31,7 +31,7 @@ export default async function About() {
 					/>
 				</div>
 
-				<div className="bg-red-700 h-full">
+				<div className="h-full">
 					<Image
 						className="w-full h-full object-cover"
 						src={"/audi.png"}
@@ -47,7 +47,7 @@ export default async function About() {
 					</p>
 				</div>
 
-				<div className="bg-red-700 h-full grid col-span-2 row-span-2">
+				<div className="h-full grid col-span-2 row-span-2">
 					<Image
 						className="w-full h-full object-cover"
 						src={"/audi.png"}
@@ -57,7 +57,7 @@ export default async function About() {
 					/>
 				</div>
 
-				<div className="bg-red-700 h-full">
+				<div className="h-full">
 					<Image
 						className="w-full h-full object-cover"
 						src={"/kristiania.png"}
@@ -67,7 +67,7 @@ export default async function About() {
 					/>
 				</div>
 
-				<div className="bg-red-700 h-full">
+				<div className="h-full">
 					<Image
 						className="w-full h-full object-cover"
 						src={"/audi.png"}
@@ -77,7 +77,7 @@ export default async function About() {
 					/>
 				</div>
 
-				<div className="bg-red-700 h-full col-span-2 row-span-2">
+				<div className="h-full col-span-2 row-span-2">
 					<div className="bg-(--color-primary-dark) text-(--color-primary-light) p-4 h-full">
 						<p>
 							Lorem ipsum dolor sit amet consectetur adipisicing
@@ -89,7 +89,7 @@ export default async function About() {
 					</div>
 				</div>
 
-				<div className="bg-red-700 h-full">
+				<div className="h-full">
 					<Image
 						className="w-full h-full object-cover"
 						src={"/kristiania.png"}
@@ -99,7 +99,7 @@ export default async function About() {
 					/>
 				</div>
 
-				<div className="bg-red-700 h-full">
+				<div className="h-full">
 					<Image
 						className="w-full h-full object-cover"
 						src={"/audi.png"}
@@ -109,7 +109,7 @@ export default async function About() {
 					/>
 				</div>
 
-				<div className="bg-red-700 h-full col-span-2 row-span-2">
+				<div className="h-full col-span-2 row-span-2">
 					<Image
 						className="w-full h-full object-cover"
 						src={"/kristiania.png"}
@@ -119,7 +119,7 @@ export default async function About() {
 					/>
 				</div>
 
-				<div className="bg-red-700 h-full">
+				<div className="h-full">
 					<Image
 						className="w-full h-full object-cover"
 						src={"/kristiania.png"}
@@ -129,7 +129,7 @@ export default async function About() {
 					/>
 				</div>
 
-				<div className="bg-red-700 h-full">
+				<div className="h-full">
 					<Image
 						className="w-full h-full object-cover"
 						src={"/audi.png"}
