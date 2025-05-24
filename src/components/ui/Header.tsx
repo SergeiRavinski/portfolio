@@ -10,7 +10,7 @@ export default function Header() {
 
 	return (
 		<header
-			className={`container mx-auto w-full p-6 flex ${path !== "/" ? "justify-between px-0" : "justify-end"}`}
+			className={`container mx-auto w-full py-6 flex ${path !== "/" ? "justify-between px-0" : "justify-end"}`}
 		>
 			{path !== "/" && (
 				<section className="flex flex-row items-center text-xl tracking-tight gap-6">

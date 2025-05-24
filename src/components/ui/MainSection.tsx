@@ -25,7 +25,7 @@ export default function MainSection({ data }: { data: Data[] }) {
 
 	return (
 		<>
-			<div className="p-6 flex flex-row justify-between items-center gap-4">
+			<div className="py-6 flex flex-row justify-between items-center gap-4">
 				<SplitText text="Prosjektene jeg har jobbet med" />
 				<InputComponent projects={data} />
 				<Button
@@ -37,7 +37,7 @@ export default function MainSection({ data }: { data: Data[] }) {
 
 			<main
 				ref={containerRef}
-				className="container relative mx-auto w-full h-full overflow-scroll px-6 hide-scrollbar"
+				className="container relative mx-auto w-full h-full overflow-scroll hide-scrollbar"
 			>
 				{/* Scroll indicator */}
 				<motion.div
