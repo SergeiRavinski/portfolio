@@ -25,8 +25,8 @@ export default async function About() {
 					<Image
 						className="w-full h-full object-cover"
 						src={"/kristiania.png"}
-						width={250}
-						height={250}
+						width={500}
+						height={500}
 						alt="Default icon"
 					/>
 				</div>
@@ -35,8 +35,8 @@ export default async function About() {
 					<Image
 						className="w-full h-full object-cover"
 						src={"/audi.png"}
-						width={250}
-						height={250}
+						width={500}
+						height={500}
 						alt="Default icon"
 					/>
 				</div>
@@ -51,8 +51,8 @@ export default async function About() {
 					<Image
 						className="w-full h-full object-cover"
 						src={"/audi.png"}
-						width={250}
-						height={250}
+						width={500}
+						height={500}
 						alt="Default icon"
 					/>
 				</div>
@@ -61,8 +61,8 @@ export default async function About() {
 					<Image
 						className="w-full h-full object-cover"
 						src={"/kristiania.png"}
-						width={250}
-						height={250}
+						width={500}
+						height={500}
 						alt="Default icon"
 					/>
 				</div>
@@ -71,8 +71,8 @@ export default async function About() {
 					<Image
 						className="w-full h-full object-cover"
 						src={"/audi.png"}
-						width={250}
-						height={250}
+						width={500}
+						height={500}
 						alt="Default icon"
 					/>
 				</div>
@@ -93,8 +93,8 @@ export default async function About() {
 					<Image
 						className="w-full h-full object-cover"
 						src={"/kristiania.png"}
-						width={250}
-						height={250}
+						width={500}
+						height={500}
 						alt="Default icon"
 					/>
 				</div>
@@ -103,8 +103,8 @@ export default async function About() {
 					<Image
 						className="w-full h-full object-cover"
 						src={"/audi.png"}
-						width={250}
-						height={250}
+						width={500}
+						height={500}
 						alt="Default icon"
 					/>
 				</div>
@@ -113,8 +113,8 @@ export default async function About() {
 					<Image
 						className="w-full h-full object-cover"
 						src={"/kristiania.png"}
-						width={250}
-						height={250}
+						width={500}
+						height={500}
 						alt="Default icon"
 					/>
 				</div>
@@ -123,8 +123,8 @@ export default async function About() {
 					<Image
 						className="w-full h-full object-cover"
 						src={"/kristiania.png"}
-						width={250}
-						height={250}
+						width={500}
+						height={500}
 						alt="Default icon"
 					/>
 				</div>
@@ -133,8 +133,8 @@ export default async function About() {
 					<Image
 						className="w-full h-full object-cover"
 						src={"/audi.png"}
-						width={250}
-						height={250}
+						width={500}
+						height={500}
 						alt="Default icon"
 					/>
 				</div>
@@ -168,8 +168,8 @@ export default async function About() {
 					<Image
 						className="w-full object-cover"
 						src={"/kristiania.png"}
-						width={250}
-						height={250}
+						width={500}
+						height={500}
 						alt="Default icon"
 					/>
 				</div>
@@ -179,8 +179,8 @@ export default async function About() {
 					<Image
 						className="w-full object-cover"
 						src={"/kristiania.png"}
-						width={250}
-						height={250}
+						width={500}
+						height={500}
 						alt="Default icon"
 					/>
 				</div>
