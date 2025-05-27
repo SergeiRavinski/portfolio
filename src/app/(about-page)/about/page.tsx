@@ -21,7 +21,7 @@ export default async function About() {
 
 			{/* Magazine */}
 			<section className="grid grid-cols-4 gap-3 grid-flow-row mb-6">
-				<div className="h-full grid col-span-2 row-span-2">
+				<div className="h-full relative grid col-span-2 row-span-2 group transition-all duration-300 ease-in-out">
 					<Image
 						className="w-full h-full object-cover"
 						src={"/kristiania.png"}
@@ -29,6 +29,10 @@ export default async function About() {
 						height={500}
 						alt="Default icon"
 					/>
+
+					<div className="hidden group-hover:flex h-full w-full text-(--color-primary-light) p-6 absolute top-0 left-0 bg-(--color-primary-dark) opacity-80 transition-all duration-300 ease-in-out">
+						hover text
+					</div>
 				</div>
 
 				<div className="h-full">
