@@ -10,6 +10,7 @@ import CardDefault from "../pages/portfolio/CardDefault";
 import CardRandom from "../pages/portfolio/CardRandom";
 import SplitText from "../pages/portfolio/TitleAnimation";
 import InputComponent from "./Input";
+import Footer from "./Footer";
 // import MainContentWrapper from "../global/MainContentWrapper";
 
 export default function MainSection({ data }: { data: Data[] }) {
@@ -95,6 +96,7 @@ export default function MainSection({ data }: { data: Data[] }) {
 						})}
 					</section>
 				)}
+				<Footer />
 			</main>
 		</>
 	);

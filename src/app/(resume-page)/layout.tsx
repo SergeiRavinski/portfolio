@@ -5,6 +5,7 @@ import { draftMode } from "next/headers";
 import MainContentWrapper from "@/components/global/MainContentWrapper";
 import Header from "@/components/ui/Header";
 import RootWrapper from "@/components/global/RootWrapper";
+import Footer from "@/components/ui/Footer";
 
 export default async function RootLayout({
 	children,
@@ -16,6 +17,7 @@ export default async function RootLayout({
 			<MainContentWrapper>
 				<Header />
 				{children}
+				<Footer />
 			</MainContentWrapper>
 			<SanityLive />
 
