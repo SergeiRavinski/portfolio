@@ -19,6 +19,7 @@ export default async function RootLayout({
 				{children}
 			</MainContentWrapper>
 			<SanityLive />
+
 			{(await draftMode()).isEnabled && (
 				<>
 					<DisableDraftMode />
