@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Map from "@/components/ui/Map";
 
 export default function Magazine() {
 	return (
@@ -93,13 +94,7 @@ export default function Magazine() {
 			</div>
 
 			<div className="h-full col-span-2 row-span-2">
-				<Image
-					className="w-full h-full object-cover"
-					src={"/kristiania.png"}
-					width={500}
-					height={500}
-					alt="Default icon"
-				/>
+				<Map />
 			</div>
 
 			<div className="h-full">

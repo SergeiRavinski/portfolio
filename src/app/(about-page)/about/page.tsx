@@ -6,6 +6,7 @@ import PromoBlock from "@/components/ui/PromoBlock";
 import { sanityFetch } from "@/sanity/lib/live";
 import { POSTS_QUERY } from "@/sanity/lib/queries";
 import Image from "next/image";
+import Map from "@/components/ui/Map";
 
 export default async function About() {
 	// const { data: posts } = await sanityFetch({
@@ -23,6 +24,7 @@ export default async function About() {
 
 			<Magazine />
 			<PromoBlock />
+			<Map />
 		</>
 	);
 }
