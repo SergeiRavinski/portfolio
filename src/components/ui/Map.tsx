@@ -51,7 +51,9 @@ export default function Map() {
 			"top-right"
 		);
 
-		new mapboxgl.Marker().setLngLat([10.81278, 59.89595]).addTo(map);
+		new mapboxgl.Marker({ color: "var(--color-primary-dark)" })
+			.setLngLat([10.81278, 59.89595])
+			.addTo(map);
 
 		return () => {
 			map.getCanvas().removeEventListener("wheel", handleWheel);
