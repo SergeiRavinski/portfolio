@@ -8,7 +8,7 @@ export default function Footer() {
 
 	return (
 		<footer
-			className={`w-full normal-case flex items-center h-fit border-t-solid border-t-1 border-t-(--color-secondary-dark) ${isHomePage ? "pt-4" : "py-4"}`}
+			className={`w-full normal-case flex mt-6 items-center h-fit border-t-solid border-t-1 border-t-(--color-secondary-dark) ${isHomePage ? "pt-4" : "py-4"}`}
 		>
 			<p className="text-sm flex h-fit items-center">
 				© {new Date().getFullYear()} Sergei Ravinski
