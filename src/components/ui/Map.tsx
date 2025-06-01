@@ -65,15 +65,12 @@ export default function Map() {
 		<div className="relative">
 			{/* Hint Popup */}
 			{showHint && (
-				<div className="absolute normal-case bottom-4 left-1/2 -translate-x-1/2 bg-(--color-primary-dark) text-(--color-primary-light) px-4 py-2 text-sm rounded-md shadow-md z-10">
+				<div className="absolute flex w-full h-full normal-case left-0 top-0 opacity-75 duration-300 ease-in-out transition-all justify-center items-center bg-(--color-primary-dark) text-(--color-primary-light) px-4 py-2 text-lg shadow-md z-10">
 					Hold Ctrl (or ⌘ on Mac) and scroll to zoom the map
 				</div>
 			)}
 
-			<div
-				ref={mapContainerRef}
-				className="w-full h-[500px] rounded-md"
-			/>
+			<div ref={mapContainerRef} className="w-full h-[500px]" />
 		</div>
 	);
 }
