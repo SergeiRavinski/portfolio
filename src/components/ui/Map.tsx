@@ -1,76 +1,58 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || null;
+mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || "";
 
 export default function Map() {
 	const mapContainerRef = useRef<HTMLDivElement>(null);
-	const [showHint, setShowHint] = useState(false);
-	const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
 	useEffect(() => {
-		const map = new mapboxgl.Map({
-			container: mapContainerRef.current!,
-			style: "mapbox://styles/mapbox/streets-v12",
-			center: [10.81278, 59.89595], // Havredalen, Manglerud
-			zoom: 14,
-		});
+		if (!mapContainerRef.current) return;
 
-		map.scrollZoom.disable();
+		let map: mapboxgl.Map;
 
-		const handleWheel = (e: WheelEvent) => {
-			if (e.ctrlKey || e.metaKey) {
-				map.scrollZoom.enable();
-			} else {
-				map.scrollZoom.disable();
-				showCtrlScrollHint();
-			}
-		};
-
-		const showCtrlScrollHint = () => {
-			if (timeoutRef.current) clearTimeout(timeoutRef.current);
-			setShowHint(true);
-			timeoutRef.current = setTimeout(() => setShowHint(false), 2000);
-		};
-
-		map.getCanvas().addEventListener("wheel", handleWheel);
-
-		// Add navigation (zoom and rotation) controls
-		map.addControl(new mapboxgl.NavigationControl(), "top-left");
-
-		// Add geolocate control
-		map.addControl(
-			new mapboxgl.GeolocateControl({
-				positionOptions: { enableHighAccuracy: true },
-				trackUserLocation: true,
-				showUserHeading: true,
-			}),
-			"top-right"
-		);
-
-		new mapboxgl.Marker({ color: "var(--color-primary-dark)" })
-			.setLngLat([10.81278, 59.89595])
-			.addTo(map);
+		try {
+			// Initialize the map
+			map = new mapboxgl.Map({
+				container: mapContainerRef.current,
+				style: "mapbox://styles/mapbox/streets-v12",
+				center: [10.81278, 59.89595],
+				zoom: 12,
+				cooperativeGestures: true,
+			});
+			// Add navigation controls
+			map.addControl(new mapboxgl.NavigationControl(), "top-left");
+			// Add geolocate control to the map
+			map.addControl(
+				new mapboxgl.GeolocateControl({
+					positionOptions: { enableHighAccuracy: true },
+					trackUserLocation: true,
+					showUserHeading: true,
+				}),
+				"top-right"
+			);
+			// Add a marker at the specified coordinates
+			new mapboxgl.Marker({ color: "var(--color-primary-dark)" })
+				.setLngLat([10.81278, 59.89595])
+				.addTo(map);
+		} catch (err) {
+			console.error("Failed to initialize the map:", err);
+		}
 
 		return () => {
-			map.getCanvas().removeEventListener("wheel", handleWheel);
-			map.remove();
+			map?.remove();
 		};
 	}, []);
 
 	return (
-		<div className="relative">
-			{/* Hint Popup */}
-			{showHint && (
-				<div className="absolute flex w-full h-full normal-case left-0 top-0 opacity-75 duration-300 ease-in-out transition-all justify-center items-center bg-(--color-primary-dark) text-(--color-primary-light) px-4 py-2 text-lg shadow-md z-10">
-					Hold Ctrl (or ⌘ on Mac) and scroll to zoom the map
-				</div>
-			)}
-
-			<div ref={mapContainerRef} className="w-full h-[500px]" />
+		<div>
+			<div
+				ref={mapContainerRef}
+				style={{ width: "100%", height: "500px" }}
+			/>
 		</div>
 	);
 }
