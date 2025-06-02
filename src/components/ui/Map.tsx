@@ -34,8 +34,11 @@ export default function Map() {
 				}),
 				"top-right"
 			);
+
 			// Add a marker at the specified coordinates
-			new mapboxgl.Marker({ color: "var(--color-primary-dark)" })
+			new mapboxgl.Marker({
+				color: "var(--color-tertiary-dark)",
+			})
 				.setLngLat([10.81278, 59.89595])
 				.addTo(map);
 		} catch (err) {
