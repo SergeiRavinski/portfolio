@@ -5,9 +5,10 @@ import { useState } from "react";
 export default function HamburgerMenu() {
 	const [open, setOpen] = useState(false);
 
-	setTimeout(() => {
-		setOpen(true);
-	}, 2000);
+	// Use global state management to get value from animated text component
+	// setTimeout(() => {
+	// 	setOpen(true);
+	// }, 2000);
 
 	return (
 		<button
