@@ -5,6 +5,10 @@ import { useState } from "react";
 export default function HamburgerMenu() {
 	const [open, setOpen] = useState(false);
 
+	setTimeout(() => {
+		setOpen(true);
+	}, 2000);
+
 	return (
 		<button
 			className={`relative w-9 h-6 flex flex-col justify-center z-50 ${open ? "gap-1" : "gap-[0.4rem]"}`}
