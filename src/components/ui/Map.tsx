@@ -3,10 +3,12 @@
 import { useEffect, useRef } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import { MapMagazineProps } from "@/types/about-page";
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || "";
 
-export default function Map() {
+export default function Map(props: MapMagazineProps) {
+	const { lng, lat } = props || {};
 	const mapContainerRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
@@ -19,7 +21,7 @@ export default function Map() {
 			map = new mapboxgl.Map({
 				container: mapContainerRef.current,
 				style: "mapbox://styles/mapbox/streets-v12",
-				center: [10.81278, 59.89595],
+				center: [lng, lat],
 				zoom: 12,
 				cooperativeGestures: true,
 			});
@@ -39,7 +41,7 @@ export default function Map() {
 			new mapboxgl.Marker({
 				color: "var(--color-tertiary-dark)",
 			})
-				.setLngLat([10.81278, 59.89595])
+				.setLngLat([lng, lat])
 				.addTo(map);
 		} catch (err) {
 			console.error("Failed to initialize the map:", err);

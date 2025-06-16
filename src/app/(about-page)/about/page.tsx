@@ -1,7 +1,7 @@
 import { Posts } from "@/components/pages/home-page/Posts";
 import SplitText from "@/components/pages/portfolio/TitleAnimation";
 import Button from "@/components/ui/Button";
-import Magazine from "@/components/ui/Magazine";
+import Magazine from "@/components/pages/about/Magazine";
 import PromoBlock from "@/components/ui/PromoBlock";
 import { sanityFetch } from "@/sanity/lib/live";
 import { POSTS_QUERY } from "@/sanity/lib/queries";
@@ -24,7 +24,7 @@ export default async function About() {
 
 			<Magazine />
 			<PromoBlock />
-			<Map />
+			<Map lng={10.81278} lat={59.89595} />
 		</>
 	);
 }
