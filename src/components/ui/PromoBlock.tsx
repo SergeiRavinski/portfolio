@@ -1,29 +1,35 @@
+import { PromoBlockProps } from "@/types/about-page";
 import Button from "./Button";
 import Image from "next/image";
 
-export default function PromoBlock() {
+export default function PromoBlock(props: PromoBlockProps) {
+	const { title, text, layout, background, button, image } = props || {};
+	const { type, textButton } = button || {};
+	const { src, alt } = image || {};
+	const colorsClass =
+		background === "dark"
+			? "bg-(--color-primary-dark) text-(--color-primary-light)"
+			: "bg-(--color-primary-light) text-(--color-primary-dark)";
+	const layoutClass =
+		layout === "imageLeft" ? "flex-row-reverse" : "flex-row";
+
 	return (
 		<>
-			<section className="flex flex-row w-full text-(--color-primary-light) h-100 bg-(--color-primary-dark) mb-6">
-				<div className="flex flex-col gap-6 justify-center w-1/2 h-full p-6">
-					<h1 className="text-[1rem] uppercase">
-						Sergei Ravinski Frontend / Fullstack Utvikler | Next.js
-						| Sanity
-					</h1>
+			<section
+				className={`${colorsClass} ${layoutClass} flex w-full h-100 mb-6`}
+			>
+				<div className="flex flex-col gap-4 justify-center w-1/2 h-full p-6">
+					<h2 className="text-xl normal-case font-bold mb-4">
+						{title}
+					</h2>
 
-					<p className="text-[0.8rem]">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Quisquam, voluptatibus. Lorem ipsum dolor sit amet
-						consectetur adipisicing elit. Quisquam, voluptatibus.
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Quisquam, voluptatibus.
-					</p>
+					<p className="text-[0.8rem]">{text}</p>
 
 					<section className="flex">
 						<Button
 							// clickEvent={sendEmail}
-							type={"text"}
-							text={"Send en e-post"}
+							type={type}
+							text={textButton}
 						/>
 					</section>
 				</div>
@@ -31,46 +37,11 @@ export default function PromoBlock() {
 				<div className="flex w-1/2 h-full">
 					<Image
 						className="w-full object-cover"
-						src={"/kristiania.png"}
+						src={src}
 						width={500}
 						height={500}
-						alt="Default icon"
+						alt={alt}
 					/>
-				</div>
-			</section>
-
-			<section className="flex flex-row w-full h-100 mb-6">
-				<div className="flex w-1/2 h-full">
-					<Image
-						className="w-full object-cover"
-						src={"/kristiania.png"}
-						width={500}
-						height={500}
-						alt="Default icon"
-					/>
-				</div>
-
-				<div className="flex flex-col gap-6 justify-center w-1/2 h-full p-6">
-					<h1 className="text-[1rem] uppercase">
-						Sergei Ravinski Frontend / Fullstack Utvikler | Next.js
-						| Sanity
-					</h1>
-
-					<p className="text-[0.8rem]">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Quisquam, voluptatibus. Lorem ipsum dolor sit amet
-						consectetur adipisicing elit. Quisquam, voluptatibus.
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Quisquam, voluptatibus.
-					</p>
-
-					<section className="flex">
-						<Button
-							// clickEvent={sendEmail}
-							type={"text"}
-							text={"Send en e-post"}
-						/>
-					</section>
 				</div>
 			</section>
 		</>

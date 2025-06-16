@@ -23,3 +23,18 @@ export interface PromoBlockMagazineProps {
 	title: string;
 	text: string;
 }
+
+export interface PromoBlockProps {
+	title: string;
+	text: string;
+	layout: "imageLeft" | "imageRight";
+	background: "dark" | "light";
+	button: {
+		type: "text" | "primary" | "secondary";
+		textButton?: string;
+	};
+	image: {
+		src: string;
+		alt: string;
+	};
+}
