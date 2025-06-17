@@ -6,7 +6,7 @@ import ThemeToggle from "@/theme/theme-toggle";
 
 export default function Aside() {
 	return (
-		<aside className="container h-[calc(100vh-2rem)] w-1/3 sticky top-4 m-4 flex flex-col border-r-1 border-r-solid border-r-(--color-secondary-dark)">
+		<aside className="container w-1/3 sticky top-4 m-4 flex flex-col border-r-1 border-r-solid border-r-(--color-secondary-dark)">
 			<div>
 				<section className="flex flex-row p-6 items-center text-xl tracking-tight gap-6">
 					<HamburgerMenu />

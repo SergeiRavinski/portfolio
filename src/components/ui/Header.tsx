@@ -10,7 +10,7 @@ export default function Header() {
 
 	return (
 		<header
-			className={`container mx-auto w-full py-6 flex ${path !== "/" ? "justify-between px-0" : "justify-end"}`}
+			className={`mx-auto w-full py-6 flex ${path !== "/" ? "justify-between" : "justify-end"}`}
 		>
 			{path !== "/" && (
 				<section className="flex flex-row items-center text-xl tracking-tight gap-6">
@@ -19,7 +19,7 @@ export default function Header() {
 				</section>
 			)}
 
-			<nav className="flex justify-center h-full">
+			<nav className="justify-center h-fit">
 				<ul className="flex flex-row gap-4 align-middle items-center justify-self-end border-(--color-secondary-dark) text-xl tracking-tight">
 					{/* TODO: Add active class to the current page using ref */}
 					<FlipLink href="/" path="/">
