@@ -2,14 +2,14 @@ import Image from "next/image";
 
 export default function Button({
 	clickEvent,
-	styles,
 	type,
 	text,
+	color,
 }: {
 	clickEvent?: () => void;
-	styles?: boolean;
 	type?: string;
 	text?: string;
+	color?: string;
 }) {
 	const buttonType = () => {
 		switch (type) {
@@ -23,7 +23,7 @@ export default function Button({
 	};
 
 	const getIcon = () => {
-		return styles ? (
+		return type === "styling" ? (
 			<Image
 				className="dark:invert"
 				src={"/grid-default.svg"}
@@ -44,8 +44,9 @@ export default function Button({
 
 	return (
 		<button
+			type="submit"
 			onClick={clickEvent}
-			className="flex h-full lowercase items-center relative border-1 group border-solid border-(--color-secondary-dark) transition-border duration-300 hover:border-(--color-dark-hover) p-2 rounded-xs"
+			className={`flex justify-center normal-case p-2 items-center relative border-1 group border-solid transition-border duration-300 rounded-xs ${color === "dark" ? "bg-(--color-primary-dark) text-(--color-primary-light) border-white hover:border-(--color-dark-hover)" : "border-(--color-secondary-dark) hover:border-(--color-dark-hover)"} `}
 		>
 			{buttonType()}
 

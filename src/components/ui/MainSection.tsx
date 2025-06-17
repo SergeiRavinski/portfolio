@@ -29,11 +29,7 @@ export default function MainSection({ data }: { data: Data[] }) {
 			<div className="py-6 flex flex-row justify-between items-center gap-4">
 				<SplitText text="Prosjektene jeg har jobbet med" />
 				<InputComponent projects={data} />
-				<Button
-					clickEvent={changeStyling}
-					styles={styling}
-					type={"styling"}
-				/>
+				<Button clickEvent={changeStyling} type={"styling"} />
 			</div>
 
 			<main
