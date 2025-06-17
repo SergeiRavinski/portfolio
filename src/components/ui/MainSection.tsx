@@ -56,8 +56,6 @@ export default function MainSection({ data }: { data: Data[] }) {
 					}}
 				/>
 
-				<div className="z-5 sticky flex left-0 inset-0 bg-gradient-to-b from-(--color-primary-light) h-5 to-transparent"></div>
-
 				{data && (
 					<section
 						className={`${styling ? "grid grid-cols-10 gap-5 grid-flow-col relative" : "flex flex-col"}`}
