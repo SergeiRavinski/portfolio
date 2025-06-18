@@ -1,9 +1,60 @@
+"use client";
+
+import { useState } from "react";
 import Button from "@/components/ui/Button";
 
-export default async function Contact() {
+export default function Contact() {
+	const [formData, setFormData] = useState({
+		firstName: "",
+		lastName: "",
+		email: "",
+		message: "",
+	});
+
+	// Function to handle input changes
+	const handleChange = (
+		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+	) => {
+		setFormData({
+			...formData,
+			[e.target.name]: capitalizeFirstLetter(e.target.value),
+		});
+	};
+
+	// Function to handle form submission
+	const handleSubmit = async (e: React.FormEvent) => {
+		e.preventDefault();
+
+		try {
+			console.log("Form Data:", formData);
+
+			const res = await fetch("/api/contact", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(formData),
+			});
+
+			if (res.ok) {
+				alert("Email sent successfully!");
+			} else {
+				alert("Failed to send email.");
+			}
+		} catch (error) {
+			console.error(error);
+			alert("An error occurred.");
+		}
+	};
+
+	// Function to capitalize the first letter of a string
+	function capitalizeFirstLetter(str: string) {
+		return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+	}
+
 	return (
 		<>
-			<fieldset className="flex flex-col w-1/2 h-full my-16">
+			<fieldset className="flex flex-col mx-auto w-1/3 h-full my-16">
 				<div className="flex flex-col w-full h-full normal-case">
 					<h2 className="text-xl mb-4">Contact Me</h2>
 					<p>
@@ -13,7 +64,10 @@ export default async function Contact() {
 				</div>
 
 				<div className="flex flex-col w-full h-full normal-case">
-					<form className="flex flex-col w-full h-full">
+					<form
+						className="flex flex-col w-full h-full"
+						onSubmit={handleSubmit}
+					>
 						<label
 							htmlFor="firstName"
 							className="mb-2 text-[0.9rem]"
@@ -26,6 +80,7 @@ export default async function Contact() {
 							type="text"
 							required
 							className="text-[0.8rem] border-b-1 border-b-solid border-b-(--color-dark-hover) transition-border duration-300 hover:border-b-(--color-primary-dark) p-2 w-full focus:outline-none focus:border-b-(--color-primary-dark) mb-4"
+							onChange={handleChange}
 						/>
 
 						<label
@@ -40,6 +95,7 @@ export default async function Contact() {
 							type="text"
 							required
 							className="text-[0.8rem] border-b-1 border-b-solid border-b-(--color-dark-hover) transition-border duration-300 hover:border-b-(--color-primary-dark) p-2 w-full focus:outline-none focus:border-b-(--color-primary-dark) mb-4"
+							onChange={handleChange}
 						/>
 
 						<label htmlFor="email" className="mb-2 text-[0.9rem]">
@@ -51,6 +107,7 @@ export default async function Contact() {
 							type="email"
 							required
 							className="text-[0.8rem] border-b-1 border-b-solid border-b-(--color-dark-hover) transition-border duration-300 hover:border-b-(--color-primary-dark) p-2 w-full focus:outline-none focus:border-b-(--color-primary-dark) mb-4"
+							onChange={handleChange}
 						/>
 
 						<label htmlFor="message" className="mb-2 text-[0.9rem]">
@@ -62,6 +119,7 @@ export default async function Contact() {
 							className="text-[0.8rem] border-1 border-solid border-(--color-dark-hover) transitionorder duration-300 hover:border-(--color-primary-dark) p-2 w-full rounded-xs focus:outline-none focus:border-(--color-primary-dark) mb-6"
 							required
 							rows={8}
+							onChange={handleChange}
 						></textarea>
 
 						<Button type="text" text="Send Message" color="dark" />
