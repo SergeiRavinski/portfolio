@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import Image from "next/image";
 
 export default function Alert() {
 	const searchParams = useSearchParams();
@@ -24,12 +25,19 @@ export default function Alert() {
 
 	return (
 		<div
-			className={`fixed bottom-4 left-1/2 -translate-x-1/2 transform bg-[var(--color-primary-light)] text-[var(--color-tertiary-dark)] py-2 px-4 rounded-xs drop-shadow-lg z-50 border border-[var(--color-tertiary-dark)] transition-all duration-500 ease-in-out ${
+			className={`gap-2 normal-case flex flex-row fixed bottom-20 left-1/2 -translate-x-1/2 transform bg-[var(--color-primary-light)] text-[var(--color-tertiary-dark)] py-2 px-4 rounded-xs drop-shadow-lg z-50 border border-[var(--color-tertiary-dark)] transition-all duration-500 ease-in-out ${
 				showMessage
 					? "opacity-100 translate-y-0"
 					: "opacity-0 translate-y-6 pointer-events-none"
 			}`}
 		>
+			<Image
+				className="dark:invert"
+				src={"/ok.svg"}
+				width={25}
+				height={25}
+				alt="Ok icon"
+			/>
 			Message sent successfully!
 		</div>
 	);
