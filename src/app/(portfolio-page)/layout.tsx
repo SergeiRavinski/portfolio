@@ -6,6 +6,7 @@ import Aside from "@/components/ui/Aside";
 import MainContentWrapper from "@/components/global/MainContentWrapper";
 import Header from "@/components/ui/Header";
 import RootWrapper from "@/components/global/RootWrapper";
+import Alert from "@/components/ui/Alert";
 
 export default async function RootLayout({
 	children,
@@ -18,6 +19,7 @@ export default async function RootLayout({
 			<MainContentWrapper>
 				<Header />
 				{children}
+				<Alert />
 			</MainContentWrapper>
 			<SanityLive />
 
