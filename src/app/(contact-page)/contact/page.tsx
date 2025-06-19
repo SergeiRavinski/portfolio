@@ -45,11 +45,19 @@ export default function Contact() {
 			console.error(error);
 			alert("An error occurred.");
 		}
+
+		// Reset the form data
+		setFormData({
+			firstName: "",
+			lastName: "",
+			email: "",
+			message: "",
+		});
 	};
 
 	// Function to capitalize the first letter of a string
 	function capitalizeFirstLetter(str: string) {
-		return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+		return str.charAt(0).toUpperCase() + str.slice(1);
 	}
 
 	return (
