@@ -1,9 +1,11 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Button from "@/components/ui/Button";
 
 export default function Contact() {
+	const router = useRouter();
 	const [formData, setFormData] = useState({
 		firstName: "",
 		lastName: "",
@@ -26,8 +28,6 @@ export default function Contact() {
 		e.preventDefault();
 
 		try {
-			console.log("Form Data:", formData);
-
 			const res = await fetch("/api/contact", {
 				method: "POST",
 				headers: {
@@ -37,7 +37,7 @@ export default function Contact() {
 			});
 
 			if (res.ok) {
-				alert("Email sent successfully!");
+				router.push("/?submitted=true");
 			} else {
 				alert("Failed to send email.");
 			}
