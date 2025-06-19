@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useScroll } from "motion/react";
-// import Header from "@/components/ui/Header";
 import Button from "./Button";
 import { Data } from "@/types/main-section";
 import { useRef, useState } from "react";
@@ -11,7 +10,6 @@ import CardRandom from "../pages/portfolio/CardRandom";
 import SplitText from "../pages/portfolio/TitleAnimation";
 import InputComponent from "./Input";
 import Footer from "./Footer";
-// import MainContentWrapper from "../global/MainContentWrapper";
 
 export default function MainSection({ data }: { data: Data[] }) {
 	const [styling, setStyling] = useState(true);
