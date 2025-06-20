@@ -2,22 +2,41 @@ import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
 import Image from "next/image";
 import { Data } from "@/types/main-section";
+import { useRef } from "react";
+import { motion, useScroll } from "framer-motion";
 
 export default function CardRandom({
-	// index,
+	index,
 	item,
 	// technologies,
 	styles,
+	container,
 }: {
 	index: number;
 	item: Data;
 	technologies: string[];
 	styles: string;
+	container: React.RefObject<HTMLDivElement | null>;
 }) {
 	const year = new Date(item.date).getFullYear();
+	const targetRef = useRef(null);
+	const { scrollYProgress } = useScroll({
+		container: container,
+		target: targetRef,
+		axis: "y",
+		offset: ["end start", "start start"],
+		layoutEffect: false,
+	});
 
 	return (
-		<section className={`h-fit ${styles} flex flex-col`} key={item._id}>
+		<motion.div
+			ref={targetRef}
+			key={item._id}
+			className={`h-fit ${styles} flex flex-col`}
+			style={{
+				opacity: scrollYProgress,
+			}}
+		>
 			<Link
 				href={item.link ? item.link : ""}
 				className={`${!item.link && "pointer-events-none"} flex`}
@@ -44,47 +63,32 @@ export default function CardRandom({
 					<span>{year}</span>
 				</div>
 			</span>
-
-			{/* <div className="flex flex-col h-full justify-between font-(family-name:--font-space-mono)">
-				<div>
-					<div className="flex flex-row justify-between">
-						<h2 className="font-bold text-[#29292B] text-2xl">
-							{item.title}
-						</h2>
-
-						<span className="text-[#29292B] font-light">
-							{index <= 9 ? `.0${index + 1}` : `.${index + 1}`}
-						</span>
-					</div>
-
-					{item.description && (
-						<>
-							<hr className="my-2 border-(--color-primary-dark)" />
-
-							<p className="text-[1rem] leading-tight">
-								{item.description}
-							</p>
-						</>
-					)}
-				</div>
-
-				{technologies?.length > 0 && (
-					<div className="mt-8 font-(family-name:--font-space-mono)">
-						<ul className="flex flex-wrap gap-1">
-							<h2 className="font-semibold">Teknologier:</h2>
-
-							{technologies?.map((tech, index) => (
-								<li
-									key={index}
-									className="p-1 bg-[#29292B] text-white font-medium text-xs rounded-xs"
-								>
-									{tech}
-								</li>
-							))}
-						</ul>
-					</div>
-				)}
-			</div> */}
-		</section>
+		</motion.div>
 	);
 }
+
+// const UseScrollWithContainer = () => {
+// 	const containerRef = useRef(null);
+// 	const targetRef = useRef(null);
+// 	const { scrollXProgress } = useScroll({
+// 		container: containerRef,
+// 		target: targetRef,
+// 		axis: "x",
+// 		offset: ["end start", "start start"],
+// 	});
+
+// 	return (
+// 		<div
+// 			ref={containerRef}
+// 			className="flex w-screen overflow-x-scroll bg-indigo-500/50 py-8"
+// 		>
+// 			<div className="w-screen shrink-0" />
+// 			<motion.div
+// 				ref={targetRef}
+// 				style={{ opacity: scrollXProgress }}
+// 				className="mx-auto size-48 shrink-0 bg-zinc-50"
+// 			/>
+// 			<div className="w-screen shrink-0" />
+// 		</div>
+// 	);
+// };

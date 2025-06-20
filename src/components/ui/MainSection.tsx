@@ -13,7 +13,8 @@ import Footer from "./Footer";
 
 export default function MainSection({ data }: { data: Data[] }) {
 	const [styling, setStyling] = useState(true);
-	const containerRef = useRef(null);
+	const containerRef = useRef<HTMLDivElement | null>(null);
+	const mainRef = useRef<HTMLDivElement | null>(null);
 	const { scrollYProgress } = useScroll({
 		container: containerRef, // track scroll of the main element
 	});
@@ -32,7 +33,7 @@ export default function MainSection({ data }: { data: Data[] }) {
 
 			<main
 				ref={containerRef}
-				className="container relative mx-auto w-full h-full overflow-scroll hide-scrollbar"
+				className="container relative mx-auto w-full h-full overflow-y-scroll hide-scrollbar"
 			>
 				{/* Scroll indicator */}
 				<motion.div
@@ -52,7 +53,9 @@ export default function MainSection({ data }: { data: Data[] }) {
 
 				{data && (
 					<section
-						className={`${styling ? "grid grid-cols-10 gap-5 grid-flow-col relative" : "flex flex-col"}`}
+						ref={mainRef}
+						// TODO: Find a way to add height to the section
+						className={`${styling ? "grid grid-cols-10 gap-5 grid-flow-col relative overflow-y-scroll" : "flex flex-col"}`}
 					>
 						{data?.map((item: Data, index) => {
 							const technologies: string[] =
@@ -85,6 +88,7 @@ export default function MainSection({ data }: { data: Data[] }) {
 									item={item}
 									technologies={technologies}
 									styles={styles}
+									container={mainRef}
 								/>
 							);
 						})}
