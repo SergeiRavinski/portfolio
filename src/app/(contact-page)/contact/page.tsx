@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Button from "@/components/ui/Button";
+import ErrorMessage from "@/components/ui/ErrorMessage";
 
 export default function Contact() {
 	const router = useRouter();
@@ -12,6 +13,7 @@ export default function Contact() {
 		email: "",
 		message: "",
 	});
+	const [errors, setErrors] = useState<string[] | null>([]);
 
 	// Function to handle input changes
 	const handleChange = (
@@ -26,6 +28,26 @@ export default function Contact() {
 	// Function to handle form submission
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
+		setErrors([]);
+
+		const newErrors: string[] = [];
+
+		// Regular expression for basic email validation
+		const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+		for (const key in formData) {
+			if (formData[key as keyof typeof formData] === "") {
+				setErrors((prevErrors) => [...(prevErrors || []), key]);
+				newErrors.push(key);
+			} else if (key === "email" && !emailPattern.test(formData.email)) {
+				setErrors((prevErrors) => [...(prevErrors || []), "email"]);
+				newErrors.push("email");
+			}
+		}
+
+		if (newErrors && newErrors.length > 0) {
+			return;
+		}
 
 		try {
 			const res = await fetch("/api/contact", {
@@ -76,6 +98,7 @@ export default function Contact() {
 						className="flex flex-col w-full h-full"
 						onSubmit={handleSubmit}
 					>
+						{/* First Name */}
 						<label
 							htmlFor="firstName"
 							className="mb-2 text-[0.9rem]"
@@ -86,11 +109,14 @@ export default function Contact() {
 							id="firstName"
 							name="firstName"
 							type="text"
-							required
 							className="text-[0.8rem] border-b-1 border-b-solid border-b-(--color-dark-hover) transition-border duration-300 hover:border-b-(--color-primary-dark) p-2 w-full focus:outline-none focus:border-b-(--color-primary-dark) mb-4"
 							onChange={handleChange}
 						/>
+						{errors?.includes("firstName") && (
+							<ErrorMessage message="Please enter your first name" />
+						)}
 
+						{/* Last Name */}
 						<label
 							htmlFor="lastName"
 							className="mb-2 text-[0.9rem]"
@@ -101,11 +127,14 @@ export default function Contact() {
 							id="lastName"
 							name="lastName"
 							type="text"
-							required
 							className="text-[0.8rem] border-b-1 border-b-solid border-b-(--color-dark-hover) transition-border duration-300 hover:border-b-(--color-primary-dark) p-2 w-full focus:outline-none focus:border-b-(--color-primary-dark) mb-4"
 							onChange={handleChange}
 						/>
+						{errors?.includes("lastName") && (
+							<ErrorMessage message="Please enter your last name" />
+						)}
 
+						{/* Email */}
 						<label htmlFor="email" className="mb-2 text-[0.9rem]">
 							Email
 						</label>
@@ -113,11 +142,14 @@ export default function Contact() {
 							id="email"
 							name="email"
 							type="email"
-							required
 							className="text-[0.8rem] border-b-1 border-b-solid border-b-(--color-dark-hover) transition-border duration-300 hover:border-b-(--color-primary-dark) p-2 w-full focus:outline-none focus:border-b-(--color-primary-dark) mb-4"
 							onChange={handleChange}
 						/>
+						{errors?.includes("email") && (
+							<ErrorMessage message="Please enter a valid email address." />
+						)}
 
+						{/* Message */}
 						<label htmlFor="message" className="mb-2 text-[0.9rem]">
 							Message
 						</label>
@@ -125,10 +157,12 @@ export default function Contact() {
 							id="message"
 							name="message"
 							className="text-[0.8rem] border-1 border-solid border-(--color-dark-hover) transitionorder duration-300 hover:border-(--color-primary-dark) p-2 w-full rounded-xs focus:outline-none focus:border-(--color-primary-dark) mb-6"
-							required
 							rows={8}
 							onChange={handleChange}
 						></textarea>
+						{errors?.includes("message") && (
+							<ErrorMessage message="Please enter your message" />
+						)}
 
 						<Button type="text" text="Send Message" color="dark" />
 					</form>
