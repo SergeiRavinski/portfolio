@@ -31,13 +31,6 @@ export default function Alert() {
 					: "opacity-0 translate-y-6 pointer-events-none"
 			}`}
 		>
-			<Image
-				className="dark:invert"
-				src={"/ok.svg"}
-				width={25}
-				height={25}
-				alt="Ok icon"
-			/>
 			Message sent successfully!
 		</div>
 	);
