@@ -1,3 +1,4 @@
+import { TextareaFormProps } from "@/types/contact-page";
 import ErrorMessage from "./ErrorMessage";
 
 export default function TextareaForm({
@@ -7,16 +8,7 @@ export default function TextareaForm({
 	errorMessage,
 	handleChange,
 	handleBlur,
-}: {
-	id: string;
-	title: string;
-	errors?: string[];
-	errorMessage: string;
-	handleChange: (
-		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-	) => void;
-	handleBlur?: () => void;
-}) {
+}: TextareaFormProps) {
 	return (
 		<>
 			<label htmlFor="message" className="mb-2 text-[0.9rem]">

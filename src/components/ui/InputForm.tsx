@@ -1,3 +1,4 @@
+import { InputFormProps } from "@/types/contact-page";
 import ErrorMessage from "./ErrorMessage";
 
 export default function InputForm({
@@ -8,17 +9,7 @@ export default function InputForm({
 	errorMessage,
 	handleChange,
 	handleBlur,
-}: {
-	id: string;
-	title: string;
-	type: string;
-	errors?: string[];
-	errorMessage: string;
-	handleChange: (
-		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-	) => void;
-	handleBlur?: () => void;
-}) {
+}: InputFormProps) {
 	return (
 		<>
 			<label htmlFor={id} className="mb-2 text-[0.9rem]">
