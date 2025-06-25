@@ -38,6 +38,29 @@ export default function Contact() {
 
 		const validationPassed = validateFormData();
 
+		if (validationPassed) {
+			// Send the form data to the API endpoint
+			try {
+				const res = await fetch("/api/contact", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(formData),
+				});
+
+				if (res.ok) {
+					router.push("/?submitted=true");
+				} else {
+					alert("Failed to send email.");
+				}
+			} catch (error) {
+				console.error(error);
+				alert("An error occurred.");
+			}
+		}
+	};
+
 	// Function to validate form data
 	function validateFormData() {
 		const newErrors: string[] = [];
