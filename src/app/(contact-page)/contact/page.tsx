@@ -97,70 +97,45 @@ export default function Contact() {
 						onSubmit={handleSubmit}
 					>
 						{/* First Name */}
-						<label
-							htmlFor="firstName"
-							className="mb-2 text-[0.9rem]"
-						>
-							First name
-						</label>
-						<input
-							id="firstName"
-							name="firstName"
-							type="text"
-							className="text-[0.8rem] border-b-1 border-b-solid border-b-(--color-dark-hover) transition-border duration-300 hover:border-b-(--color-primary-dark) p-2 w-full focus:outline-none focus:border-b-(--color-primary-dark) mb-4"
-							onChange={handleChange}
+						<InputForm
+							id={"firstName"}
+							title={"First name"}
+							type={"text"}
+							errors={errors}
+							errorMessage={"Please enter your first name"}
+							handleChange={handleChange}
 						/>
-						{errors?.includes("firstName") && (
-							<ErrorMessage message="Please enter your first name" />
-						)}
 
 						{/* Last Name */}
-						<label
-							htmlFor="lastName"
-							className="mb-2 text-[0.9rem]"
-						>
-							Last name
-						</label>
-						<input
-							id="lastName"
-							name="lastName"
-							type="text"
-							className="text-[0.8rem] border-b-1 border-b-solid border-b-(--color-dark-hover) transition-border duration-300 hover:border-b-(--color-primary-dark) p-2 w-full focus:outline-none focus:border-b-(--color-primary-dark) mb-4"
-							onChange={handleChange}
+						<InputForm
+							id={"lastName"}
+							title={"Last name"}
+							type={"text"}
+							errors={errors}
+							errorMessage={"Please enter your last name"}
+							handleChange={handleChange}
 						/>
-						{errors?.includes("lastName") && (
-							<ErrorMessage message="Please enter your last name" />
-						)}
 
 						{/* Email */}
-						<label htmlFor="email" className="mb-2 text-[0.9rem]">
-							Email
-						</label>
-						<input
-							id="email"
-							name="email"
-							type="email"
-							className="text-[0.8rem] border-b-1 border-b-solid border-b-(--color-dark-hover) transition-border duration-300 hover:border-b-(--color-primary-dark) p-2 w-full focus:outline-none focus:border-b-(--color-primary-dark) mb-4"
-							onChange={handleChange}
+						<InputForm
+							id={"email"}
+							title={"Email"}
+							type={"text"}
+							errors={errors}
+							errorMessage={"Please enter a valid email address."}
+							handleChange={handleChange}
+							handleBlur={() => validateFormData()}
 						/>
-						{errors?.includes("email") && (
-							<ErrorMessage message="Please enter a valid email address." />
-						)}
 
 						{/* Message */}
-						<label htmlFor="message" className="mb-2 text-[0.9rem]">
-							Message
-						</label>
-						<textarea
-							id="message"
-							name="message"
-							className="text-[0.8rem] border-1 border-solid border-(--color-dark-hover) transitionorder duration-300 hover:border-(--color-primary-dark) p-2 w-full rounded-xs focus:outline-none focus:border-(--color-primary-dark) mb-6"
-							rows={8}
-							onChange={handleChange}
-						></textarea>
-						{errors?.includes("message") && (
-							<ErrorMessage message="Please enter your message" />
-						)}
+						<TextareaForm
+							id={"message"}
+							title={"Message"}
+							errors={errors}
+							errorMessage={"Please enter your message"}
+							handleChange={handleChange}
+							handleBlur={() => validateFormData()}
+						/>
 
 						<Button type="text" text="Send Message" color="dark" />
 					</form>
