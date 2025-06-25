@@ -3,7 +3,9 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Button from "@/components/ui/Button";
-import ErrorMessage from "@/components/ui/ErrorMessage";
+import { capitalizeFirstLetter } from "@/helpers/capitalize-first-letter";
+import InputForm from "@/components/ui/InputForm";
+import TextareaForm from "@/components/ui/TextareaForm";
 
 export default function Contact() {
 	const router = useRouter();
@@ -13,7 +15,7 @@ export default function Contact() {
 		email: "",
 		message: "",
 	});
-	const [errors, setErrors] = useState<string[] | null>([]);
+	const [errors, setErrors] = useState<string[]>([]);
 
 	// Function to handle input changes
 	const handleChange = (
@@ -23,6 +25,10 @@ export default function Contact() {
 			...formData,
 			[e.target.name]: capitalizeFirstLetter(e.target.value),
 		});
+
+		if (errors?.length > 0) {
+			validateFormData();
+		}
 	};
 
 	// Function to handle form submission
@@ -30,56 +36,25 @@ export default function Contact() {
 		e.preventDefault();
 		setErrors([]);
 
-		const newErrors: string[] = [];
+		const validationPassed = validateFormData();
 
+	// Function to validate form data
+	function validateFormData() {
+		const newErrors: string[] = [];
 		// Regular expression for basic email validation
 		const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 		for (const key in formData) {
 			if (formData[key as keyof typeof formData] === "") {
-				setErrors((prevErrors) => [...(prevErrors || []), key]);
 				newErrors.push(key);
 			} else if (key === "email" && !emailPattern.test(formData.email)) {
-				setErrors((prevErrors) => [...(prevErrors || []), "email"]);
 				newErrors.push("email");
 			}
 		}
 
-		if (newErrors && newErrors.length > 0) {
-			return;
-		}
+		setErrors(newErrors);
 
-		try {
-			const res = await fetch("/api/contact", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify(formData),
-			});
-
-			if (res.ok) {
-				router.push("/?submitted=true");
-			} else {
-				alert("Failed to send email.");
-			}
-		} catch (error) {
-			console.error(error);
-			alert("An error occurred.");
-		}
-
-		// Reset the form data
-		setFormData({
-			firstName: "",
-			lastName: "",
-			email: "",
-			message: "",
-		});
-	};
-
-	// Function to capitalize the first letter of a string
-	function capitalizeFirstLetter(str: string) {
-		return str.charAt(0).toUpperCase() + str.slice(1);
+		return newErrors.length === 0;
 	}
 
 	return (
