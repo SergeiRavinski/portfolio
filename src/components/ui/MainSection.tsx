@@ -10,6 +10,7 @@ import CardRandom from "../pages/portfolio/CardRandom";
 import SplitText from "../pages/portfolio/TitleAnimation";
 import InputComponent from "./Input";
 import Footer from "./Footer";
+import SplitTextYoyo from "./SplitTextYoyo";
 
 export default function MainSection({ data }: { data: Data[] }) {
 	const [styling, setStyling] = useState(true);
@@ -26,7 +27,9 @@ export default function MainSection({ data }: { data: Data[] }) {
 	return (
 		<>
 			<div className="py-6 flex flex-row justify-between items-center gap-4">
-				<SplitText text="Prosjektene jeg har jobbet med" />
+				{/* <SplitText text="Prosjektene jeg har jobbet med" /> */}
+				<SplitTextYoyo text="Prosjektene jeg har jobbet med" />
+
 				<InputComponent projects={data} />
 				<Button clickEvent={changeStyling} type={"styling"} />
 			</div>

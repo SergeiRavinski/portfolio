@@ -5,6 +5,7 @@ import PromoBlock from "@/components/ui/PromoBlock";
 import { sanityFetch } from "@/sanity/lib/live";
 import { POSTS_QUERY } from "@/sanity/lib/queries";
 import Map from "@/components/ui/Map";
+import SplitTextYoyo from "@/components/ui/SplitTextYoyo";
 
 export default async function About() {
 	// const { data: posts } = await sanityFetch({
@@ -17,7 +18,7 @@ export default async function About() {
 	return (
 		<>
 			<div className="p-6 flex flex-row justify-between items-center">
-				<SplitText text="About" />
+				<SplitTextYoyo text={"About"} />
 			</div>
 
 			<Magazine />

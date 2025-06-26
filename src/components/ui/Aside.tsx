@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import HamburgerMenu from "./HamburgerMenu";
-import ScatterText from "./ScatterText";
+import SplitTextYoyo from "./SplitTextYoyo";
 import ThemeToggle from "@/theme/theme-toggle";
 
 export default function Aside() {
@@ -21,7 +21,12 @@ export default function Aside() {
 				</div>
 			</div>
 
-			<ScatterText />
+			<SplitTextYoyo
+				text={
+					"Teknologies: React, Next.js, TypeScript, Tailwind CSS, Sanity.io!"
+				}
+				aside={true}
+			/>
 
 			<span className="flex flex-col text-[0.8rem] w-full gap-y-10 mb-10 mt-auto">
 				<section className="flex flex-row justify-center items-center">

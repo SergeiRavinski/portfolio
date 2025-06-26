@@ -2,6 +2,7 @@
 // import { POSTS_QUERY } from "@/sanity/lib/queries";
 
 import SplitText from "@/components/pages/portfolio/TitleAnimation";
+import SplitTextYoyo from "@/components/ui/SplitTextYoyo";
 
 export default async function Resume() {
 	// const { data: posts } = await sanityFetch({
@@ -11,7 +12,7 @@ export default async function Resume() {
 	return (
 		<>
 			<div className="p-6 flex flex-row justify-between items-center">
-				<SplitText text="Resume" />
+				<SplitTextYoyo text={"Resume"} />
 			</div>
 
 			<main className="container relative mx-auto w-full h-full overflow-scroll px-6 hide-scrollbar">
