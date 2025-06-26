@@ -14,7 +14,7 @@ export default function Header() {
 		>
 			{path !== "/" && (
 				<section className="flex flex-row items-center text-xl tracking-tight gap-6">
-					<HamburgerMenu />
+					{path === "/" && <HamburgerMenu />}
 					<ThemeToggle />
 				</section>
 			)}
