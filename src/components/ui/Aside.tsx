@@ -13,7 +13,7 @@ export default function Aside() {
 					<ThemeToggle />
 				</section>
 
-				<div className="flex flex-col justify-between text-[0.7rem] uppercase m-6 mt-8 mr-0 pb-6.5 border-b-solid border-b-1 border-b-(--color-secondary-dark)">
+				<div className="flex flex-col justify-between text-[0.7rem] uppercase m-6 mt-8 mr-2 pb-6.5 border-b-solid border-b-1 border-b-(--color-secondary-dark)">
 					<h1 className="font-semibold text-xl">Sergei Ravinski</h1>
 					<h2 className="text-[0.8rem]">
 						Frontend / Fullstack Utvikler | Next.js | Sanity

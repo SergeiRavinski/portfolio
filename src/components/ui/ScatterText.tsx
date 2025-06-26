@@ -3,12 +3,21 @@
 import { animate } from "motion";
 import { splitText } from "motion-plus";
 import { useEffect, useRef } from "react";
+import { useStore } from "zustand";
+import { toggleStore } from "@/stores/falling-words-store";
 
 export default function FallingWords() {
 	const containerRef = useRef<HTMLDivElement>(null);
 
+	const isOn = useStore(toggleStore, (state) => state.isOn);
+	const toggle = useStore(toggleStore, (state) => state.toggle);
+
 	useEffect(() => {
 		if (!containerRef.current) return;
+
+		const timeout = setTimeout(() => {
+			toggle();
+		}, 50);
 
 		const container = containerRef.current;
 		const { chars } = splitText(container.querySelector(".fall-text")!);
@@ -42,12 +51,14 @@ export default function FallingWords() {
 				}
 			);
 		});
-	}, []);
+
+		return () => clearTimeout(timeout);
+	}, [toggle]);
 
 	return (
 		<div
 			ref={containerRef}
-			className="relative m-6 h-full flex overflow-hidden text-(--color-primary-dark)"
+			className="relative m-6 h-full flex overflow-hidden text-(--color-primary-dark) bg-amber-100"
 		>
 			<p className="fall-text text-3xl font-bold absolute">
 				Teknologies: React, Next.js, TypeScript, Tailwind CSS,
