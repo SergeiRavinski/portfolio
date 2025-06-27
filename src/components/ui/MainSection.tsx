@@ -1,16 +1,16 @@
 "use client";
 
-import { motion, useScroll } from "motion/react";
+import { useScroll } from "motion/react";
 import Button from "./Button";
 import { Data } from "@/types/main-section";
 import { useRef, useState } from "react";
 import { gridStyles } from "@/helpers/grid-styles";
 import CardDefault from "../pages/portfolio/CardDefault";
 import CardRandom from "../pages/portfolio/CardRandom";
-import SplitText from "../pages/portfolio/TitleAnimation";
 import InputComponent from "./Input";
 import Footer from "./Footer";
 import SplitTextYoyo from "./SplitTextYoyo";
+import ScrollIndicator from "./ScrollIndicator";
 
 export default function MainSection({ data }: { data: Data[] }) {
 	const [styling, setStyling] = useState(true);
@@ -27,9 +27,7 @@ export default function MainSection({ data }: { data: Data[] }) {
 	return (
 		<>
 			<div className="py-6 flex flex-row justify-between items-center gap-4">
-				{/* <SplitText text="Prosjektene jeg har jobbet med" /> */}
 				<SplitTextYoyo text="Prosjektene jeg har jobbet med" />
-
 				<InputComponent projects={data} />
 				<Button clickEvent={changeStyling} type={"styling"} />
 			</div>
@@ -38,21 +36,7 @@ export default function MainSection({ data }: { data: Data[] }) {
 				ref={containerRef}
 				className="container relative mx-auto w-full h-full overflow-y-scroll hide-scrollbar"
 			>
-				{/* Scroll indicator */}
-				<motion.div
-					id="scroll-indicator"
-					style={{
-						scaleX: scrollYProgress,
-						position: "sticky",
-						top: 0,
-						left: 0,
-						right: 0,
-						height: 2,
-						originX: 0,
-						zIndex: 10,
-						backgroundColor: "var(--color-tertiary-dark)",
-					}}
-				/>
+				<ScrollIndicator scrollY={scrollYProgress} />
 
 				{data && (
 					<section
