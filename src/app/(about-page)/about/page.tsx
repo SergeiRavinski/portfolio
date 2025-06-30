@@ -1,5 +1,5 @@
 import { Posts } from "@/components/pages/home-page/Posts";
-import SplitText from "@/components/pages/portfolio/TitleAnimation";
+import SplitText from "@/components/pages/portfolio/SplitText";
 import Magazine from "@/components/pages/about/Magazine";
 import PromoBlock from "@/components/ui/PromoBlock";
 import { sanityFetch } from "@/sanity/lib/live";

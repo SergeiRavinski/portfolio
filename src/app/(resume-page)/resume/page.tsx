@@ -1,7 +1,7 @@
 // import { sanityFetch } from "@/sanity/lib/live";
 // import { POSTS_QUERY } from "@/sanity/lib/queries";
 
-import SplitText from "@/components/pages/portfolio/TitleAnimation";
+import SplitText from "@/components/pages/portfolio/SplitText";
 import SplitTextYoyo from "@/components/ui/SplitTextYoyo";
 
 export default async function Resume() {
