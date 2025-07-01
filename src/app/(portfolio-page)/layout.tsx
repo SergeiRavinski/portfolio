@@ -7,6 +7,7 @@ import MainContentWrapper from "@/components/global/MainContentWrapper";
 import Header from "@/components/ui/Header";
 import RootWrapper from "@/components/global/RootWrapper";
 import Alert from "@/components/ui/Alert";
+import ScrollWaves from "@/components/ui/ScrollWaves";
 
 export default async function RootLayout({
 	children,
@@ -16,6 +17,7 @@ export default async function RootLayout({
 	return (
 		<RootWrapper>
 			<Aside />
+			<ScrollWaves />
 			<MainContentWrapper>
 				<Header />
 				{children}
