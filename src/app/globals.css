@@ -69,3 +69,17 @@ input:-webkit-autofill:active {
 	transition: background-color 5000s;
 	-webkit-text-fill-color: var(--color-primary-dark) !important;
 }
+
+/* polyline {
+	--_height: 50;
+
+	--_y: (var(--_height) * var(--i) / var(--_count)) * 1px;
+	--_offset: (var(--_height) / var(--_count)) * 0.5px;
+	fill: none;
+	stroke: var(--color-secondary-dark);
+	stroke-linecap: round;
+	stroke-width: 1px;
+	transform-box: fill-box;
+	transform-origin: center;
+	translate: 0 calc(var(--_y) - var(--_offset));
+} */
