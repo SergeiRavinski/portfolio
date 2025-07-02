@@ -3,22 +3,25 @@ import Image from "next/image";
 import HamburgerMenu from "./HamburgerMenu";
 import SplitTextYoyo from "./SplitTextYoyo";
 import ThemeToggle from "@/theme/theme-toggle";
+import HoriontalScrollWaves from "./ScrollWavesHorizontal";
 
 export default function Aside() {
 	return (
 		<aside className="container w-1/3 sticky top-4 m-4 flex flex-col ">
-			<div>
+			<div className="flex flex-col">
 				<section className="flex flex-row p-6 items-center text-xl tracking-tight gap-6">
 					<HamburgerMenu />
 					<ThemeToggle />
 				</section>
 
-				<div className="flex flex-col justify-between text-[0.7rem] uppercase ml-6 mt-8 pb-6.5 border-b-solid border-b-1 border-b-(--color-secondary-dark)">
+				<div className="flex flex-col justify-between text-[0.7rem] uppercase ml-6 mt-8">
 					<h1 className="font-semibold text-xl">Sergei Ravinski</h1>
 					<h2 className="text-[0.8rem]">
 						Frontend / Fullstack Utvikler | Next.js | Sanity
 					</h2>
 				</div>
+
+				<HoriontalScrollWaves />
 			</div>
 
 			<SplitTextYoyo
