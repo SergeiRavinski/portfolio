@@ -3,11 +3,11 @@ import Image from "next/image";
 import HamburgerMenu from "./HamburgerMenu";
 import SplitTextYoyo from "./SplitTextYoyo";
 import ThemeToggle from "@/theme/theme-toggle";
-import HoriontalScrollWaves from "./ScrollWavesHorizontal";
+import HoriontalScrollWave from "./HorizontalScrollWave";
 
 export default function Aside() {
 	return (
-		<aside className="container w-1/3 sticky top-4 m-4 flex flex-col ">
+		<aside className="container w-1/3 sticky top-4 m-4 flex flex-col">
 			<div className="flex flex-col">
 				<section className="flex flex-row p-6 items-center text-xl tracking-tight gap-6">
 					<HamburgerMenu />
@@ -21,7 +21,7 @@ export default function Aside() {
 					</h2>
 				</div>
 
-				<HoriontalScrollWaves />
+				<HoriontalScrollWave />
 			</div>
 
 			<SplitTextYoyo
