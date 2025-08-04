@@ -5,7 +5,7 @@ export default function ImageMagazine(props: ImageMagazineProps) {
 	const { src, altText, size, hoverElement, hoverText } = props || {};
 	const hoverElementStyles =
 		hoverElement &&
-		"relative group transition-all duration-300 ease-in-out group overflow-hidden";
+		"relative group transition-all duration-300 ease-in-out overflow-hidden";
 	const styles =
 		size === "small"
 			? `h-full ${hoverElementStyles}`
@@ -23,7 +23,7 @@ export default function ImageMagazine(props: ImageMagazineProps) {
 
 			{/* Hover text element */}
 			{hoverElement && (
-				<div className="hidden group-hover:flex h-full w-full text-(--color-primary-light) p-6 absolute top-0 left-0 bg-(--color-primary-dark) opacity-80 transition-all duration-300 ease-in-out">
+				<div className="group-hover:opacity-80 flex h-full w-full text-(--color-primary-light) p-6 absolute top-0 left-0 bg-(--color-primary-dark) opacity-0 transition-all duration-300 ease-in-out">
 					{hoverText}
 				</div>
 			)}
