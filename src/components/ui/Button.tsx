@@ -5,11 +5,13 @@ export default function Button({
 	type,
 	text,
 	color,
+	changeStyling,
 }: {
 	clickEvent?: () => void;
 	type?: string;
 	text?: string;
 	color?: string;
+	changeStyling?: boolean;
 }) {
 	const buttonType = () => {
 		switch (type) {
@@ -23,7 +25,7 @@ export default function Button({
 	};
 
 	const getIcon = () => {
-		return type === "styling" ? (
+		return changeStyling ? (
 			<Image
 				className="dark:invert"
 				src={"/grid-default.svg"}
