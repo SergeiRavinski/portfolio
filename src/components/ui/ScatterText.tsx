@@ -1,70 +1,165 @@
 "use client";
 
-import { animate } from "motion";
-import { splitText } from "motion-plus";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useStore } from "zustand";
 import { toggleStore } from "@/stores/falling-words-store";
+import { ScatterChar } from "../pages/portfolio/ScatterChar";
 
 export default function ScatterText() {
-	const containerRef = useRef<HTMLDivElement>(null);
+	// {
+	// 	frontendTechnologies,
+	// 	backendTechnologies,
+	// 	tools,
+	// 	hosting,
+	// 	animation,
+	// 	design,
+	// 	methodology,
+	// }: {
+	// 	frontendTechnologies: string[];
+	// 	backendTechnologies: string[];
+	// 	tools: string[];
+	// 	hosting: string[];
+	// 	animation: string[];
+	// 	design: string[];
+	// 	methodology: string[];
+	// }
+	const charRefs = useRef<(HTMLSpanElement | null)[]>([]);
+	const [fallDistances, setFallDistances] = useState<number[]>([]);
 
+	const containerRef = useRef<HTMLDivElement>(null);
+	const paragraphRef = useRef<HTMLParagraphElement>(null);
 	const isOn = useStore(toggleStore, (state) => state.isOn);
-	const toggle = useStore(toggleStore, (state) => state.toggle);
+
+	const frontendTechnologies = [
+		"HTML&CSS",
+		"JavaScript",
+		"TypeScript",
+		"Next.js",
+		"React.js",
+		"Vue.js",
+	];
+	const backendTechnologies = [
+		"Sanity (Headless CMS)",
+		"Node.js",
+		"Express.js",
+		"JSON",
+		"MongoDB",
+		"REST API",
+	];
+	const tools = [
+		"Git",
+		"GitHub",
+		"VS Code",
+		"Postman",
+		"Chrome DevTools",
+		"Trello",
+	];
+	const hosting = ["Netlify", "Vercel"];
+	const animation = ["JavaScript (GSAP)", "Motion", "CSS"];
+	const design = ["Figma", "Adobe XD", "UI/UX"];
+	const methodology = ["Scrum", "Kanban"];
+
+	// Build the text block
+	const rawText = useMemo(
+		() =>
+			[
+				`Frontend: ${frontendTechnologies.join(", ")}`,
+				"",
+				`Backend: ${backendTechnologies.join(", ")}`,
+				"",
+				`Tools: ${tools.join(", ")}`,
+				"",
+				`Hosting: ${hosting.join(", ")}`,
+				"",
+				`Animation: ${animation.join(", ")}`,
+				"",
+				`Design: ${design.join(", ")}`,
+				"",
+				`Methodology: ${methodology.join(", ")}`,
+			].join("\n"),
+		[
+			frontendTechnologies,
+			backendTechnologies,
+			tools,
+			hosting,
+			animation,
+			design,
+			methodology,
+		]
+	);
+
+	const sections = useMemo(
+		() => [
+			{ label: "Frontend:" },
+			{ label: "Backend:" },
+			{ label: "Tools:" },
+			{ label: "Hosting:" },
+			{ label: "Animation:" },
+			{ label: "Design:" },
+			{ label: "Methodology:" },
+		],
+		[]
+	);
+
+	// Split into characters
+	const chars = useMemo(() => Array.from(rawText), [rawText]);
+	// Generate shuffled indexes
+	const shuffledIndexes = useMemo(() => {
+		const indexes = Array.from({ length: chars.length }, (_, i) => i);
+
+		return indexes.sort(() => Math.random() - 0.5);
+	}, [chars]);
 
 	useEffect(() => {
-		if (!containerRef.current) return;
-
-		const timeout = setTimeout(() => {
-			toggle();
-		}, 50);
-
 		const container = containerRef.current;
-		const textElement = container.querySelector(
-			".fall-text"
-		) as HTMLElement;
+		const paragraph = paragraphRef.current;
 
-		const lineHeight = parseFloat(getComputedStyle(textElement).lineHeight);
-		const height = textElement.offsetHeight;
-		const numberOfLines = Math.ceil(height / lineHeight);
+		if (!container || !paragraph) return;
 
-		const { chars } = splitText(textElement);
-		const containerHeight = container.offsetHeight;
-		const shuffledChars = chars.sort(() => Math.random() - 0.5);
-
-		shuffledChars.forEach((word, i) => {
-			const gap = container.offsetWidth / (chars.length + 1);
-			word.style.left = `${(i + 1) * gap - word.offsetWidth / 2}px`;
-
-			const distance = containerHeight - lineHeight * numberOfLines;
-			const fallDistance =
-				distance > containerHeight ? containerHeight : distance;
-			const randomRotation = Math.random() * 360 - 180;
-			const randomDuration = 2 + Math.random() * 1.5;
-			const delay = i * 0.2;
-
-			animate(
-				word,
-				{ y: fallDistance, rotate: [0, randomRotation] },
-				{
-					duration: randomDuration,
-					easing: "ease-out",
-					delay: delay,
-				}
-			);
+		const prev = paragraph.style.transform;
+		const containerHeight = container.clientHeight || 0;
+		const distances = charRefs?.current.map((charEl, index) => {
+			if (!charEl) return 0;
+			const charTop = charEl.offsetTop;
+			return containerHeight - charTop - index * 0.1;
 		});
 
-		return () => clearTimeout(timeout);
-	}, [toggle]);
+		paragraph.style.transform = "none";
+		paragraph.style.transform = prev;
+
+		setFallDistances(distances);
+	}, [rawText, chars]);
+
+	const textClasses =
+		"scatter-text normal-case text-[0.8rem] absolute leading-relaxed";
 
 	return (
 		<div
 			ref={containerRef}
 			className="relative ml-6 mb-6 h-full flex text-(--color-primary-dark) overflow-visible"
 		>
-			<p className="fall-text text-3xl font-bold absolute">
-				Teknologies: bla bla bla bla bla bla bla bla bla bla bla bla bla
-				bla bla bla
+			<p
+				ref={paragraphRef}
+				className={textClasses}
+				style={{ whiteSpace: "pre-wrap" }}
+			>
+				{chars.map((char, i) => {
+					if (char === "\n") return <br key={`br-${i}`} />;
+
+					return (
+						<ScatterChar
+							key={i}
+							char={char}
+							i={i}
+							isOn={isOn}
+							shuffledIndexes={shuffledIndexes}
+							fallDistances={fallDistances}
+							charRefs={charRefs}
+							rawText={rawText}
+							sections={sections}
+						/>
+					);
+				})}
 			</p>
 		</div>
 	);
