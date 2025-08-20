@@ -4,6 +4,7 @@ import HamburgerMenu from "./HamburgerMenu";
 import SplitTextYoyo from "./SplitTextYoyo";
 import ThemeToggle from "@/theme/theme-toggle";
 import HoriontalScrollWave from "./HorizontalScrollWave";
+import ScatterText from "./ScatterText";
 
 export default function Aside() {
 	return (
@@ -24,12 +25,14 @@ export default function Aside() {
 				<HoriontalScrollWave />
 			</div>
 
-			<SplitTextYoyo
+			{/* <SplitTextYoyo
 				text={
 					"FERDIGHETER <br> Frontend: HTML & CSS, JavaScript, TypeScript, Next.js, React.js, Vue.js, Tailwind, MUI, Zustand, Responsivt webdesign, Styled Components, Universell utforming (UU). <br> Backend: Sanity (Headless CMS), Node.js, Express.js, JSON, MongoDB, REST API, Firebase, GROQ, SEO <br/> Verktøy: Git, GitHub, VS Code, Postman, Chrome DevTools, Trello <br/> Hosting og distribusjon: Netlify, Vercel. <br/> Animasjon: JavaScript (GSAP), Motion, CSS <br/> Design: Figma, Adobe XD, UI/UX <br/> Arbeidsmetodikk: Scrum, Kanban"
 				}
 				aside={true}
-			/>
+			/> */}
+
+			<ScatterText />
 
 			<span className="flex flex-col text-[0.8rem] w-full gap-y-10 mb-10 mt-auto">
 				<section className="flex flex-row justify-center items-center">

@@ -6,6 +6,6 @@ type ToggleState = {
 };
 
 export const toggleStore = createStore<ToggleState>()((set, get) => ({
-	isOn: false,
+	isOn: true,
 	toggle: () => set({ isOn: !get().isOn }),
 }));
