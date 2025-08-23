@@ -50,7 +50,7 @@ export default function Map(props: MapMagazineProps) {
 		return () => {
 			map?.remove();
 		};
-	}, []);
+	}, [lng, lat]);
 
 	return (
 		<div>

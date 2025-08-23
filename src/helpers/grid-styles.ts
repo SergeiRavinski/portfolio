@@ -13,7 +13,7 @@ export const gridStyles: GridStyles[] = [
 	{
 		gridColumnStart: "col-start-6",
 		gridColumnEnd: "col-end-11",
-		size: "h-[40vh] pt-[10vh]",
+		size: "h-[40vh] mt-[10vh]",
 		// zIndex: "z-10",
 		// transform: "transform translate-y-[8vw]",
 		// startPosition: "opacity-0",
@@ -32,7 +32,7 @@ export const gridStyles: GridStyles[] = [
 	{
 		gridColumnStart: "col-start-5",
 		gridColumnEnd: "col-end-11",
-		size: "h-[26vw] pt-[10vw]",
+		size: "h-[26vw] mt-[10vw]",
 		// transform: "transform translate-y-[-35vw]",
 		// startPosition: "opacity-0",
 		// endPosition: "opacity-100",

@@ -2,13 +2,12 @@ import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
 import Image from "next/image";
 import { Data } from "@/types/main-section";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useScroll } from "framer-motion";
+import HoverElement from "@/components/ui/HoverElement";
 
 export default function CardRandom({
-	index,
 	item,
-	// technologies,
 	styles,
 	container,
 }: {
@@ -18,6 +17,8 @@ export default function CardRandom({
 	styles: string;
 	container: React.RefObject<HTMLDivElement | null>;
 }) {
+	const [visible, setVisible] = useState(false);
+
 	const year = new Date(item.date).getFullYear();
 	const targetRef = useRef(null);
 	const { scrollYProgress } = useScroll({
@@ -27,19 +28,26 @@ export default function CardRandom({
 		offset: ["end start", "start start"],
 		layoutEffect: false,
 	});
+	const technologies: string[] = item?.frontendTechnologies?.concat(
+		item?.backendTechnologies,
+		item?.tools
+	);
 
 	return (
 		<motion.div
 			ref={targetRef}
 			key={item._id}
-			className={`h-fit ${styles} flex flex-col`}
+			onMouseEnter={() => setVisible(true)}
+			onMouseLeave={() => setVisible(false)}
+			className={`h-fit ${styles} flex flex-col group scroll-none`}
 			style={{
 				opacity: scrollYProgress,
 			}}
 		>
 			<Link
 				href={item.link ? item.link : ""}
-				className={`${!item.link && "pointer-events-none"} flex`}
+				className={`${!item.link && "pointer-events-none"} flex relative`}
+				target="_blank"
 			>
 				{item?.image?.asset?._ref ? (
 					<Image
@@ -53,9 +61,11 @@ export default function CardRandom({
 						alt={item?.title || ""}
 					/>
 				) : null}
+
+				<HoverElement visible={visible} technologies={technologies} />
 			</Link>
 
-			<span className="flex flex-col justify-between my-2 uppercase text-[0.8rem] w-full">
+			<span className="flex flex-col justify-between py-2 uppercase text-[0.8rem] w-full">
 				<h2 className="font-semibold">{item.title}</h2>
 
 				<div className="flex flex-row justify-between text-[0.7rem]">
@@ -66,29 +76,3 @@ export default function CardRandom({
 		</motion.div>
 	);
 }
-
-// const UseScrollWithContainer = () => {
-// 	const containerRef = useRef(null);
-// 	const targetRef = useRef(null);
-// 	const { scrollXProgress } = useScroll({
-// 		container: containerRef,
-// 		target: targetRef,
-// 		axis: "x",
-// 		offset: ["end start", "start start"],
-// 	});
-
-// 	return (
-// 		<div
-// 			ref={containerRef}
-// 			className="flex w-screen overflow-x-scroll bg-indigo-500/50 py-8"
-// 		>
-// 			<div className="w-screen shrink-0" />
-// 			<motion.div
-// 				ref={targetRef}
-// 				style={{ opacity: scrollXProgress }}
-// 				className="mx-auto size-48 shrink-0 bg-zinc-50"
-// 			/>
-// 			<div className="w-screen shrink-0" />
-// 		</div>
-// 	);
-// };

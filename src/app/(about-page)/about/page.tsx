@@ -1,9 +1,9 @@
-import { Posts } from "@/components/pages/home-page/Posts";
-import SplitText from "@/components/pages/portfolio/SplitText";
+// import { Posts } from "@/components/pages/home-page/Posts";
+// import SplitText from "@/components/pages/portfolio/SplitText";
 import Magazine from "@/components/pages/about/Magazine";
 import PromoBlock from "@/components/ui/PromoBlock";
-import { sanityFetch } from "@/sanity/lib/live";
-import { POSTS_QUERY } from "@/sanity/lib/queries";
+// import { sanityFetch } from "@/sanity/lib/live";
+// import { POSTS_QUERY } from "@/sanity/lib/queries";
 import Map from "@/components/ui/Map";
 import SplitTextYoyo from "@/components/ui/SplitTextYoyo";
 
@@ -11,9 +11,9 @@ export default async function About() {
 	// const { data: posts } = await sanityFetch({
 	// 	query: POSTS_QUERY,
 	// });
-	const sendEmail = () => {
-		return console.log("Send email");
-	};
+	// const sendEmail = () => {
+	// 	return console.log("Send email");
+	// };
 
 	return (
 		<>
