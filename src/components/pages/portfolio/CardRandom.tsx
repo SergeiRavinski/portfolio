@@ -7,7 +7,6 @@ import { motion, useScroll } from "framer-motion";
 import HoverElement from "@/components/ui/HoverElement";
 
 export default function CardRandom({
-	index,
 	item,
 	styles,
 	container,

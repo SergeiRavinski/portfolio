@@ -1,7 +1,8 @@
 import { IoSearch } from "react-icons/io5";
-import { Data } from "@/types/main-section";
+// import { Data } from "@/types/main-section";
 
-export default function InputComponent({ projects }: { projects: Data[] }) {
+export default function InputComponent() {
+	// { projects }: { projects: Data[] }
 	return (
 		<div className="relative group flex h-full min-w-[30%]">
 			<input

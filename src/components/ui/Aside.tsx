@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import HamburgerMenu from "./HamburgerMenu";
-import SplitTextYoyo from "./SplitTextYoyo";
+// import SplitTextYoyo from "./SplitTextYoyo";
 import ThemeToggle from "@/theme/theme-toggle";
 import HoriontalScrollWave from "./HorizontalScrollWave";
 import ScatterText from "./ScatterText";
