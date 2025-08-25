@@ -1,10 +1,9 @@
-import Link from "next/link";
-import Image from "next/image";
 import HamburgerMenu from "./HamburgerMenu";
 // import SplitTextYoyo from "./SplitTextYoyo";
 import ThemeToggle from "@/theme/theme-toggle";
 import HoriontalScrollWave from "./HorizontalScrollWave";
 import ScatterText from "./ScatterText";
+import SocialMedia from "./SocialMedia";
 
 export default function Aside() {
 	return (
@@ -33,57 +32,7 @@ export default function Aside() {
 			/> */}
 
 			<ScatterText />
-
-			<span className="flex flex-col text-[0.8rem] w-full gap-y-10 mb-10 mt-auto">
-				<section className="flex flex-row justify-center items-center">
-					<Link
-						href={"https://github.com/SergeiRavinski"}
-						target="_blank"
-						className="mx-1"
-					>
-						<Image
-							className="dark:invert"
-							src={"/github-svg.svg"}
-							width={25}
-							height={25}
-							alt="GitHub"
-						/>
-					</Link>
-
-					<Link
-						href={"https://www.linkedin.com/in/sergeiravinski/"}
-						target="_blank"
-						className="mx-1"
-					>
-						<Image
-							className="dark:invert"
-							src={"/linkedin-svg.svg"}
-							width={25}
-							height={25}
-							alt="LinkedIn"
-						/>
-					</Link>
-
-					<Link
-						href={"https://www.instagram.com/sergeythedor/"}
-						target="_blank"
-						className="mx-1"
-					>
-						<Image
-							className="dark:invert"
-							src={"/instagram-svg.svg"}
-							width={25}
-							height={25}
-							alt="Instagram"
-						/>
-					</Link>
-				</section>
-
-				{/* <div className="flex flex-col justify-between text-[0.7rem]">
-					<h1 className="font-semibold">Sergei Ravinski</h1>
-					<h2>Frontend / Fullstack Utvikler | Next.js | Sanity</h2>
-				</div> */}
-			</span>
+			<SocialMedia />
 		</aside>
 	);
 }
