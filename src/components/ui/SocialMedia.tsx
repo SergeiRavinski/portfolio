@@ -13,7 +13,7 @@ export default function SocialMedia() {
 
 	return (
 		<span
-			className={`flex flex-col text-[0.8rem] w-full ml-6 pr-4 gap-y-10 ${isPortfolioPage ? "mb-6" : "mb-0"} mt-auto`}
+			className={`flex flex-col text-[0.8rem] w-full gap-y-10 ${isPortfolioPage ? "mb-6 pr-4 ml-6" : ""}`}
 		>
 			<section className="flex flex-col justify-center uppercase text-[0.8rem] gap-1 ">
 				<Link

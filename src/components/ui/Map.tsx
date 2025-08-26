@@ -56,7 +56,7 @@ export default function Map(props: MapMagazineProps) {
 		<div>
 			<div
 				ref={mapContainerRef}
-				style={{ width: "100%", height: "500px" }}
+				style={{ width: "100%", height: "300px" }}
 			/>
 		</div>
 	);
