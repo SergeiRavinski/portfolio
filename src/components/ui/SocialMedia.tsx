@@ -9,7 +9,7 @@ export default function SocialMedia() {
 	const isPortfolioPage = pathname === "/";
 	const linkStyles = `flex flex-row items-center h-6 justify-between opacity-70 hover:font-bold hover:opacity-100 hover:text-(--color-tertiary-dark) transition-all duration-400 group ${isPortfolioPage ? "" : "border-b-1 border-dashed"}`;
 	const arrowStyles =
-		"dark:invert group-hover:rotate-45 transition-all duration-400 group-hover:text-(--color-tertiary-dark) h-full ml-1";
+		"group-hover:rotate-45 transition-all duration-400 group-hover:text-(--color-tertiary-dark) h-full ml-1";
 
 	return (
 		<span
