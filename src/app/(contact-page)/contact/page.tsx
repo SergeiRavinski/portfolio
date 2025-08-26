@@ -8,6 +8,7 @@ import InputForm from "@/components/ui/InputForm";
 import TextareaForm from "@/components/ui/TextareaForm";
 import SocialMedia from "@/components/ui/SocialMedia";
 import LocationIcon from "../../../../public/location";
+import Map from "@/components/ui/Map";
 
 export default function Contact() {
 	const router = useRouter();
@@ -83,8 +84,8 @@ export default function Contact() {
 	}
 
 	return (
-		<section className="my-6 flex flex-row items-end relative h-full mx-[7%]">
-			<fieldset className="flex flex-col content-end w-[40%] h-fit">
+		<section className="my-20 flex flex-row items-end relative h-full mx-[10%]">
+			<fieldset className="flex flex-col content-end w-[45%] h-full">
 				<div className="flex flex-col w-full h-full normal-case">
 					<h2 className="text-xl mb-4">Contact Me</h2>
 					<p>
@@ -144,13 +145,19 @@ export default function Contact() {
 				</div>
 			</fieldset>
 
-			<div className="absolute w-[40%] bottom-0 right-0">
-				<span className="flex flex-row items-center uppercase mb-10 h-4">
-					<LocationIcon className="flex h-full text-(--color-primary-dark) ml-6" />
-					<p className="text-[0.8rem] ml-2">Oslo, Norway</p>
-				</span>
-
+			<div className="absolute w-[45%] h-full top-0 right-0 flex flex-col justify-between">
 				<SocialMedia />
+
+				<section>
+					<span className="flex flex-row items-center uppercase mt-10 mb-4 h-4">
+						<LocationIcon className="flex h-full text-(--color-primary-dark)" />
+						<p className="text-[0.8rem] ml-2">Oslo, Norway</p>
+					</span>
+
+					<div className=" ">
+						<Map lng={10.81278} lat={59.89595} />
+					</div>
+				</section>
 			</div>
 		</section>
 	);
