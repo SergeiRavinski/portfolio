@@ -4,12 +4,17 @@ import { useEffect, useRef } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { MapMagazineProps } from "@/types/about-page";
+import { usePathname } from "next/navigation";
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || "";
 
 export default function Map(props: MapMagazineProps) {
 	const { lng, lat } = props || {};
 	const mapContainerRef = useRef<HTMLDivElement>(null);
+	const isContactPage = usePathname().includes("contact");
+	const mapStyle = isContactPage
+		? "mapbox://styles/mapbox/light-v11"
+		: "mapbox://styles/mapbox/streets-v12";
 
 	useEffect(() => {
 		if (!mapContainerRef.current) return;
@@ -20,7 +25,7 @@ export default function Map(props: MapMagazineProps) {
 			// Initialize the map
 			map = new mapboxgl.Map({
 				container: mapContainerRef.current,
-				style: "mapbox://styles/mapbox/streets-v12",
+				style: mapStyle,
 				center: [lng, lat],
 				zoom: 12,
 				cooperativeGestures: true,
@@ -50,7 +55,7 @@ export default function Map(props: MapMagazineProps) {
 		return () => {
 			map?.remove();
 		};
-	}, [lng, lat]);
+	}, [lng, lat, mapStyle]);
 
 	return (
 		<div>
