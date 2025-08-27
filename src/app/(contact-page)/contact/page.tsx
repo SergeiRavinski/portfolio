@@ -154,7 +154,7 @@ export default function Contact() {
 						<p className="text-[0.8rem] ml-2">Oslo, Norway</p>
 					</span>
 
-					<div className=" ">
+					<div>
 						<Map lng={10.81278} lat={59.89595} />
 					</div>
 				</section>
