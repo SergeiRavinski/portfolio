@@ -20,14 +20,10 @@ export default function Header() {
 			)}
 
 			<nav className="justify-center h-fit">
-				<ul className="flex flex-row gap-4 align-middle items-center justify-self-end border-(--color-secondary-dark) text-xl tracking-tight">
+				<ul className="flex flex-row gap-5 align-middle items-center justify-self-end border-(--color-secondary-dark) text-xl tracking-tight">
 					{/* TODO: Add active class to the current page using ref */}
 					<FlipLink href="/" path="/">
 						Portfolio
-					</FlipLink>
-
-					<FlipLink href="/resume" path="/resume">
-						Resume
 					</FlipLink>
 
 					<FlipLink href="/about" path="/about">
