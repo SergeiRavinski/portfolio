@@ -18,7 +18,11 @@ export default function Button({
 			case "styling":
 				return getIcon();
 			case "text":
-				return <h3>{text}</h3>;
+				return (
+					<h3 className="group-hover:text-(--color-tertiary-dark) transition-all duration-300">
+						{text}
+					</h3>
+				);
 			default:
 				return null;
 		}
@@ -48,7 +52,7 @@ export default function Button({
 		<button
 			type="submit"
 			onClick={clickEvent}
-			className={`flex justify-center normal-case p-2 items-center relative border-1 group border-solid transition-border duration-300 rounded-xs ${color === "dark" ? "bg-(--color-primary-dark) text-(--color-primary-light) border-white hover:border-(--color-dark-hover)" : "border-(--color-secondary-dark) hover:border-(--color-dark-hover)"} `}
+			className={`flex justify-center group normal-case p-2 items-center relative border-1 group border-solid transition-border duration-300 rounded-xs ${color === "dark" ? "bg-(--color-primary-dark) text-(--color-primary-light) border-white hover:border-(--color-dark-hover)" : "border-(--color-secondary-dark) hover:border-(--color-dark-hover)"} `}
 		>
 			{buttonType()}
 
