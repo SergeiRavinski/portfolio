@@ -37,11 +37,7 @@ export function ScatterChar({
 			ref={(el) => {
 				charRefs.current[i] = el;
 			}}
-			style={{
-				display: "inline-block",
-				whiteSpace: "pre",
-				fontWeight: isBold ? "bold" : "normal",
-			}}
+			className={`inline-block whitespace-pre ${isBold ? "font-bold uppercase" : "font-normal"}`}
 			animate={
 				isOn
 					? {

@@ -7,7 +7,7 @@ import ArrowIcon from "../../../public/arrow-up-right";
 export default function SocialMedia() {
 	const pathname = usePathname();
 	const isPortfolioPage = pathname === "/";
-	const linkStyles = `flex flex-row items-center h-6 justify-between opacity-70 hover:font-bold hover:opacity-100 hover:text-(--color-tertiary-dark) transition-all duration-400 group ${isPortfolioPage ? "" : "border-b-1 border-dashed"}`;
+	const linkStyles = `flex flex-row items-center h-6 justify-between opacity-70 hover:font-bold hover:opacity-100 hover:text-(--color-tertiary-dark) transition-all group ${isPortfolioPage ? "" : "border-b-1 border-dashed"}`;
 	const arrowStyles =
 		"group-hover:rotate-45 transition-all duration-400 group-hover:text-(--color-tertiary-dark) h-full ml-1";
 
