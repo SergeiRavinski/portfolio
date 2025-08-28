@@ -1,19 +1,61 @@
-import { IoSearch } from "react-icons/io5";
-// import { Data } from "@/types/main-section";
+"use client";
 
-export default function InputComponent() {
-	// { projects }: { projects: Data[] }
+import { useState, useEffect } from "react";
+import { IoSearch } from "react-icons/io5";
+import { Data } from "@/types/main-section";
+import { useDebounce } from "@/hooks/use-debounce";
+
+export default function InputComponent({
+	projects,
+	setFilteredProjects,
+}: {
+	projects: Data[];
+	setFilteredProjects: React.Dispatch<React.SetStateAction<Data[]>>;
+}) {
+	const [searchTerm, setSearchTerm] = useState("");
+	const debouncedSearch = useDebounce(searchTerm);
+
+	useEffect(() => {
+		if (!debouncedSearch) {
+			setFilteredProjects(projects);
+
+			return;
+		}
+
+		const lower = debouncedSearch.toLowerCase();
+		const filtered = projects?.filter((project) => {
+			const technologies = [
+				...(project?.frontendTechnologies ?? []),
+				...(project?.backendTechnologies ?? []),
+				...(project?.tools ?? []),
+			];
+			const matchesTitle = project?.title?.toLowerCase().includes(lower);
+			const matchesTech = technologies.some((tech) =>
+				tech?.toLowerCase().includes(lower)
+			);
+
+			return matchesTitle || matchesTech;
+		});
+
+		setFilteredProjects(filtered);
+	}, [debouncedSearch, projects, setFilteredProjects]);
+
 	return (
 		<div className="relative group flex h-full min-w-[30%]">
+			<label htmlFor="search" className="sr-only">
+				Search projects
+			</label>
+
 			<input
+				id="search"
 				type="text"
+				placeholder="Search…"
 				className="border pl-10 text-[0.8rem] border-solid border-(--color-secondary-dark) transition-border duration-300 hover:border-(--color-dark-hover) p-2 rounded-xs w-full focus:outline-none focus:border-(--color-dark-hover)"
 				aria-label="Search"
 				aria-describedby="search"
-				id="search"
 				autoComplete="off"
-				// value={searchTerm}
-				// onChange={(e) => setSearchTerm(e.target.value)}
+				value={searchTerm}
+				onChange={(e) => setSearchTerm(e.target.value)}
 			/>
 			<div className="absolute top-0 left-0 h-full w-10 flex justify-center items-center">
 				<IoSearch className="text-(--color-primary-dark)" />
