@@ -16,6 +16,7 @@ export default function MainSection({ data }: { data: Data[] }) {
 	const [styling, setStyling] = useState(true);
 	const containerRef = useRef<HTMLDivElement | null>(null);
 	const mainRef = useRef<HTMLDivElement | null>(null);
+	const [filteredProjects, setFilteredProjects] = useState<Data[]>(data);
 	const { scrollYProgress } = useScroll({
 		container: containerRef, // track scroll of the main element
 	});
@@ -28,7 +29,10 @@ export default function MainSection({ data }: { data: Data[] }) {
 		<>
 			<div className="py-6 flex flex-row justify-between items-center gap-4">
 				<SplitTextYoyo text="Prosjektene jeg har jobbet med" />
-				<InputComponent projects={data} />
+				<InputComponent
+					projects={data}
+					setFilteredProjects={setFilteredProjects}
+				/>
 				<Button
 					clickEvent={changeStyling}
 					type={"styling"}
@@ -42,13 +46,12 @@ export default function MainSection({ data }: { data: Data[] }) {
 			>
 				<ScrollIndicator scrollY={scrollYProgress} />
 
-				{data && (
+				{filteredProjects.length > 0 ? (
 					<section
 						ref={mainRef}
-						// TODO: Find a way to add height to the section
-						className={`${styling ? "grid grid-cols-10 gap-5 grid-flow-col relative overflow-y-scroll" : "flex flex-col"}`}
+						className={`${styling ? "grid grid-cols-10 gap-5 grid-flow-col relative overflow-y-scroll min-h-[calc(100%-4rem)]" : "flex flex-col"}`}
 					>
-						{data?.map((item: Data, index) => {
+						{filteredProjects?.map((item: Data, index) => {
 							const technologies: string[] =
 								item?.frontendTechnologies?.concat(
 									item?.backendTechnologies,
@@ -84,7 +87,12 @@ export default function MainSection({ data }: { data: Data[] }) {
 							);
 						})}
 					</section>
+				) : (
+					<p className="flex w-full text-center min-h-[calc(100%-4rem)] normal-case pt-10">
+						No projects match your search.
+					</p>
 				)}
+
 				<Footer />
 			</main>
 		</>
