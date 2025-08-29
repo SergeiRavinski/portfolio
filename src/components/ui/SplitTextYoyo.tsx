@@ -9,11 +9,16 @@ import SplitText from "gsap/SplitText";
 export default function SplitTextYoyo({
 	text,
 	aside,
+	isNotFound,
 }: {
 	text: string;
 	aside?: boolean;
+	isNotFound?: boolean;
 }) {
 	const containerRef = useRef<HTMLDivElement>(null);
+	const styles = isNotFound
+		? "mb-4 text-8xl font-extrabold tracking-tight sm:text-9xl"
+		: "text-[1.2rem] uppercase word";
 
 	// const isOn = useStore(toggleStore, (state) => state.isOn);
 	// const toggle = useStore(toggleStore, (state) => state.toggle);
@@ -52,7 +57,7 @@ export default function SplitTextYoyo({
 		</div>
 	) : (
 		<div className="container" ref={containerRef}>
-			<h2 className="text-[1.2rem] uppercase word">{text}</h2>
+			<h2 className={styles}>{text}</h2>
 		</div>
 	);
 }
