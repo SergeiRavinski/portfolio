@@ -1,5 +1,4 @@
 import MainSection from "@/components/ui/MainSection";
-
 import { sanityFetch } from "@/sanity/lib/live";
 import { PROJECTS_QUERY } from "@/sanity/lib/queries";
 import { algoliasearch } from "algoliasearch";

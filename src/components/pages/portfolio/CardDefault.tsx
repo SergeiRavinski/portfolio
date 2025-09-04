@@ -77,12 +77,12 @@ export default function CardDefault({
 			</div>
 
 			{/* Top-left & Bottom-right corners */}
-			<div className="absolute top-0 left-0 pointer-events-none w-4 h-4 group-hover:w-1/2 group-hover:h-1/2 transition-all duration-300 border-t-1 border-l-1 border-(--color-primary-dark)"></div>
-			<div className="absolute bottom-0 right-0 w-4 h-4 pointer-events-none border-b-1 border-r-1 border-(--color-primary-dark) group-hover:w-1/2 group-hover:h-1/2 transition-all duration-300"></div>
+			<div className="absolute top-0 left-0 pointer-events-none w-4 h-4 group-hover:w-1/2 group-hover:h-1/2 border-t-1 border-l-1 border-(--color-dark-hover)"></div>
+			<div className="absolute bottom-0 right-0 w-4 h-4 pointer-events-none border-b-1 border-r-1 border-(--color-dark-hover) group-hover:w-1/2 group-hover:h-1/2"></div>
 
 			{/* Top-right & Bottom-left corners */}
-			<div className="absolute top-0 right-0 w-4 h-4 pointer-events-none border-t-1 border-r-1 border-(--color-primary-dark) group-hover:w-1/2 group-hover:h-1/2 transition-all duration-300"></div>
-			<div className="absolute bottom-0 left-0 w-4 h-4 pointer-events-none border-b-1 border-l-1 border-(--color-primary-dark) group-hover:w-1/2 group-hover:h-1/2 transition-all duration-300"></div>
+			<div className="absolute top-0 right-0 w-4 h-4 pointer-events-none border-t-1 border-r-1 border-(--color-dark-hover) group-hover:w-1/2 group-hover:h-1/2"></div>
+			<div className="absolute bottom-0 left-0 w-4 h-4 pointer-events-none border-b-1 border-l-1 border-(--color-dark-hover) group-hover:w-1/2 group-hover:h-1/2"></div>
 		</section>
 	);
 }
