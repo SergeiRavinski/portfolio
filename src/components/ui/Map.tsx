@@ -15,6 +15,9 @@ export default function Map(props: MapMagazineProps) {
 	const mapStyle = isContactPage
 		? "mapbox://styles/mapbox/light-v11"
 		: "mapbox://styles/mapbox/streets-v12";
+	const style = isContactPage
+		? "flex h-[300px] w-full"
+		: "flex h-full w-full";
 
 	useEffect(() => {
 		if (!mapContainerRef.current) return;
@@ -57,12 +60,5 @@ export default function Map(props: MapMagazineProps) {
 		};
 	}, [lng, lat, mapStyle]);
 
-	return (
-		<div>
-			<div
-				ref={mapContainerRef}
-				style={{ width: "100%", height: "300px" }}
-			/>
-		</div>
-	);
+	return <div ref={mapContainerRef} className={style} />;
 }
