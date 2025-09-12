@@ -7,8 +7,9 @@ export interface ImageMagazineProps {
 }
 
 export interface TextMagazineProps {
-	text: string;
 	size: "small" | "large";
+	sectionTitle?: string;
+	text: string;
 }
 
 export interface MapMagazineProps {
@@ -20,8 +21,9 @@ export interface PromoBlockMagazineProps {
 	src: string;
 	altText?: string;
 	size: "small" | "large";
-	title: string;
-	text: string;
+	sectionTitle?: string;
+	title?: string;
+	text?: string;
 }
 
 export interface PromoBlockProps {
@@ -32,6 +34,7 @@ export interface PromoBlockProps {
 	button: {
 		type: "text" | "primary" | "secondary";
 		textButton?: string;
+		link?: string;
 	};
 	image: {
 		src: string;
