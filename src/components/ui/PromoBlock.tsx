@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function PromoBlock(props: PromoBlockProps) {
 	const { title, text, layout, background, button, image } = props || {};
-	const { type, textButton } = button || {};
+	const { type, textButton, link } = button || {};
 	const { src, alt } = image || {};
 	const colorsClass =
 		background === "dark"
@@ -16,7 +16,7 @@ export default function PromoBlock(props: PromoBlockProps) {
 	return (
 		<>
 			<section
-				className={`${colorsClass} ${layoutClass} flex w-full h-100 mb-6`}
+				className={`${colorsClass} ${layoutClass} flex w-full h-100 mb-6 normal-case`}
 			>
 				<div className="flex flex-col gap-4 justify-center w-1/2 h-full p-6">
 					<h2 className="text-xl normal-case font-bold mb-4">
@@ -26,17 +26,13 @@ export default function PromoBlock(props: PromoBlockProps) {
 					<p className="text-[0.8rem]">{text}</p>
 
 					<section className="flex">
-						<Button
-							// clickEvent={sendEmail}
-							type={type}
-							text={textButton}
-						/>
+						<Button type={type} text={textButton} link={link} />
 					</section>
 				</div>
 
-				<div className="flex w-1/2 h-full">
+				<div className="flex w-1/2">
 					<Image
-						className="w-full object-cover"
+						className="h-full object-cover m-auto"
 						src={src}
 						width={500}
 						height={500}
