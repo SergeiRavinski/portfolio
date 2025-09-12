@@ -2,10 +2,10 @@ import { PromoBlockMagazineProps } from "@/types/about-page";
 import Image from "next/image";
 
 export default function PromoBlockMagazine(props: PromoBlockMagazineProps) {
-	const { src, altText, size, title, text } = props || {};
+	const { src, altText, size, sectionTitle, title, text } = props || {};
 	const styles =
 		size === "small"
-			? `h-full relative`
+			? `h-full w-full relative`
 			: `h-full grid col-span-2 row-span-2 relative`;
 
 	return (
@@ -18,9 +18,16 @@ export default function PromoBlockMagazine(props: PromoBlockMagazineProps) {
 				alt={altText ? altText : "Image"}
 			/>
 
-			<div className="absolute flex flex-col gap-4 text-(--color-primary-light) overflow-hidden p-4 left-0 bottom-0 w-full h-1/2 bg-gradient-to-t from-(--color-primary-dark) to-transparent">
-				<h2 className="text-xl normal-case font-bold">{title}</h2>
-				<p>{text}</p>
+			<div className="absolute flex justify-end flex-col gap-4 text-(--color-primary-light) overflow-hidden p-4 pt-20 left-0 bottom-0 w-full h-fit bg-gradient-to-t from-(--color-primary-dark) to-transparent">
+				{sectionTitle && (
+					<h2 className="col-span-4 h-fit text-2xl font-bold mb-6 10 border-b-1">
+						{sectionTitle}
+					</h2>
+				)}
+				{title && (
+					<h2 className="text-xl normal-case font-bold">{title}</h2>
+				)}
+				{text && <p className="flex">{text}</p>}
 			</div>
 		</div>
 	);
