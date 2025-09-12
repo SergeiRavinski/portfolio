@@ -1,15 +1,23 @@
 import { TextMagazineProps } from "@/types/about-page";
 
 export default function TextMagazine(props: TextMagazineProps) {
-	const { text, size } = props || {};
+	const { size, sectionTitle, text } = props || {};
 	const styles =
 		size === "small"
-			? "h-full bg-(--color-primary-dark) text-(--color-primary-light) p-4 h-full"
-			: "h-full grid col-span-2 row-span-2 bg-(--color-primary-dark) text-(--color-primary-light) p-4 h-full";
+			? "h-full bg-(--color-primary-dark) text-(--color-primary-light) p-4"
+			: "h-full grid col-span-2 row-span-2 bg-(--color-primary-dark) text-(--color-primary-light) p-4";
 
 	return (
 		<div className={styles}>
-			<p>{text}</p>
+			{sectionTitle && (
+				<h2 className="col-span-4 h-fit text-2xl font-bold mb-6 pb-1 border-b-1">
+					{sectionTitle}
+				</h2>
+			)}
+
+			<div className="col-span-4">
+				<p>{text}</p>
+			</div>
 		</div>
 	);
 }
