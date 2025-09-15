@@ -1,4 +1,5 @@
 import { TextMagazineProps } from "@/types/about-page";
+import { PortableText } from "next-sanity";
 
 export default function TextMagazine(props: TextMagazineProps) {
 	const { size, sectionTitle, text } = props || {};
@@ -17,6 +18,7 @@ export default function TextMagazine(props: TextMagazineProps) {
 
 			<div className="col-span-4">
 				<p>{text}</p>
+				{/* <PortableText value={elem.text} components={RichTextComponents()} /> */}
 			</div>
 		</div>
 	);
