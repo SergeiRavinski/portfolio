@@ -1,54 +1,19 @@
 import { defineField, defineType } from "sanity";
 
-const frontend = [
-	{ title: "HTML & CSS", value: "HTML & CSS" },
-	{ title: "JavaScript", value: "JavaScript" },
-	{ title: "TypeScript", value: "TypeScript" },
-	{ title: "Next.js", value: "Next.js" },
-	{ title: "React.js", value: "React.js" },
-	{ title: "Vue.js", value: "Vue.js" },
-	{ title: "Tailwind", value: "Tailwind" },
-	{ title: "MUI", value: "MUI" },
-	{ title: "Zustand", value: "Zustand" },
-	{ title: "Responsivt webdesign", value: "Responsivt webdesign" },
-	{ title: "Styled Components", value: "Styled Components" },
-	{ title: "Universell utforming (UU)", value: "Universell utforming (UU)" },
-];
-
-const backend = [
-	{ title: "Sanity", value: "Sanity" },
-	{ title: "Node.js", value: "Node.js" },
-	{ title: "Express.js", value: "Express.js" },
-	{ title: "MongoDB", value: "MongoDB" },
-	{ title: "REST API", value: "REST API" },
-	{ title: "Firebase", value: "Firebase" },
-	{ title: "GROQ", value: "GROQ" },
-	{ title: "SEO", value: "SEO" },
-];
-
-const tools = [
-	{ title: "Git", value: "Git" },
-	{ title: "Github", value: "Github" },
-	{ title: "VS Code", value: "VS Code" },
-	{ title: "Postman", value: "Postman" },
-	{ title: "Chrome DevTools", value: "Chrome DevTools" },
-	{ title: "Trello", value: "Trello" },
-];
-
 export const projects = defineType({
 	name: "projects",
 	title: "Projects",
 	type: "document",
 	fields: [
 		defineField({
-			title: "Tittel",
+			title: "Title",
 			name: "title",
 			type: "string",
 			validation: (Rule) => Rule.required(),
 		}),
 
 		defineField({
-			title: "Bilde",
+			title: "Image",
 			name: "image",
 			type: "image",
 			validation: (Rule) => Rule.required(),
@@ -65,7 +30,7 @@ export const projects = defineType({
 		}),
 
 		defineField({
-			title: "Dato",
+			title: "Date",
 			name: "date",
 			type: "date",
 			options: {
@@ -74,52 +39,29 @@ export const projects = defineType({
 		}),
 
 		defineField({
-			title: "Prosjekt beskrivelse",
+			title: "Project description",
 			name: "description",
 			type: "text",
 		}),
 
 		defineField({
-			title: "Kort beskrivelse",
+			title: "Short description",
 			name: "short_description",
 			type: "text",
 			rows: 2,
 		}),
 
 		defineField({
-			title: "Lenke",
+			title: "Link",
 			name: "link",
-			type: "string",
+			type: "url",
 		}),
 
 		defineField({
-			title: "Frontend teknologier",
-			name: "frontendTechnologies",
+			name: "techStack",
+			title: "Tech Stack",
 			type: "array",
 			of: [{ type: "string" }],
-			options: {
-				list: frontend,
-			},
-		}),
-
-		defineField({
-			title: "Backend teknologier",
-			name: "backendTechnologies",
-			type: "array",
-			of: [{ type: "string" }],
-			options: {
-				list: backend,
-			},
-		}),
-
-		defineField({
-			title: "Verktøy",
-			name: "tools",
-			type: "array",
-			of: [{ type: "string" }],
-			options: {
-				list: tools,
-			},
 		}),
 	],
 });
