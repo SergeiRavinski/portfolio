@@ -26,7 +26,7 @@ export default function CardRandom({
 		target: targetRef,
 		axis: "y",
 		offset: ["end start", "start start"],
-		layoutEffect: false,
+		// layoutEffect: false,
 	});
 	const technologies: string[] = item?.frontendTechnologies?.concat(
 		item?.backendTechnologies,

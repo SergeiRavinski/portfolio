@@ -12,6 +12,7 @@
 		"@portabletext/editor": "^1.43.1",
 		"@portabletext/react": "^4.0.3",
 		"@react-three/fiber": "^9.1.2",
+		"@sanity/google-maps-input": "^4.2.0",
 		"@sanity/icons": "^3.7.0",
 		"@sanity/image-url": "^1.2.0",
 		"@sanity/vision": "^3.77.2",
