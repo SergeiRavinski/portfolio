@@ -1,5 +1,5 @@
 import { TextMagazineProps } from "@/types/about-page";
-import { PortableText } from "next-sanity";
+// import { PortableText } from "next-sanity";
 
 export default function TextMagazine(props: TextMagazineProps) {
 	const { size, sectionTitle, text } = props || {};
