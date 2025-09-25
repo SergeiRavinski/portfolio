@@ -5,6 +5,7 @@ import { postType } from "./documents/postType";
 import { projects } from "./documents/projects";
 import { authorType } from "./documents/authorType";
 import { about } from "./documents/about";
+import { portfolio } from "./documents/portfolio";
 
 // Define the singleton document types
 const singletonTypes = new Set(["about"]);
@@ -16,6 +17,7 @@ export const schema = {
 		postType,
 		authorType,
 		projects,
+		portfolio,
 		about,
 	],
 
