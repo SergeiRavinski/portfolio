@@ -1,5 +1,5 @@
 import { InputFormProps } from "@/types/contact-page";
-import ErrorMessage from "./ErrorMessage";
+import ErrorMessage from "../../ui/ErrorMessage";
 
 export default function InputForm({
 	id,

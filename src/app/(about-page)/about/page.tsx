@@ -1,5 +1,5 @@
 import Magazine from "@/components/pages/about/Magazine";
-import PromoBlock from "@/components/ui/PromoBlock";
+import PromoBlock from "@/components/pages/about/PromoBlock";
 import SplitTextYoyo from "@/components/ui/SplitTextYoyo";
 
 export default async function About() {

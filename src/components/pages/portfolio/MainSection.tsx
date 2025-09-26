@@ -1,16 +1,16 @@
 "use client";
 
 import { useScroll } from "motion/react";
-import Button from "./Button";
+import Button from "../../ui/Button";
 import { Data } from "@/types/main-section";
 import { useRef, useState } from "react";
 import { gridStyles } from "@/helpers/grid-styles";
-import CardDefault from "../pages/portfolio/CardDefault";
-import CardRandom from "../pages/portfolio/CardRandom";
-import InputComponent from "./Input";
-import Footer from "./Footer";
-import SplitTextYoyo from "./SplitTextYoyo";
-import ScrollIndicator from "./ScrollIndicator";
+import CardDefault from "./CardDefault";
+import CardRandom from "./CardRandom";
+import InputComponent from "../../ui/Input";
+import Footer from "../../ui/Footer";
+import SplitTextYoyo from "../../ui/SplitTextYoyo";
+import ScrollIndicator from "../../ui/ScrollIndicator";
 
 export default function MainSection({ data }: { data: Data[] }) {
 	const [styling, setStyling] = useState(true);

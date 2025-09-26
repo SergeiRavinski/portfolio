@@ -1,5 +1,5 @@
 import { PromoBlockProps } from "@/types/about-page";
-import Button from "./Button";
+import Button from "../../ui/Button";
 import Image from "next/image";
 
 export default function PromoBlock(props: PromoBlockProps) {

@@ -1,9 +1,9 @@
-import HamburgerMenu from "./HamburgerMenu";
+import HamburgerMenu from "../../ui/HamburgerMenu";
 // import SplitTextYoyo from "./SplitTextYoyo";
 import ThemeToggle from "@/theme/theme-toggle";
-import HoriontalScrollWave from "./HorizontalScrollWave";
-import ScatterText from "./ScatterText";
-import SocialMedia from "./SocialMedia";
+import HoriontalScrollWave from "../../ui/HorizontalScrollWave";
+import ScatterText from "../../ui/ScatterText";
+import SocialMedia from "../../ui/SocialMedia";
 
 export default function Aside() {
 	return (
