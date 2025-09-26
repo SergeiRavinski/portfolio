@@ -26,12 +26,6 @@ export const structure: StructureResolver = (S) =>
 					S.document().schemaType("portfolio").documentId("portfolio")
 				),
 
-			S.documentTypeListItem("post").title("Posts"),
-			S.documentTypeListItem("category").title("Categories"),
-			S.documentTypeListItem("author").title("Authors"),
-
-			S.divider(),
-
 			// Our singleton type has a list item with a custom child
 			S.listItem().title("About").id("about").icon(SiReaddotcv).child(
 				// Instead of rendering a list of documents, we render a single
@@ -43,13 +37,6 @@ export const structure: StructureResolver = (S) =>
 			...S.documentTypeListItems().filter(
 				(item) =>
 					item.getId() &&
-					![
-						"post",
-						"category",
-						"author",
-						"projects",
-						"portfolio",
-						"about",
-					].includes(item.getId()!)
+					!["projects", "portfolio", "about"].includes(item.getId()!)
 			),
 		]);
