@@ -13,7 +13,7 @@ import { apiVersion, dataset, projectId, googleMaps } from "./src/sanity/env";
 import { schema } from "./src/sanity/schemaTypes";
 import { structure } from "./src/sanity/structure";
 import { presentationTool } from "sanity/presentation";
-import { resolve } from "@/sanity/presentation/resolve";
+import { resolve } from "./src/sanity/presentation/resolve";
 import { googleMapsInput } from "@sanity/google-maps-input";
 
 // import { tags } from "sanity-plugin-tags";
