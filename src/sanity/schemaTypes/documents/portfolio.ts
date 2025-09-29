@@ -8,6 +8,13 @@ export const portfolio = defineType({
 	type: "document",
 	icon: RiPagesLine,
 	fields: [
+		// Title
+		defineField({
+			name: "title",
+			title: "Title",
+			type: "string",
+		}),
+
 		// Full name
 		defineField({
 			name: "name",
@@ -17,8 +24,8 @@ export const portfolio = defineType({
 
 		// Professional title
 		defineField({
-			name: "title",
-			title: "Title",
+			name: "professionalTitle",
+			title: "Professional Title",
 			type: "string",
 			description: "Short professional title or tagline",
 			validation: (Rule) =>
@@ -109,13 +116,11 @@ export const portfolio = defineType({
 	],
 	preview: {
 		select: {
-			title: "name",
-			subtitle: "title",
+			title: "title",
 		},
-		prepare({ title, subtitle }) {
+		prepare({ title }) {
 			return {
-				title: title || "No name",
-				subtitle: subtitle || "No title",
+				title: title || "No title",
 				media: RiPagesLine,
 			};
 		},
