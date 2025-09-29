@@ -38,9 +38,23 @@ export const structure: StructureResolver = (S) =>
 					S.document().schemaType("about").documentId("about")
 				),
 
+			// Our singleton type has a list item with a custom child
+			S.listItem()
+				.title("Contact Page")
+				.id("contact")
+				.icon(RiContactsBook3Line)
+				.child(
+					// Instead of rendering a list of documents, we render a single
+					// document, specifying the `documentId` manually to ensure
+					// that we're editing the single instance of the document
+					S.document().schemaType("contact").documentId("contact")
+				),
+
 			...S.documentTypeListItems().filter(
 				(item) =>
 					item.getId() &&
-					!["projects", "portfolio", "about"].includes(item.getId()!)
+					!["projects", "portfolio", "about", "contact"].includes(
+						item.getId()!
+					)
 			),
 		]);
