@@ -25,6 +25,16 @@ export const portfolio = defineType({
 				Rule.max(100).warning("Should be under 100 characters"),
 		}),
 
+		// Projects (References to project documents)
+		defineField({
+			name: "projects",
+			title: "Projects",
+			type: "array",
+			of: [{ type: "reference", to: [{ type: "projects" }] }],
+			description: "Select projects to feature in your portfolio",
+			validation: (Rule) => Rule.unique().error("Duplicate projects"),
+		}),
+
 		// Skills
 		defineField({
 			name: "skills",
