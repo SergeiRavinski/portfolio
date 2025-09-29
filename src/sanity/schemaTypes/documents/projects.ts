@@ -1,3 +1,4 @@
+import { AIInput } from "@/sanity/customComponents/AIInput";
 import { defineField, defineType } from "sanity";
 
 export const projects = defineType({
@@ -42,6 +43,9 @@ export const projects = defineType({
 			title: "Project description",
 			name: "description",
 			type: "text",
+			components: {
+				input: AIInput,
+			},
 		}),
 
 		defineField({
