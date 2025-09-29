@@ -1,7 +1,8 @@
 import type { StructureResolver } from "sanity/structure";
 import { GrProjects } from "react-icons/gr";
-import { SiReaddotcv } from "react-icons/si";
 import { RiPagesLine } from "react-icons/ri";
+import { RiContactsBook3Line } from "react-icons/ri";
+import { TfiLayoutListThumb } from "react-icons/tfi";
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
 export const structure: StructureResolver = (S) =>
@@ -30,7 +31,7 @@ export const structure: StructureResolver = (S) =>
 			S.listItem()
 				.title("About Page")
 				.id("about")
-				.icon(SiReaddotcv)
+				.icon(TfiLayoutListThumb)
 				.child(
 					// Instead of rendering a list of documents, we render a single
 					// document, specifying the `documentId` manually to ensure
@@ -38,9 +39,23 @@ export const structure: StructureResolver = (S) =>
 					S.document().schemaType("about").documentId("about")
 				),
 
+			// Our singleton type has a list item with a custom child
+			S.listItem()
+				.title("Contact Page")
+				.id("contact")
+				.icon(RiContactsBook3Line)
+				.child(
+					// Instead of rendering a list of documents, we render a single
+					// document, specifying the `documentId` manually to ensure
+					// that we're editing the single instance of the document
+					S.document().schemaType("contact").documentId("contact")
+				),
+
 			...S.documentTypeListItems().filter(
 				(item) =>
 					item.getId() &&
-					!["projects", "portfolio", "about"].includes(item.getId()!)
+					!["projects", "portfolio", "about", "contact"].includes(
+						item.getId()!
+					)
 			),
 		]);

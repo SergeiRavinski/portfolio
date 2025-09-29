@@ -20,6 +20,13 @@ export const about = defineType({
 	],
 	icon: SiReaddotcv,
 	fields: [
+		// Title
+		defineField({
+			name: "title",
+			title: "Title",
+			type: "string",
+		}),
+
 		// Full name
 		defineField({
 			name: "name",
