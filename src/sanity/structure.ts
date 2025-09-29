@@ -16,7 +16,7 @@ export const structure: StructureResolver = (S) =>
 
 			// Our singleton type has a list item with a custom child
 			S.listItem()
-				.title("Portfolio")
+				.title("Portfolio Page")
 				.id("portfolio")
 				.icon(RiPagesLine)
 				.child(
@@ -27,12 +27,16 @@ export const structure: StructureResolver = (S) =>
 				),
 
 			// Our singleton type has a list item with a custom child
-			S.listItem().title("About").id("about").icon(SiReaddotcv).child(
-				// Instead of rendering a list of documents, we render a single
-				// document, specifying the `documentId` manually to ensure
-				// that we're editing the single instance of the document
-				S.document().schemaType("about").documentId("about")
-			),
+			S.listItem()
+				.title("About Page")
+				.id("about")
+				.icon(SiReaddotcv)
+				.child(
+					// Instead of rendering a list of documents, we render a single
+					// document, specifying the `documentId` manually to ensure
+					// that we're editing the single instance of the document
+					S.document().schemaType("about").documentId("about")
+				),
 
 			...S.documentTypeListItems().filter(
 				(item) =>
