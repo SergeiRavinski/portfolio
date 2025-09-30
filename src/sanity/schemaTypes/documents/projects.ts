@@ -56,9 +56,25 @@ export const projects = defineType({
 		}),
 
 		defineField({
-			title: "Link",
-			name: "link",
-			type: "url",
+			title: "Links",
+			name: "links",
+			type: "object",
+			options: {
+				collapsible: true,
+				collapsed: false,
+			},
+			fields: [
+				{
+					title: "Live demo",
+					name: "liveDemo",
+					type: "url",
+				},
+				{
+					title: "GitHub",
+					name: "github",
+					type: "url",
+				},
+			],
 		}),
 
 		defineField({
