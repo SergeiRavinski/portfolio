@@ -1,7 +1,8 @@
 import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
 import Image from "next/image";
-import { Data } from "@/types/main-section";
+import { Project } from "@/types/main-section";
+import Button from "@/components/ui/Button";
 
 export default function CardDefault({
 	index,
@@ -9,14 +10,14 @@ export default function CardDefault({
 	technologies,
 }: {
 	index: number;
-	item: Data;
+	item: Project;
 	technologies: string[];
 }) {
 	return (
 		<section className="my-6 p-4 relative group" key={item._id}>
 			<Link
-				href={item.link ? item.link : ""}
-				className={`${!item.link && "pointer-events-none"}`}
+				href={item.liveDemoLink ? item.liveDemoLink : ""}
+				className={`${!item.liveDemoLink && "pointer-events-none"}`}
 			>
 				{item?.image?.asset?._ref ? (
 					<Image
@@ -74,6 +75,13 @@ export default function CardDefault({
 						</ul>
 					</div>
 				)}
+
+				{/* <Button
+					type={"text"}
+					text={"GitHub repo"}
+					link={"https://github.com/SergeiRavinski"}
+					target
+				/> */}
 			</div>
 
 			{/* Top-left & Bottom-right corners */}

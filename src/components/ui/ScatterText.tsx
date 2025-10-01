@@ -4,25 +4,19 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useStore } from "zustand";
 import { toggleStore } from "@/stores/falling-words-store";
 import { ScatterChar } from "../pages/portfolio/ScatterChar";
+import { SkillsProps } from "@/types/portfolio-page";
 
-export default function ScatterText() {
-	// {
-	// 	frontendTechnologies,
-	// 	backendTechnologies,
-	// 	tools,
-	// 	hosting,
-	// 	animation,
-	// 	design,
-	// 	methodology,
-	// }: {
-	// 	frontendTechnologies: string[];
-	// 	backendTechnologies: string[];
-	// 	tools: string[];
-	// 	hosting: string[];
-	// 	animation: string[];
-	// 	design: string[];
-	// 	methodology: string[];
-	// }
+export default function ScatterText({
+	skills: {
+		frontendTech,
+		backendTech,
+		tools,
+		hostingPlatforms,
+		animationLibraries,
+		design,
+		methodologies,
+	},
+}: SkillsProps) {
 	const charRefs = useRef<(HTMLSpanElement | null)[]>([]);
 	const [fallDistances, setFallDistances] = useState<number[]>([]);
 
@@ -30,61 +24,32 @@ export default function ScatterText() {
 	const paragraphRef = useRef<HTMLParagraphElement>(null);
 	const isOn = useStore(toggleStore, (state) => state.isOn);
 
-	const frontendTechnologies = [
-		"HTML&CSS",
-		"JavaScript",
-		"TypeScript",
-		"Next.js",
-		"React.js",
-		"Vue.js",
-	];
-	const backendTechnologies = [
-		"Sanity (Headless CMS)",
-		"Node.js",
-		"Express.js",
-		"JSON",
-		"MongoDB",
-		"REST API",
-	];
-	const tools = [
-		"Git",
-		"GitHub",
-		"VS Code",
-		"Postman",
-		"Chrome DevTools",
-		"Trello",
-	];
-	const hosting = ["Netlify", "Vercel"];
-	const animation = ["JavaScript (GSAP)", "Motion", "CSS"];
-	const design = ["Figma", "Adobe XD", "UI/UX"];
-	const methodology = ["Scrum", "Kanban"];
-
 	// Build the text block
 	const rawText = useMemo(
 		() =>
 			[
-				`Frontend: ${frontendTechnologies.join(", ")}`,
+				`Frontend: ${frontendTech?.join(", ")}`,
 				"",
-				`Backend: ${backendTechnologies.join(", ")}`,
+				`Backend: ${backendTech?.join(", ")}`,
 				"",
-				`Tools: ${tools.join(", ")}`,
+				`Tools: ${tools?.join(", ")}`,
 				"",
-				`Hosting: ${hosting.join(", ")}`,
+				`Hosting: ${hostingPlatforms?.join(", ")}`,
 				"",
-				`Animation: ${animation.join(", ")}`,
+				`Animation: ${animationLibraries?.join(", ")}`,
 				"",
-				`Design: ${design.join(", ")}`,
+				`Design: ${design?.join(", ")}`,
 				"",
-				`Methodology: ${methodology.join(", ")}`,
+				`Methodology: ${methodologies?.join(", ")}`,
 			].join("\n"),
 		[
-			frontendTechnologies,
-			backendTechnologies,
+			frontendTech,
+			backendTech,
 			tools,
-			hosting,
-			animation,
+			hostingPlatforms,
+			animationLibraries,
 			design,
-			methodology,
+			methodologies,
 		]
 	);
 

@@ -2,15 +2,15 @@
 
 import { useState, useEffect } from "react";
 import { IoSearch } from "react-icons/io5";
-import { Data } from "@/types/main-section";
+import { Project } from "@/types/main-section";
 import { useDebounce } from "@/hooks/use-debounce";
 
 export default function InputComponent({
 	projects,
 	setFilteredProjects,
 }: {
-	projects: Data[];
-	setFilteredProjects: React.Dispatch<React.SetStateAction<Data[]>>;
+	projects: Project[];
+	setFilteredProjects: React.Dispatch<React.SetStateAction<Project[]>>;
 }) {
 	const [searchTerm, setSearchTerm] = useState("");
 	const debouncedSearch = useDebounce(searchTerm);
@@ -24,11 +24,7 @@ export default function InputComponent({
 
 		const lower = debouncedSearch.toLowerCase();
 		const filtered = projects?.filter((project) => {
-			const technologies = [
-				...(project?.frontendTechnologies ?? []),
-				...(project?.backendTechnologies ?? []),
-				...(project?.tools ?? []),
-			];
+			const technologies = [...(project?.techStack ?? [])];
 			const matchesTitle = project?.title?.toLowerCase().includes(lower);
 			const matchesTech = technologies.some((tech) =>
 				tech?.toLowerCase().includes(lower)
