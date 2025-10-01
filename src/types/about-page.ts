@@ -15,6 +15,7 @@ export interface TextMagazineProps {
 export interface MapMagazineProps {
 	lng: number;
 	lat: number;
+	map: "light" | "streets";
 }
 
 export interface PromoBlockMagazineProps {
