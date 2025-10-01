@@ -6,7 +6,7 @@ export default function MapMagazine(props: MapMagazineProps) {
 
 	return (
 		<div className="h-[calc(100%-0.75rem)] block w-full overflow-hidden col-span-2 row-span-2">
-			<Map lng={lng} lat={lat} />
+			<Map lng={lng} lat={lat} map={"light"} />
 		</div>
 	);
 }
