@@ -1,18 +1,34 @@
-export interface Data {
+export interface MainSectorData {
+	title: string;
+	name?: string;
+	professionalTitle?: string;
+	projects: Project[];
+	frontendTech?: string[];
+	backendTech?: string[];
+	tools?: string[];
+	hostingPlatforms?: string[];
+	animationLibraries?: string[];
+	design?: string[];
+	methodologies?: string[];
+	links?: string[];
+}
+
+export interface Project {
+	_id: string;
+	title: string;
 	image: {
 		asset: {
 			_ref: string;
+			_type: string;
 		};
+		_type: string;
 	};
-	link?: string;
-	_id: number;
-	title?: string;
 	date: string;
 	description?: string;
 	short_description?: string;
-	frontendTechnologies: string[];
-	backendTechnologies: string[];
-	tools: string[];
+	liveDemoLink?: string;
+	gitHubLink?: string;
+	techStack: string[];
 }
 
 export interface GridStyles {

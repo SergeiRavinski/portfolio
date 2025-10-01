@@ -1,38 +1,65 @@
 import HamburgerMenu from "../../ui/HamburgerMenu";
-// import SplitTextYoyo from "./SplitTextYoyo";
 import ThemeToggle from "@/theme/theme-toggle";
 import HoriontalScrollWave from "../../ui/HorizontalScrollWave";
 import ScatterText from "../../ui/ScatterText";
 import SocialMedia from "../../ui/SocialMedia";
+import { sanityFetch } from "@/sanity/lib/live";
+import { PORTFOLIO_QUERY } from "@/sanity/lib/queries";
 
-export default function Aside() {
-	return (
-		<aside className="container w-1/3 sticky top-4 m-4 flex flex-col">
-			<div className="flex flex-col">
-				<section className="flex flex-row p-6 items-center text-xl tracking-tight gap-6">
-					<HamburgerMenu />
-					<ThemeToggle />
-				</section>
+export default async function Aside() {
+	try {
+		const { data } = await sanityFetch({ query: PORTFOLIO_QUERY });
+		const {
+			name,
+			professionalTitle,
+			frontendTech,
+			backendTech,
+			tools,
+			hostingPlatforms,
+			animationLibraries,
+			design,
+			methodologies,
+			links,
+		} = data || {};
+		const skills = {
+			frontendTech,
+			backendTech,
+			tools,
+			hostingPlatforms,
+			animationLibraries,
+			design,
+			methodologies,
+		};
 
-				<div className="flex flex-col justify-between text-[0.7rem] uppercase ml-6 mt-8">
-					<h1 className="font-semibold text-xl">Sergei Ravinski</h1>
-					<h2 className="text-[0.8rem]">
-						Frontend / Fullstack Utvikler | Next.js | Sanity
-					</h2>
+		return (
+			<aside className="container w-1/3 sticky top-4 m-4 flex flex-col">
+				<div className="flex flex-col">
+					<section className="flex flex-row p-6 items-center text-xl tracking-tight gap-6">
+						<HamburgerMenu />
+						<ThemeToggle />
+					</section>
+
+					<div className="flex flex-col justify-between text-[0.7rem] uppercase ml-6 mt-8">
+						{name && (
+							<h1 className="font-semibold text-xl mb-1">
+								{name}
+							</h1>
+						)}
+						{professionalTitle && (
+							<h2 className="text-[0.8rem]">
+								{professionalTitle}
+							</h2>
+						)}
+					</div>
+
+					<HoriontalScrollWave />
 				</div>
 
-				<HoriontalScrollWave />
-			</div>
-
-			{/* <SplitTextYoyo
-				text={
-					"FERDIGHETER <br> Frontend: HTML & CSS, JavaScript, TypeScript, Next.js, React.js, Vue.js, Tailwind, MUI, Zustand, Responsivt webdesign, Styled Components, Universell utforming (UU). <br> Backend: Sanity (Headless CMS), Node.js, Express.js, JSON, MongoDB, REST API, Firebase, GROQ, SEO <br/> Verktøy: Git, GitHub, VS Code, Postman, Chrome DevTools, Trello <br/> Hosting og distribusjon: Netlify, Vercel. <br/> Animasjon: JavaScript (GSAP), Motion, CSS <br/> Design: Figma, Adobe XD, UI/UX <br/> Arbeidsmetodikk: Scrum, Kanban"
-				}
-				aside={true}
-			/> */}
-
-			<ScatterText />
-			<SocialMedia />
-		</aside>
-	);
+				{skills && <ScatterText skills={skills} />}
+				{links && <SocialMedia links={links} />}
+			</aside>
+		);
+	} catch (error) {
+		console.error("Error fetching data:", error);
+	}
 }

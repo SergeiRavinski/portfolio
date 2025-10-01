@@ -2,7 +2,7 @@
 
 import { useScroll } from "motion/react";
 import Button from "../../ui/Button";
-import { Data } from "@/types/main-section";
+import { MainSectorData } from "@/types/main-section";
 import { useRef, useState } from "react";
 import { gridStyles } from "@/helpers/grid-styles";
 import CardDefault from "./CardDefault";
@@ -11,12 +11,15 @@ import InputComponent from "../../ui/Input";
 import Footer from "../../ui/Footer";
 import SplitTextYoyo from "../../ui/SplitTextYoyo";
 import ScrollIndicator from "../../ui/ScrollIndicator";
+import { Project } from "@/types/main-section";
 
-export default function MainSection({ data }: { data: Data[] }) {
+export default function MainSection({ data }: { data: MainSectorData }) {
+	const { projects } = data;
 	const [styling, setStyling] = useState(true);
 	const containerRef = useRef<HTMLDivElement | null>(null);
 	const mainRef = useRef<HTMLDivElement | null>(null);
-	const [filteredProjects, setFilteredProjects] = useState<Data[]>(data);
+	const [filteredProjects, setFilteredProjects] =
+		useState<Project[]>(projects);
 	const { scrollYProgress } = useScroll({
 		container: containerRef, // track scroll of the main element
 	});
@@ -28,9 +31,9 @@ export default function MainSection({ data }: { data: Data[] }) {
 	return (
 		<>
 			<div className="py-6 flex flex-row justify-between items-center gap-4">
-				<SplitTextYoyo text="Prosjektene jeg har jobbet med" />
+				<SplitTextYoyo text={data.title} />
 				<InputComponent
-					projects={data}
+					projects={projects}
 					setFilteredProjects={setFilteredProjects}
 				/>
 				<Button
@@ -51,13 +54,8 @@ export default function MainSection({ data }: { data: Data[] }) {
 						ref={mainRef}
 						className={`${styling ? "grid grid-cols-10 gap-5 grid-flow-col relative overflow-y-scroll min-h-[calc(100%-4rem)]" : "flex flex-col"}`}
 					>
-						{filteredProjects?.map((item: Data, index) => {
-							const technologies: string[] =
-								item?.frontendTechnologies?.concat(
-									item?.backendTechnologies,
-									item?.tools
-								);
-
+						{filteredProjects?.map((item: Project, index) => {
+							const technologies: string[] = item?.techStack;
 							const position =
 								gridStyles[index % gridStyles.length];
 							const {

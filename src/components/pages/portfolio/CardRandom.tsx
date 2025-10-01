@@ -28,10 +28,7 @@ export default function CardRandom({
 		offset: ["end start", "start start"],
 		// layoutEffect: false,
 	});
-	const technologies: string[] = item?.frontendTechnologies?.concat(
-		item?.backendTechnologies,
-		item?.tools
-	);
+	const technologies: string[] = item?.techStack || ([] as string[]);
 
 	return (
 		<motion.div
@@ -45,8 +42,8 @@ export default function CardRandom({
 			}}
 		>
 			<Link
-				href={item.link ? item.link : ""}
-				className={`${!item.link && "pointer-events-none"} flex relative`}
+				href={item.liveDemoLink ? item.liveDemoLink : ""}
+				className={`${!item.liveDemoLink && "pointer-events-none"} flex relative`}
 				target="_blank"
 			>
 				{item?.image?.asset?._ref ? (
