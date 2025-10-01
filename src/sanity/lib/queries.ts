@@ -24,3 +24,13 @@ export const PORTFOLIO_QUERY = defineQuery(`*[_type == 'portfolio'][0] {
 	"methodologies": skills.methodologies,
 	links
 }`);
+
+export const CONTACT_QUERY = defineQuery(`*[_type == 'contact'][0] {
+	_id,
+	title,
+	titleLocation,
+	"lat": location.lat,
+	"lng": location.lng,
+	mapStyle,
+	links	
+}`);
