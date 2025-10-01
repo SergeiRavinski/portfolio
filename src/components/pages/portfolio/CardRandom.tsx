@@ -35,41 +35,70 @@ export default function CardRandom({
 		<motion.div
 			ref={targetRef}
 			key={item._id}
-			onMouseEnter={() => setVisible(true)}
-			onMouseLeave={() => setVisible(false)}
 			className={`h-fit ${styles} flex flex-col group scroll-none`}
 			style={{
 				opacity: scrollYProgress,
 			}}
 		>
-			<Link
-				href={item.liveDemoLink ? item.liveDemoLink : ""}
-				className={`${!item.liveDemoLink && "pointer-events-none"} flex relative`}
-				target="_blank"
-			>
-				{item?.image?.asset?._ref ? (
-					<Image
-						className=" m-0 w-full object-cover"
-						src={urlFor(item?.image?.asset?._ref)
-							// .width(1000)
-							// .height(1000)
-							.url()}
-						width={1000}
-						height={1000}
-						alt={item?.title || ""}
+			{item.liveDemoLink ? (
+				<Link
+					href={item.liveDemoLink}
+					className={`${!item.liveDemoLink && "pointer-events-none"} flex relative`}
+					target="_blank"
+				>
+					{item?.image?.asset?._ref ? (
+						<Image
+							className="m-0 w-full object-cover"
+							src={urlFor(item?.image?.asset?._ref)
+								// .width(1000)
+								// .height(1000)
+								.url()}
+							width={1000}
+							height={1000}
+							alt={item?.title || ""}
+							onMouseEnter={() => setVisible(true)}
+							onMouseLeave={() => setVisible(false)}
+						/>
+					) : null}
+
+					<HoverElement
+						visible={visible}
+						technologies={technologies}
 					/>
-				) : null}
+				</Link>
+			) : (
+				<div className="flex relative">
+					{item?.image?.asset?._ref ? (
+						<Image
+							className="m-0 w-full object-cover"
+							src={urlFor(item?.image?.asset?._ref)
+								// .width(1000)
+								// .height(1000)
+								.url()}
+							width={1000}
+							height={1000}
+							alt={item?.title || ""}
+							onMouseEnter={() => setVisible(true)}
+							onMouseLeave={() => setVisible(false)}
+						/>
+					) : null}
 
-				<HoverElement visible={visible} technologies={technologies} />
-			</Link>
+					<HoverElement
+						visible={visible}
+						technologies={technologies}
+					/>
+				</div>
+			)}
 
+			{/* // Title and description */}
 			<span className="flex flex-col justify-between py-2 uppercase text-[0.8rem] w-full">
 				<h2 className="font-semibold">{item.title}</h2>
 
 				<div className="flex flex-row justify-between text-[0.7rem]">
 					<p>{item.short_description}.</p>
-					<span>{year}</span>
+					<span className="ml-2">{year}</span>
 				</div>
+
 				{item.gitHubLink && <LinkDashed url={item.gitHubLink} />}
 			</span>
 		</motion.div>
