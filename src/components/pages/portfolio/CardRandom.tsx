@@ -1,7 +1,7 @@
 import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
 import Image from "next/image";
-import { Data } from "@/types/main-section";
+import { Project } from "@/types/main-section";
 import { useRef, useState } from "react";
 import { motion, useScroll } from "framer-motion";
 import HoverElement from "@/components/ui/HoverElement";
@@ -13,7 +13,7 @@ export default function CardRandom({
 	container,
 }: {
 	index: number;
-	item: Data;
+	item: Project;
 	technologies: string[];
 	styles: string;
 	container: React.RefObject<HTMLDivElement | null>;
