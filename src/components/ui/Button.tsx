@@ -16,7 +16,7 @@ export default function Button({
 	color?: string;
 	changeStyling?: boolean;
 	link?: string;
-	target?: string;
+	target?: boolean;
 }) {
 	const buttonType = () => {
 		switch (type) {
