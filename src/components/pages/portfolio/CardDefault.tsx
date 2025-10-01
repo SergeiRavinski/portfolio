@@ -2,7 +2,7 @@ import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
 import Image from "next/image";
 import { Project } from "@/types/main-section";
-import Button from "@/components/ui/Button";
+import LinkDashed from "@/components/ui/LinkDashed";
 
 export default function CardDefault({
 	index,
@@ -76,12 +76,7 @@ export default function CardDefault({
 					</div>
 				)}
 
-				{/* <Button
-					type={"text"}
-					text={"GitHub repo"}
-					link={"https://github.com/SergeiRavinski"}
-					target
-				/> */}
+				{item.gitHubLink && <LinkDashed url={item.gitHubLink} />}
 			</div>
 
 			{/* Top-left & Bottom-right corners */}

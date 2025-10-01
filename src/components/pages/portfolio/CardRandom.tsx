@@ -5,6 +5,7 @@ import { Data } from "@/types/main-section";
 import { useRef, useState } from "react";
 import { motion, useScroll } from "framer-motion";
 import HoverElement from "@/components/ui/HoverElement";
+import LinkDashed from "@/components/ui/LinkDashed";
 
 export default function CardRandom({
 	item,
@@ -69,6 +70,7 @@ export default function CardRandom({
 					<p>{item.short_description}.</p>
 					<span>{year}</span>
 				</div>
+				{item.gitHubLink && <LinkDashed url={item.gitHubLink} />}
 			</span>
 		</motion.div>
 	);
