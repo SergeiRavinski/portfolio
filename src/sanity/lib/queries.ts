@@ -1,15 +1,26 @@
 import { defineQuery } from "next-sanity";
 
-export const PROJECTS_QUERY =
-	defineQuery(`*[_type == 'projects'] | order(date desc) {
-	_id,
+export const PORTFOLIO_QUERY = defineQuery(`*[_type == 'portfolio'][0] {
 	title,
-	image,
-	date,
-	description,
-	short_description,
-	link,
-	frontendTechnologies,
-	backendTechnologies,
-	tools
-  }`);
+	name,
+	professionalTitle,
+	projects[]->{
+		_id,
+		title,
+		image,
+		date,
+		description,
+		short_description,
+		"liveDemoLink": links.liveDemo,
+		"gitHubLink": links.github,
+		techStack
+	},
+	"frontendTech": skills.frontendTech,
+	"backendTech": skills.backendTech,
+	"tools": skills.tools,
+	"hostingPlatforms": skills.hostingPlatforms,
+	"animationLibraries": skills.animationLibraries,
+	"design": skills.design,
+	"methodologies": skills.methodologies,
+	links
+}`);
