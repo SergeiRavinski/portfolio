@@ -9,12 +9,13 @@ import { usePathname } from "next/navigation";
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || "";
 
 export default function Map(props: MapMagazineProps) {
-	const { lng, lat } = props || {};
+	const { lng, lat, map } = props || {};
 	const mapContainerRef = useRef<HTMLDivElement>(null);
 	const isContactPage = usePathname().includes("contact");
-	const mapStyle = isContactPage
-		? "mapbox://styles/mapbox/light-v11"
-		: "mapbox://styles/mapbox/streets-v12";
+	const mapStyle =
+		map === "light"
+			? "mapbox://styles/mapbox/light-v11"
+			: "mapbox://styles/mapbox/streets-v12";
 	const style = isContactPage
 		? "flex h-[300px] w-full"
 		: "flex h-full w-full";

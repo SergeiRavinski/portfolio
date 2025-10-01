@@ -20,3 +20,16 @@ export interface InputFormProps {
 	) => void;
 	handleBlur?: () => void;
 }
+
+export interface ContactPageData {
+	title: string;
+	titleLocation: string;
+	lat: number;
+	lng: number;
+	mapStyle: "light" | "streets";
+	links: {
+		_key: string;
+		title: string;
+		url: string;
+	}[];
+}

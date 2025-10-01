@@ -126,7 +126,7 @@ Andre: GSAP, Framer Motion, Scrum, SEO, Netlify, Vercel."
 			/>
 
 			{/* Kart */}
-			<MapMagazine lng={10.81278} lat={59.89595} />
+			<MapMagazine lng={10.81278} lat={59.89595} map={"light"} />
 		</section>
 	);
 }
