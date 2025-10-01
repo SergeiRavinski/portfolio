@@ -25,6 +25,13 @@ export const contact = defineType({
 		links,
 
 		defineField({
+			name: "titleLocation",
+			title: "Title",
+			type: "string",
+			fieldset: "locationInfo",
+		}),
+
+		defineField({
 			name: "location",
 			title: "Location",
 			type: "geopoint",
