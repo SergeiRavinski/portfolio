@@ -1,18 +1,14 @@
 import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
 import Image from "next/image";
-import { Project } from "@/types/main-section";
+import { CardDefaultProps } from "@/types/main-section";
 import LinkDashed from "@/components/ui/LinkDashed";
 
 export default function CardDefault({
 	index,
 	item,
 	technologies,
-}: {
-	index: number;
-	item: Project;
-	technologies: string[];
-}) {
+}: CardDefaultProps) {
 	return (
 		<section className="my-6 p-4 relative group" key={item._id}>
 			<Link

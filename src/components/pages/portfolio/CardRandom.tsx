@@ -1,7 +1,7 @@
 import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
 import Image from "next/image";
-import { Project } from "@/types/main-section";
+import { CardRandomProps } from "@/types/main-section";
 import { useRef, useState } from "react";
 import { motion, useScroll } from "framer-motion";
 import HoverElement from "@/components/ui/HoverElement";
@@ -11,13 +11,7 @@ export default function CardRandom({
 	item,
 	styles,
 	container,
-}: {
-	index: number;
-	item: Project;
-	technologies: string[];
-	styles: string;
-	container: React.RefObject<HTMLDivElement | null>;
-}) {
+}: CardRandomProps) {
 	const [visible, setVisible] = useState(false);
 
 	const year = new Date(item.date).getFullYear();

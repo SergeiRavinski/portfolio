@@ -41,3 +41,23 @@ export interface GridStyles {
 	endPosition?: string;
 	zIndex?: string;
 }
+
+export interface CardDefaultProps {
+	index: number;
+	item: Project;
+	technologies: string[];
+}
+
+export interface CardRandomProps {
+	index: number;
+	item: Project;
+	technologies: string[];
+	styles: string;
+	container: React.RefObject<HTMLDivElement | null>;
+}
+
+export interface LinkComponentProps {
+	url: string;
+	title?: string;
+	isDashed?: boolean;
+}
