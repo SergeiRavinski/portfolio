@@ -43,8 +43,8 @@ export default function HoverElement({
 			}}
 			className="group-hover:flex hidden fixed h-fit w-50 left-0 bottom-0 flex-wrap gap-1 bg-(--color-primary-dark) p-2 z-10"
 		>
-			<h2 className="font-semibold text-(--color-primary-light)">
-				Teknologier:
+			<h2 className="font-semibold normal-case text-(--color-primary-light)">
+				Technologies:
 			</h2>
 
 			{technologies?.map(
