@@ -5,7 +5,7 @@ import { CardRandomProps } from "@/types/main-section";
 import { useRef, useState } from "react";
 import { motion, useScroll } from "framer-motion";
 import HoverElement from "@/components/ui/HoverElement";
-import LinkDashed from "@/components/ui/LinkDashed";
+import LinkDashed from "@/components/ui/LinkComponent";
 
 export default function CardRandom({
 	item,
@@ -89,8 +89,8 @@ export default function CardRandom({
 				<h2 className="font-semibold">{item.title}</h2>
 
 				<div className="flex flex-row justify-between text-[0.7rem]">
-					<p>{item.short_description}.</p>
-					<span className="ml-2">{year}</span>
+					<p className="normal-case">{item.short_description}</p>
+					<span className="ml-2 self-end">.{year}</span>
 				</div>
 
 				{item.gitHubLink && <LinkDashed url={item.gitHubLink} />}
