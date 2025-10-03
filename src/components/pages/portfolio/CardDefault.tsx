@@ -1,31 +1,25 @@
 import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
 import Image from "next/image";
-import { Project } from "@/types/main-section";
-import LinkDashed from "@/components/ui/LinkDashed";
+import { CardDefaultProps } from "@/types/main-section";
+import GitHubButton from "@/components/ui/GitHubButton";
 
 export default function CardDefault({
 	index,
 	item,
 	technologies,
-}: {
-	index: number;
-	item: Project;
-	technologies: string[];
-}) {
+}: CardDefaultProps) {
 	return (
-		<section className="my-6 p-4 relative group" key={item._id}>
+		<section className="flex my-6 gap-4 p-4 relative" key={item._id}>
 			<Link
 				href={item.liveDemoLink ? item.liveDemoLink : ""}
-				className={`${!item.liveDemoLink && "pointer-events-none"}`}
+				className={`${!item.liveDemoLink && "pointer-events-none"} w-1/3`}
+				target="_blank"
 			>
 				{item?.image?.asset?._ref ? (
 					<Image
-						className="float-left m-0 w-1/3 mr-4"
-						src={urlFor(item?.image?.asset?._ref)
-							// .width(600)
-							// .height(600)
-							.url()}
+						className="float-left m-0 w-full flex"
+						src={urlFor(item?.image?.asset?._ref).url()}
 						width={600}
 						height={600}
 						alt={item?.title || ""}
@@ -33,33 +27,39 @@ export default function CardDefault({
 				) : null}
 			</Link>
 
-			<div className="flex flex-col h-full justify-between font-(family-name:--font-space-mono)">
+			<div className="flex w-2/3 flex-col h-full font-(family-name:--font-space-mono)">
 				<div>
 					<div className="flex flex-row justify-between">
-						<h2 className="font-bold text-(--color-primary-dark) text-2xl">
+						{/* Project title */}
+						<h2 className="font-bold text-(--color-primary-dark) text-1xl uppercase">
 							{item.title}
 						</h2>
 
+						{/* Project number */}
 						<span className="text-(--color-primary-dark) font-light">
 							{index <= 9 ? `.0${index + 1}` : `.${index + 1}`}
 						</span>
 					</div>
 
+					{/* Projeckt description */}
 					{item.description && (
 						<>
 							<hr className="my-2 border-(--color-secondary-dark)" />
 
-							<p className="text-[1rem] leading-tight">
+							<p className="text-[0.9rem] leading-tight normal-case">
 								{item.description}
 							</p>
 						</>
 					)}
 				</div>
 
+				{/* Technologies used */}
 				{technologies?.length > 0 && (
 					<div className="mt-8 font-(family-name:--font-space-mono)">
 						<ul className="flex flex-wrap gap-1">
-							<h2 className="font-semibold">Teknologier:</h2>
+							<h2 className="normal-case text-[0.9rem]">
+								Technologies:
+							</h2>
 
 							{technologies?.map(
 								(tech, index) =>
@@ -76,16 +76,17 @@ export default function CardDefault({
 					</div>
 				)}
 
-				{item.gitHubLink && <LinkDashed url={item.gitHubLink} />}
+				{/* GitHub repo link */}
+				{item.gitHubLink && <GitHubButton url={item.gitHubLink} />}
 			</div>
 
 			{/* Top-left & Bottom-right corners */}
-			<div className="absolute top-0 left-0 pointer-events-none w-4 h-4 group-hover:w-1/2 group-hover:h-1/2 border-t-1 border-l-1 border-(--color-dark-hover)"></div>
-			<div className="absolute bottom-0 right-0 w-4 h-4 pointer-events-none border-b-1 border-r-1 border-(--color-dark-hover) group-hover:w-1/2 group-hover:h-1/2"></div>
+			<div className="absolute top-0 left-0 pointer-events-none w-4 h-4 border-t-1 border-l-1 border-(--color-dark-hover)"></div>
+			<div className="absolute bottom-0 right-0 w-4 h-4 pointer-events-none border-b-1 border-r-1 border-(--color-dark-hover)"></div>
 
 			{/* Top-right & Bottom-left corners */}
-			<div className="absolute top-0 right-0 w-4 h-4 pointer-events-none border-t-1 border-r-1 border-(--color-dark-hover) group-hover:w-1/2 group-hover:h-1/2"></div>
-			<div className="absolute bottom-0 left-0 w-4 h-4 pointer-events-none border-b-1 border-l-1 border-(--color-dark-hover) group-hover:w-1/2 group-hover:h-1/2"></div>
+			<div className="absolute top-0 right-0 w-4 h-4 pointer-events-none border-t-1 border-r-1 border-(--color-dark-hover)"></div>
+			<div className="absolute bottom-0 left-0 w-4 h-4 pointer-events-none border-b-1 border-l-1 border-(--color-dark-hover)"></div>
 		</section>
 	);
 }
