@@ -26,7 +26,7 @@ export interface ContactPageData {
 	titleLocation: string;
 	lat: number;
 	lng: number;
-	mapStyle: "light" | "streets";
+	mapStyle: "light" | "streetsv12";
 	links: {
 		_key: string;
 		title: string;

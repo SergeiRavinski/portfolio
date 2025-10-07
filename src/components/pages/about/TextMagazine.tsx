@@ -1,24 +1,28 @@
+import { RichTextComponents } from "@/components/sanity/RichText";
 import { TextMagazineProps } from "@/types/about-page";
-// import { PortableText } from "next-sanity";
+import { PortableText } from "next-sanity";
 
 export default function TextMagazine(props: TextMagazineProps) {
-	const { size, sectionTitle, text } = props || {};
+	const { size, sectionTitle, text, theme } = props || {};
+	const textTheme =
+		theme === "dark"
+			? "bg-(--color-primary-dark) text-(--color-primary-light)"
+			: "bg-(--color-primary-light) text-(--color-primary-dark) border-1 border-solid border-(--color-secondary-dark) rounded-xs";
 	const styles =
 		size === "small"
-			? "h-full bg-(--color-primary-dark) text-(--color-primary-light) p-4"
-			: "h-full grid col-span-2 row-span-2 bg-(--color-primary-dark) text-(--color-primary-light) p-4";
+			? `h-full p-4 ${textTheme}`
+			: `h-full grid col-span-2 row-span-2 items-start content-start p-4 ${textTheme}`;
 
 	return (
 		<div className={styles}>
 			{sectionTitle && (
-				<h2 className="col-span-4 h-fit text-2xl font-bold mb-6 pb-1 border-b-1">
+				<h2 className="col-span-4 h-fit text-2xl font-bold mb-6 pb-1 border-b-1 border-solid border-(--color-secondary-dark)">
 					{sectionTitle}
 				</h2>
 			)}
 
 			<div className="col-span-4">
-				<p>{text}</p>
-				{/* <PortableText value={elem.text} components={RichTextComponents()} /> */}
+				<PortableText value={text} components={RichTextComponents()} />
 			</div>
 		</div>
 	);

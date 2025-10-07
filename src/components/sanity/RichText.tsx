@@ -1,10 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { urlFor } from "@/sanity/lib/image";
+import {
+	LinkValue,
+	PortableTextBlockValue,
+	SanityImageValue,
+	YouTubeValue,
+} from "@/types/about-page";
 
-export const RichTextComponents = (internalLink?: any, externalLink?: any) => ({
+export const RichTextComponents = () => ({
 	types: {
-		image: ({ value }: any) => {
+		image: ({ value }: SanityImageValue) => {
 			return (
 				<Image
 					className="w-full my-12"
@@ -16,12 +22,11 @@ export const RichTextComponents = (internalLink?: any, externalLink?: any) => ({
 			);
 		},
 
-		youtube: ({ value }: any) => {
+		youtube: ({ value }: YouTubeValue) => {
 			const { url } = value;
 			let videoId = url.split("/").pop() as string;
 
 			if (videoId.includes("?")) {
-				// videoId = videoId.split('?').shift() as string;
 				videoId = videoId.split("?")[1] as string;
 				videoId = videoId.split("v=")[1] as string;
 			}
@@ -43,51 +48,62 @@ export const RichTextComponents = (internalLink?: any, externalLink?: any) => ({
 	},
 
 	list: {
-		bullet: ({ children }: any) => (
-			<ul className="rich-text-li m-0 text-base md:text-lg ml-[1.25rem] md:mb-6 mb-4 list-disc space-y-1 md:space-y-1">
+		bullet: ({ children }: PortableTextBlockValue) => (
+			<ul className="list-disc pl-6 space-y-2 mb-6 text-base md:text-lg leading-relaxed">
 				{children}
 			</ul>
 		),
-		number: ({ children }: any) => (
-			<ol className="m-0 text-base md:text-lg md:mt-6 pl-5 mb-6 leading-7 list-decimal numbered-list">
+		number: ({ children }: PortableTextBlockValue) => (
+			<ol className="list-decimal pl-6 space-y-2 mb-6 text-base md:text-lg leading-relaxed">
 				{children}
 			</ol>
 		),
 	},
 
 	block: {
-		h1: ({ children }: any) => (
-			<h1 className="text-4.5xl font-bold">{children}</h1>
+		h1: ({ children }: PortableTextBlockValue) => (
+			<h1 className="text-4xl md:text-5xl font-bold mb-6 mt-10 leading-tight">
+				{children}
+			</h1>
 		),
-		h2: ({ children }: any) => <h2 id={children}>{children}</h2>,
-		h3: ({ children }: any) => <h3>{children}</h3>,
-		// h3: ({ children }: any) => (
-		//   <h3 className="text-lg md:text-xl font-bold">{children}</h3>
-		// ),
-		h4: ({ children }: any) => <h4 className="font-medium">{children}</h4>,
-		h5: ({ children }: any) => (
-			<h5 className="text-base font-bold">{children}</h5>
+		h2: ({ children }: PortableTextBlockValue) => (
+			<h2 className="text-3xl md:text-4xl font-semibold mt-10 mb-5 leading-snug">
+				{children}
+			</h2>
 		),
-		h6: ({ children }: any) => (
-			<h6 className="text-sm font-bold">{children}</h6>
+		h3: ({ children }: PortableTextBlockValue) => (
+			<h3 className="text-2xl md:text-3xl font-semibold mt-8 mb-4">
+				{children}
+			</h3>
 		),
-		blockquote: ({ children }: any) => (
-			<blockquote className="mt-8 mb-10 md:mt-10 md:mb-16 leading-snug mx-auto">
+
+		h4: ({ children }: PortableTextBlockValue) => (
+			<h4 className="text-xl font-medium mt-6 mb-3">{children}</h4>
+		),
+
+		blockquote: ({ children }: PortableTextBlockValue) => (
+			<blockquote className="border-l-4 border-(--color-tertiary-dark) pl-6 italic text-lg my-8 md:my-10">
 				{children}
 			</blockquote>
 		),
-		columns: ({ children }: any) => (
+		columns: ({ children }: PortableTextBlockValue) => (
 			<p className="text-base md:text-lg">{children}</p>
 		),
 
-		normal: ({ children }: any) => <p className="last:mb-0">{children}</p>,
+		normal: ({ children }: PortableTextBlockValue) => (
+			<p className="text-base md:text-lg leading-relaxed mb-6 last:mb-0">
+				{children}
+			</p>
+		),
 	},
 	marks: {
-		highlight: ({ children }: any) => (
-			<span className="bg-custom-gradient h-64 w-64">{children}</span>
+		highlight: ({ children }: PortableTextBlockValue) => (
+			<span className="bg-gradient-to-r from-emerald-300 to-lime-200 px-1 py-0.5 rounded">
+				{children}
+			</span>
 		),
 
-		link: ({ children, value }: any) => {
+		link: ({ children, value }: LinkValue) => {
 			if (!value.href) return children;
 			const rel =
 				value.href && !value.href.startsWith("/")
@@ -97,29 +113,8 @@ export const RichTextComponents = (internalLink?: any, externalLink?: any) => ({
 				<Link
 					href={value.href}
 					rel={rel}
-					style={{
-						borderColor: "#ff552e",
-					}}
-					className={`text-[#111820] no-underline border-b-[3px] hover:border-b-[5px]`}
+					className={`border-(--color-tertiary-dark) no-underline border-b-[3px] hover:border-b-[5px]`}
 					target={value.blank ? "_blank" : undefined}
-				>
-					{children}
-				</Link>
-			);
-		},
-
-		internalLink: ({ children, value }: any) => {
-			if (!value?.slug) return children;
-			const rel = undefined;
-
-			return (
-				<Link
-					href={value?.slug}
-					rel={rel}
-					style={{
-						borderColor: "#ff552e",
-					}}
-					className={`text-[#111820] no-underline border-b-[3px] hover:border-b-[5px]`}
 				>
 					{children}
 				</Link>
