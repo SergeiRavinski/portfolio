@@ -1,4 +1,6 @@
+import { RichTextComponents } from "@/components/sanity/RichText";
 import { PromoBlockMagazineProps } from "@/types/about-page";
+import { PortableText } from "next-sanity";
 import Image from "next/image";
 
 export default function PromoBlockMagazine(props: PromoBlockMagazineProps) {
@@ -24,10 +26,19 @@ export default function PromoBlockMagazine(props: PromoBlockMagazineProps) {
 						{sectionTitle}
 					</h2>
 				)}
+
 				{title && (
 					<h2 className="text-xl normal-case font-bold">{title}</h2>
 				)}
-				{text && <p className="flex">{text}</p>}
+
+				{text && (
+					<div className="flex">
+						<PortableText
+							value={text}
+							components={RichTextComponents()}
+						/>
+					</div>
+				)}
 			</div>
 		</div>
 	);
