@@ -59,24 +59,6 @@ export const promoBlock = defineField({
 			type: "object",
 			fields: [
 				defineField({
-					name: "type",
-					title: "Button Type",
-					type: "string",
-					initialValue: "text",
-					options: {
-						list: [
-							{ title: "Text Button", value: "text" },
-							{
-								title: "Outlined Button",
-								value: "outlined",
-							},
-						],
-						layout: "radio",
-						direction: "horizontal",
-					},
-				}),
-
-				defineField({
 					name: "textButton",
 					title: "Button Text",
 					type: "string",
