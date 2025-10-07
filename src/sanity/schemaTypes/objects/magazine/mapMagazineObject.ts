@@ -14,6 +14,21 @@ export const mapMagazineObject = defineField({
 			description: "Select a location on the map",
 			validation: (Rule) => Rule.required(),
 		}),
+
+		defineField({
+			name: "mapStyle",
+			title: "Map Style",
+			type: "string",
+			initialValue: "light",
+			options: {
+				list: [
+					{ title: "Light", value: "light" },
+					{ title: "Streets V12", value: "streetsv12" },
+				],
+				layout: "radio",
+			},
+			validation: (Rule) => Rule.required(),
+		}),
 	],
 
 	preview: {

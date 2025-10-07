@@ -34,6 +34,20 @@ export const textMagazineObject = defineField({
 				layout: "radio",
 			},
 		}),
+
+		defineField({
+			name: "theme",
+			title: "Theme",
+			type: "string",
+			initialValue: "light",
+			options: {
+				list: [
+					{ title: "Light", value: "light" },
+					{ title: "Dark", value: "dark" },
+				],
+				layout: "radio",
+			},
+		}),
 	],
 
 	preview: {
