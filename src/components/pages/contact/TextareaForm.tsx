@@ -11,7 +11,10 @@ export default function TextareaForm({
 }: TextareaFormProps) {
 	return (
 		<>
-			<label htmlFor="message" className="mb-2 text-[0.9rem]">
+			<label
+				htmlFor="message"
+				className="mb-2 md:text-[0.9rem] text-[0.8rem]"
+			>
 				{title}
 			</label>
 

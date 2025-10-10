@@ -12,7 +12,7 @@ export default function InputForm({
 }: InputFormProps) {
 	return (
 		<>
-			<label htmlFor={id} className="mb-2 text-[0.9rem]">
+			<label htmlFor={id} className="mb-2 md:text-[0.9rem] text-[0.8rem]">
 				{title}
 			</label>
 

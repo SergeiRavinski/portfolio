@@ -89,7 +89,9 @@ export default function CardRandom({
 				<h2 className="font-semibold">{item.title}</h2>
 
 				<div className="flex flex-row justify-between text-[0.7rem]">
-					<p>{item.short_description}</p>
+					<p className="w-full text-justify">
+						{item.short_description}
+					</p>
 					<span className="ml-2 self-end">.{year}</span>
 				</div>
 
