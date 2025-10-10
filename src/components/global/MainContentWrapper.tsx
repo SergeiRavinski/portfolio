@@ -7,7 +7,7 @@ export default function MainContentWrapper({
 }) {
 	return (
 		<section
-			className={`flex flex-col relative top-4 right-0 w-full border-(--color-secondary-dark) mx-10 h-[calc(100vh-2rem)]`}
+			className={`flex flex-col relative md:top-4 top-2 right-0 w-full border-(--color-secondary-dark) md:mx-10 mx-4 md:h-[calc(100vh-2rem)] h-full`}
 		>
 			{children}
 		</section>

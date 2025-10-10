@@ -10,7 +10,7 @@ export default function Header() {
 
 	return (
 		<header
-			className={`mx-auto w-full py-6 flex ${path !== "/" ? "justify-between" : "justify-end"}`}
+			className={`mx-auto w-full items-center py-6 flex ${path !== "/" ? "justify-between" : "justify-end"}`}
 		>
 			{path !== "/" && (
 				<section className="flex flex-row items-center text-xl tracking-tight gap-6">
@@ -20,8 +20,7 @@ export default function Header() {
 			)}
 
 			<nav className="justify-center h-fit">
-				<ul className="flex flex-row gap-5 align-middle items-center justify-self-end border-(--color-secondary-dark) text-xl tracking-tight">
-					{/* TODO: Add active class to the current page using ref */}
+				<ul className="flex flex-row md:gap-5 gap-3 align-middle items-center justify-self-end border-(--color-secondary-dark) md:text-xl text-[1rem] tracking-tight">
 					<FlipLink href="/" path="/">
 						Portfolio
 					</FlipLink>

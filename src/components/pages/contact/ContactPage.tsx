@@ -87,11 +87,12 @@ export default function ContactPage({ data }: { data: ContactPageData }) {
 	}
 
 	return (
-		<section className="my-20 flex flex-row items-end relative h-full mx-[10%]">
-			<fieldset className="flex flex-col content-end w-[45%] h-full">
+		<section className="md:my-20 my-10 flex justify-between md:flex-row flex-col items-end relative h-full lg:mx-[10%] md:mx-[3%] mx-[1%]">
+			<fieldset className="flex flex-col content-end md:w-[45%] w-full h-full">
 				<div className="flex flex-col w-full h-full normal-case">
-					<h2 className="text-xl mb-4">{title}</h2>
-					<p>
+					<h2 className="md:text-xl text-[1rem] mb-4">{title}</h2>
+
+					<p className="md:text-[1rem] text-[0.8rem] mb-4">
 						I am always open to discussing new projects, creative
 						ideas, or opportunities to be part of your vision.
 					</p>
@@ -148,7 +149,7 @@ export default function ContactPage({ data }: { data: ContactPageData }) {
 				</div>
 			</fieldset>
 
-			<div className="absolute w-[45%] h-full top-0 right-0 flex flex-col justify-between">
+			<div className="flex flex-col md:w-[45%] w-full h-full md:mt-0 mt-10 justify-between">
 				{links && <SocialMedia links={links} />}
 
 				<section>
