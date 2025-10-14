@@ -41,7 +41,7 @@ export default function HoverElement({
 						? "flex"
 						: "none",
 			}}
-			className="group-hover:flex hidden fixed h-fit w-50 left-0 bottom-0 flex-wrap gap-1 bg-(--color-primary-dark) p-2 z-10"
+			className="group-hover:flex hidden fixed h-fit w-50 left-0 bottom-0 flex-wrap gap-1 bg-(--color-primary-dark) p-2 z-10 leading-snug"
 		>
 			<h2 className="font-semibold normal-case text-(--color-primary-light)">
 				Technologies:

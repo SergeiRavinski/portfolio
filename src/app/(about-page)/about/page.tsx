@@ -25,14 +25,14 @@ export default async function About() {
 		}
 
 		return (
-			<>
-				<div className="p-6 flex flex-row justify-between items-center">
+			<section className="flex flex-col">
+				<h2 className=" md:text-[1.25rem] uppercase text-[1rem] mb-4">
 					<SplitTextYoyo text={title} />
-				</div>
+				</h2>
 
 				<Magazine magazineData={magazineComponents} />
 				<PromoBlock promoBlockData={promoBlock} />
-			</>
+			</section>
 		);
 	} catch (error) {
 		console.error("Error fetching data:", error);
