@@ -8,13 +8,13 @@ export default function ImageMagazine(props: ImageMagazineProps) {
 		"relative group transition-all duration-300 ease-in-out overflow-hidden";
 	const styles =
 		size === "small"
-			? `h-full ${hoverElementStyles}`
-			: `h-full grid col-span-2 row-span-2 ${hoverElementStyles}`;
+			? `h-full border-1 border-solid border-(--color-secondary-dark) rounded-xs ${hoverElementStyles}`
+			: `h-full grid lg:col-span-2 bg-red-200 col-span-1 lg:row-span-2 row-span-1 border-1 border-solid border-(--color-secondary-dark) rounded-xs ${hoverElementStyles}`;
 
 	return (
 		<div className={styles}>
 			<Image
-				className="w-full h-full object-cover group-hover:scale-104 group-hover:opacity-90 transition-all duration-300 ease-in-out"
+				className="flex xl:w-full xl:h-full h-full w-full object-cover group-hover:scale-104 group-hover:opacity-90 transition-all duration-300 ease-in-out"
 				src={src}
 				width={500}
 				height={500}

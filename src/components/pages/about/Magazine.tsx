@@ -8,7 +8,7 @@ import { stegaClean } from "next-sanity";
 export default function Magazine({ magazineData }: MagazineDataProps) {
 	return (
 		magazineData && (
-			<section className="grid grid-cols-4 gap-3 grid-flow-row mb-6 normal-case">
+			<section className="grid lg:grid-cols-4 grid-cols-1 gap-3 grid-flow-row w-full h-full mb-6 normal-case">
 				{magazineData.map((element) => {
 					// Image component
 					if (element._type === "imageObject" && element.imageUrl) {
@@ -26,7 +26,7 @@ export default function Magazine({ magazineData }: MagazineDataProps) {
 						);
 					}
 
-					// PromoBlock component
+					// // PromoBlock component
 					else if (
 						element._type === "promoBlockMagazineObject" &&
 						element.imageUrl

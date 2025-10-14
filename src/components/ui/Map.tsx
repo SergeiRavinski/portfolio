@@ -18,7 +18,7 @@ export default function Map(props: MapMagazineProps) {
 			: "mapbox://styles/mapbox/streets-v12";
 	const style = isContactPage
 		? "flex md:h-[300px] h-[200px] w-full"
-		: "flex h-full w-full";
+		: "block w-full h-full";
 
 	useEffect(() => {
 		if (!mapContainerRef.current) return;

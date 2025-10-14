@@ -10,6 +10,7 @@ import SocialMedia from "@/components/ui/SocialMedia";
 import LocationIcon from "../../../../public/location";
 import Map from "@/components/ui/Map";
 import { ContactPageData } from "@/types/contact-page";
+import SplitTextYoyo from "@/components/ui/SplitTextYoyo";
 
 export default function ContactPage({ data }: { data: ContactPageData }) {
 	const { title, titleLocation, lat, lng, mapStyle, links } = data || {};
@@ -90,7 +91,9 @@ export default function ContactPage({ data }: { data: ContactPageData }) {
 		<section className="md:my-20 my-10 flex justify-between md:flex-row flex-col items-end relative h-full lg:mx-[10%] md:mx-[3%] mx-[1%]">
 			<fieldset className="flex flex-col content-end md:w-[45%] w-full h-full">
 				<div className="flex flex-col w-full h-full normal-case">
-					<h2 className="md:text-xl text-[1rem] mb-4">{title}</h2>
+					<h2 className=" md:text-[1.25rem] uppercase text-[1rem] mb-4">
+						<SplitTextYoyo text={title} />
+					</h2>
 
 					<p className="md:text-[1rem] text-[0.8rem] mb-4">
 						I am always open to discussing new projects, creative

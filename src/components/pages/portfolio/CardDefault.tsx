@@ -46,7 +46,7 @@ export default function CardDefault({
 						<>
 							<hr className="my-2 border-(--color-secondary-dark)" />
 
-							<p className="text-[0.9rem] leading-tight normal-case">
+							<p className="text-[0.9rem] leading-snug normal-case">
 								{item.description}
 							</p>
 						</>

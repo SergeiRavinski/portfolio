@@ -49,12 +49,12 @@ export const RichTextComponents = () => ({
 
 	list: {
 		bullet: ({ children }: PortableTextBlockValue) => (
-			<ul className="list-disc pl-6 space-y-2 mb-6 text-base md:text-lg leading-relaxed">
+			<ul className="list-disc pl-6 space-y-2 mb-4 md:text-[1rem] text-[0.8rem] leading-snug first:mt-4">
 				{children}
 			</ul>
 		),
 		number: ({ children }: PortableTextBlockValue) => (
-			<ol className="list-decimal pl-6 space-y-2 mb-6 text-base md:text-lg leading-relaxed">
+			<ol className="list-decimal pl-6 space-y-2 mb-4 md:text-[1rem] text-[0.8rem] leading-snug first:mt-4">
 				{children}
 			</ol>
 		),
@@ -62,23 +62,25 @@ export const RichTextComponents = () => ({
 
 	block: {
 		h1: ({ children }: PortableTextBlockValue) => (
-			<h1 className="text-4xl md:text-5xl font-bold mb-6 mt-10 leading-tight">
+			<h1 className="md:text-[1.9] text-[1.75rem] font-bold my-6 leading-snug">
 				{children}
 			</h1>
 		),
 		h2: ({ children }: PortableTextBlockValue) => (
-			<h2 className="text-3xl md:text-4xl font-semibold mt-10 mb-5 leading-snug">
+			<h2 className="md:text-[1.75] text-[1.5rem] font-semibold my-6 leading-snug">
 				{children}
 			</h2>
 		),
 		h3: ({ children }: PortableTextBlockValue) => (
-			<h3 className="text-2xl md:text-3xl font-semibold mt-8 mb-4">
+			<h3 className="md:text-[1.5] text-[1.25rem] font-semibold my-6 leading-snug">
 				{children}
 			</h3>
 		),
 
 		h4: ({ children }: PortableTextBlockValue) => (
-			<h4 className="text-xl font-medium mt-6 mb-3">{children}</h4>
+			<h4 className="md:text-[1.25] text-[1rem] font-medium my-6 leading-snug">
+				{children}
+			</h4>
 		),
 
 		blockquote: ({ children }: PortableTextBlockValue) => (
@@ -87,11 +89,11 @@ export const RichTextComponents = () => ({
 			</blockquote>
 		),
 		columns: ({ children }: PortableTextBlockValue) => (
-			<p className="text-base md:text-lg">{children}</p>
+			<p className="md:text-[1rem] text-[0.8rem]">{children}</p>
 		),
 
 		normal: ({ children }: PortableTextBlockValue) => (
-			<p className="text-base md:text-lg leading-relaxed mb-6 last:mb-0">
+			<p className="md:text-[1rem] text-[0.8rem] leading-snug mb-4 first:mt-4 last:mb-0">
 				{children}
 			</p>
 		),
