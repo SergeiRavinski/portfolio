@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { useStore } from "zustand";
-import { toggleStore } from "@/stores/falling-words-store";
 import { gsap } from "gsap";
 import SplitText from "gsap/SplitText";
 
@@ -18,10 +16,7 @@ export default function SplitTextYoyo({
 	const containerRef = useRef<HTMLDivElement>(null);
 	const styles = isNotFound
 		? "mb-4 text-8xl font-extrabold tracking-tight sm:text-9xl"
-		: "text-[1.2rem] uppercase word";
-
-	// const isOn = useStore(toggleStore, (state) => state.isOn);
-	// const toggle = useStore(toggleStore, (state) => state.toggle);
+		: "md:text-[1.2rem] text-[1rem] uppercase word";
 
 	useEffect(() => {
 		gsap.registerPlugin(SplitText);
