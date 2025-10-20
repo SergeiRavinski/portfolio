@@ -85,10 +85,10 @@ export default function CardRandom({
 			)}
 
 			{/* // Title and description */}
-			<span className="flex flex-col justify-between py-2 uppercase text-[0.8rem] w-full">
+			<span className="flex flex-col justify-between py-2 uppercase md:text-[0.8rem] text-[0.7rem] w-full">
 				<h2 className="font-semibold">{item.title}</h2>
 
-				<div className="flex flex-row justify-between text-[0.7rem] leading-snug mt-1">
+				<div className="flex flex-row justify-between md:text-[0.7rem] text-[0.6rem] leading-snug mt-1">
 					<p className="w-full text-justify">
 						{item.short_description}
 					</p>
