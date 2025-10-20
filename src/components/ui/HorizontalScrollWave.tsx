@@ -37,6 +37,7 @@ export default function HorizontalScrollWave() {
 		function updatePolyline(amp = 0, duration = 0.3) {
 			if (!polyRef.current) return;
 			const points = setPoints(amp);
+
 			gsap.to(polyRef.current, {
 				attr: { points },
 				duration,
@@ -68,7 +69,7 @@ export default function HorizontalScrollWave() {
 			timelineRef.current = tl;
 		}
 
-		// Initielt
+		// Initial draw
 		updatePolyline();
 
 		const observer = Observer.create({
@@ -93,7 +94,7 @@ export default function HorizontalScrollWave() {
 
 	return (
 		<svg
-			className="w-[calc(100%+3px)] h-12 ml-6"
+			className="lg:w-[calc(100%+3px)] w-full lg:h-12 h-12 lg:ml-6 ml-0"
 			viewBox="0 0 100 50"
 			preserveAspectRatio="none"
 		>
