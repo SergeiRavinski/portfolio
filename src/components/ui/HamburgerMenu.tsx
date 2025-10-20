@@ -9,21 +9,21 @@ export default function HamburgerMenu() {
 
 	return (
 		<button
-			className={`relative w-9 h-6 flex flex-col justify-center z-50 ${isOn ? "gap-1" : "gap-[0.4rem]"}`}
+			className={`relative w-9 h-6 group flex flex-col justify-center z-50 ${isOn ? "gap-1" : "gap-[0.4rem]"}`}
 			onClick={() => toggle()}
 			aria-label="Toggle menu"
 		>
 			<span
 				className={`block self-end h-0.5 bg-(--color-primary-dark) transition-all duration-300 ease-in-out
-          ${isOn ? "rotate-45 translate-y-1.5 w-full" : "w-[70%]"}`}
+          ${isOn ? "rotate-45 translate-y-1.5 w-full" : "w-[70%] group-hover:w-full"}`}
 			/>
 			<span
 				className={`block w-full h-0.5 bg-(--color-primary-dark) transition-all duration-300 ease-in-out
-          ${isOn ? "opacity-0" : ""}`}
+          ${isOn ? "opacity-0" : "group-hover:w-[70%]"}`}
 			/>
 			<span
 				className={`block h-0.5 bg-(--color-primary-dark) transition-all duration-300 ease-in-out
-          ${isOn ? "-rotate-45 -translate-y-1.5 w-full" : "w-[70%]"}`}
+          ${isOn ? "-rotate-45 -translate-y-1.5 w-full" : "w-[70%] group-hover:w-full"}`}
 			/>
 		</button>
 	);

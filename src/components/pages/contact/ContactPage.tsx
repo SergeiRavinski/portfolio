@@ -91,7 +91,7 @@ export default function ContactPage({ data }: { data: ContactPageData }) {
 		<section className="md:my-20 my-10 flex justify-between md:flex-row flex-col items-end relative h-full lg:mx-[10%] md:mx-[3%] mx-[1%]">
 			<fieldset className="flex flex-col content-end md:w-[45%] w-full h-full">
 				<div className="flex flex-col w-full h-full normal-case">
-					<h2 className=" md:text-[1.25rem] uppercase text-[1rem] mb-4">
+					<h2 className="md:text-[1.25rem] text-[1rem] uppercase  mb-4">
 						<SplitTextYoyo text={title} />
 					</h2>
 

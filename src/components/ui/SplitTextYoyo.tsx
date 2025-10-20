@@ -16,7 +16,7 @@ export default function SplitTextYoyo({
 	const containerRef = useRef<HTMLDivElement>(null);
 	const styles = isNotFound
 		? "mb-4 text-8xl font-extrabold tracking-tight sm:text-9xl"
-		: "md:text-[1.2rem] text-[1rem] uppercase word";
+		: "md:text-[1.2rem] text-[0.8rem] uppercase word";
 
 	useEffect(() => {
 		gsap.registerPlugin(SplitText);

@@ -71,7 +71,7 @@ export default function VerticalScrollWave() {
 
 	return (
 		<svg
-			className="flex w-[2rem] my-4 text-(--color-secondary-dark)"
+			className="lg:flex hidden w-[2rem] my-4 text-(--color-secondary-dark)"
 			viewBox="0 0 50 100"
 			preserveAspectRatio="none"
 		>

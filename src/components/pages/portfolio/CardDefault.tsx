@@ -10,10 +10,13 @@ export default function CardDefault({
 	technologies,
 }: CardDefaultProps) {
 	return (
-		<section className="flex my-6 gap-4 p-4 relative" key={item._id}>
+		<section
+			className="flex md:flex-row flex-col my-6 gap-4 p-4 relative"
+			key={item._id}
+		>
 			<Link
 				href={item.liveDemoLink ? item.liveDemoLink : ""}
-				className={`${!item.liveDemoLink && "pointer-events-none"} w-1/3`}
+				className={`${!item.liveDemoLink && "pointer-events-none"} md:w-1/3 w-full`}
 				target="_blank"
 			>
 				{item?.image?.asset?._ref ? (
@@ -27,11 +30,11 @@ export default function CardDefault({
 				) : null}
 			</Link>
 
-			<div className="flex w-2/3 flex-col h-full font-(family-name:--font-space-mono)">
+			<div className="flex flex-col md:w-2/3 w-full h-full font-(family-name:--font-space-mono)">
 				<div>
-					<div className="flex flex-row justify-between">
+					<div className="flex flex-row justify-between md:text-[1rem] text-[0.8rem]">
 						{/* Project title */}
-						<h2 className="font-bold text-(--color-primary-dark) text-1xl uppercase">
+						<h2 className="font-bold text-(--color-primary-dark) uppercase">
 							{item.title}
 						</h2>
 
@@ -46,7 +49,7 @@ export default function CardDefault({
 						<>
 							<hr className="my-2 border-(--color-secondary-dark)" />
 
-							<p className="text-[0.9rem] leading-snug normal-case">
+							<p className="md:text-[0.9rem] text-[0.8rem] leading-snug normal-case">
 								{item.description}
 							</p>
 						</>
@@ -55,9 +58,10 @@ export default function CardDefault({
 
 				{/* Technologies used */}
 				{technologies?.length > 0 && (
-					<div className="mt-8 font-(family-name:--font-space-mono)">
+					<div className="md:mt-8 mt-4 font-(family-name:--font-space-mono)">
 						<ul className="flex flex-wrap gap-1">
-							<h2 className="normal-case text-[0.9rem]">
+							<h2 className="normal-case md:text-[0.9rem] text-[0.8rem]">
+								{" "}
 								Technologies:
 							</h2>
 
@@ -66,7 +70,7 @@ export default function CardDefault({
 									tech && (
 										<li
 											key={index}
-											className="p-1 bg-(--color-primary-dark) text-(--color-primary-light) font-medium text-xs rounded-xs"
+											className="md:p-1 p-0.5 bg-(--color-primary-dark) text-(--color-primary-light) font-medium md:text-[0.75rem] text-[0.70rem] rounded-xs"
 										>
 											{tech}
 										</li>

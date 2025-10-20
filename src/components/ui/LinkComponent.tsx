@@ -13,7 +13,7 @@ export default function LinkComponent({
 
 	return (
 		<Link href={url} target="_blank" className={linkStyles}>
-			<h2 className="text-[0.8rem] uppercase">
+			<h2 className="md:text-[0.8rem] text-[0.7rem] uppercase">
 				{title ? title : "GitHub repo"}
 			</h2>
 			<ArrowIcon className={arrowStyles} />
