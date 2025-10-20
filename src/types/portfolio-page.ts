@@ -22,7 +22,14 @@ export interface SkillsProps {
 export interface LinkProps {
 	links: {
 		_key: string;
+		_type?: string;
 		title: string;
 		url: string;
 	}[];
+	isDashed?: boolean;
+}
+
+export interface ProfileHeaderProps {
+	name: string;
+	professionalTitle: string;
 }

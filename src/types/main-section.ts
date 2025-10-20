@@ -1,7 +1,7 @@
 export interface MainSectorData {
 	title: string;
-	name?: string;
-	professionalTitle?: string;
+	name: string;
+	professionalTitle: string;
 	projects: Project[];
 	frontendTech?: string[];
 	backendTech?: string[];
@@ -10,7 +10,12 @@ export interface MainSectorData {
 	animationLibraries?: string[];
 	design?: string[];
 	methodologies?: string[];
-	links?: string[];
+	links?: {
+		_key: string;
+		_type?: string;
+		title: string;
+		url: string;
+	}[];
 }
 
 export interface Project {
