@@ -54,7 +54,7 @@ export default function Button({
 			<button
 				type="submit"
 				onClick={clickEvent}
-				className={`flex justify-center group normal-case p-2 items-center relative border-1 group border-solid transition-border duration-300 rounded-xs ${color === "dark" ? "bg-(--color-primary-dark) text-(--color-primary-light) border-white hover:border-(--color-dark-hover)" : "border-(--color-secondary-dark) hover:border-(--color-dark-hover)"} `}
+				className={`flex justify-center group normal-case p-2 items-center relative border-1 group border-solid transition-border duration-300 rounded-xs ${color === "dark" ? "bg-(--color-primary-dark) text-(--color-primary-light) border-white hover:border-(--color-dark-hover)" : "border-(--color-secondary-dark) hover:border-(--color-dark-hover)"} ${type === "styling" ? "w-[2.5rem] h-[2.5rem]" : ""}`}
 			>
 				{buttonType()}
 
@@ -66,7 +66,7 @@ export default function Button({
 		<button
 			type="submit"
 			onClick={clickEvent}
-			className={`flex justify-center group normal-case p-2 items-center relative border-1 group border-solid transition-border duration-300 rounded-xs ${color === "dark" ? "bg-(--color-primary-dark) text-(--color-primary-light) border-white hover:border-(--color-dark-hover)" : "border-(--color-secondary-dark) hover:border-(--color-dark-hover)"} `}
+			className={`flex justify-center group normal-case p-2 items-center relative border-1 group border-solid transition-border duration-300 rounded-xs ${color === "dark" ? "bg-(--color-primary-dark) text-(--color-primary-light) border-white hover:border-(--color-dark-hover)" : "border-(--color-secondary-dark) hover:border-(--color-dark-hover)"} ${type === "styling" ? "w-[2.5rem] h-[2.5rem]" : ""}`}
 		>
 			{buttonType()}
 

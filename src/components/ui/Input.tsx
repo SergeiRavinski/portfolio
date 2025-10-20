@@ -37,7 +37,7 @@ export default function InputComponent({
 	}, [debouncedSearch, projects, setFilteredProjects]);
 
 	return (
-		<div className="relative group flex h-full min-w-[30%]">
+		<div className="relative group flex h-full w-full">
 			<label htmlFor="search" className="sr-only">
 				Search projects
 			</label>
