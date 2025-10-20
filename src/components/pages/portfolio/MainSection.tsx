@@ -12,9 +12,11 @@ import Footer from "../../ui/Footer";
 import SplitTextYoyo from "../../ui/SplitTextYoyo";
 import ScrollIndicator from "../../ui/ScrollIndicator";
 import { Project } from "@/types/main-section";
+import SocialMedia from "@/components/ui/SocialMedia";
+import ProfileHeader from "./ProfileHeader";
 
 export default function MainSection({ data }: { data: MainSectorData }) {
-	const { projects } = data;
+	const { projects, links, name, professionalTitle } = data || {};
 	const [styling, setStyling] = useState(true);
 	const containerRef = useRef<HTMLDivElement | null>(null);
 	const mainRef = useRef<HTMLDivElement | null>(null);
@@ -23,24 +25,33 @@ export default function MainSection({ data }: { data: MainSectorData }) {
 	const { scrollYProgress } = useScroll({
 		container: containerRef, // track scroll of the main element
 	});
-
 	const changeStyling = () => {
 		return styling ? setStyling(false) : setStyling(true);
 	};
 
 	return (
 		<>
-			<div className="py-6 flex flex-row justify-between items-center gap-4">
+			<section className="lg:hidden flex">
+				<ProfileHeader
+					name={name}
+					professionalTitle={professionalTitle}
+				/>
+			</section>
+
+			<div className="md:py-6 pb-4 pt-0 flex md:flex-row flex-col justify-between items-center md:gap-6 gap-[1rem]">
 				<SplitTextYoyo text={data.title} />
-				<InputComponent
-					projects={projects}
-					setFilteredProjects={setFilteredProjects}
-				/>
-				<Button
-					clickEvent={changeStyling}
-					type={"styling"}
-					changeStyling={styling}
-				/>
+
+				<div className="flex flex-row justify-end gap-4 items-center h-[2.5rem] md:min-w-[30%] w-full">
+					<InputComponent
+						projects={projects}
+						setFilteredProjects={setFilteredProjects}
+					/>
+					<Button
+						clickEvent={changeStyling}
+						type={"styling"}
+						changeStyling={styling}
+					/>
+				</div>
 			</div>
 
 			<main
@@ -48,11 +59,10 @@ export default function MainSection({ data }: { data: MainSectorData }) {
 				className="container relative mx-auto w-full h-full overflow-y-scroll hide-scrollbar"
 			>
 				<ScrollIndicator scrollY={scrollYProgress} />
-
 				{filteredProjects.length > 0 ? (
 					<section
 						ref={mainRef}
-						className={`${styling ? "grid grid-cols-10 gap-5 grid-flow-col relative overflow-y-scroll min-h-[calc(100%-4rem)]" : "flex flex-col"}`}
+						className={`${styling ? "grid md:grid-cols-10 grid-cols-1 gap-5 grid-flow-col relative overflow-y-scroll min-h-[calc(100%-4rem)]" : "flex flex-col"}`}
 					>
 						{filteredProjects?.map((item: Project, index) => {
 							const technologies: string[] = item?.techStack;
@@ -91,6 +101,9 @@ export default function MainSection({ data }: { data: MainSectorData }) {
 					</p>
 				)}
 
+				<section className="md:hidden flex">
+					{links && <SocialMedia links={links} isDashed={true} />}
+				</section>
 				<Footer />
 			</main>
 		</>
