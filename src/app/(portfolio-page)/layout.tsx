@@ -1,6 +1,6 @@
 import { SanityLive } from "@/sanity/lib/live";
 import { DisableDraftMode } from "@/components/DisableDraftMode";
-import { VisualEditing } from "next-sanity";
+import { VisualEditing } from "next-sanity/visual-editing";
 import { draftMode } from "next/headers";
 import Aside from "@/components/pages/portfolio/Aside";
 import MainContentWrapper from "@/components/global/MainContentWrapper";
@@ -8,6 +8,7 @@ import Header from "@/components/ui/Header";
 import RootWrapper from "@/components/global/RootWrapper";
 import Alert from "@/components/ui/Alert";
 import VerticalScrollWave from "@/components/ui/VerticalScrollWave";
+import { Suspense } from "react";
 
 export default async function RootLayout({
 	children,
@@ -19,9 +20,11 @@ export default async function RootLayout({
 			<Aside />
 			<VerticalScrollWave />
 			<MainContentWrapper>
-				<Header />
-				{children}
-				<Alert />
+				<Suspense fallback={<>...</>}>
+					<Header />
+					{children}
+					<Alert />
+				</Suspense>
 			</MainContentWrapper>
 			<SanityLive />
 
