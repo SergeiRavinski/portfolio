@@ -41,7 +41,7 @@ export function ScatterChar({
 			animate={
 				isOn
 					? {
-							y: [0, fallDistances[i] - 25 ?? 500],
+							y: [0, (fallDistances[i] || 525) - 25],
 							rotate: [0, rotation],
 						}
 					: { y: 0, rotate: 0 }
