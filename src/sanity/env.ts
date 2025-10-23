@@ -2,17 +2,17 @@ export const apiVersion =
 	process.env.NEXT_PUBLIC_SANITY_API_VERSION || "2025-02-28";
 
 export const dataset = assertValue(
-	process.env.NEXT_PUBLIC_SANITY_DATASET,
+	process.env.NEXT_PUBLIC_SANITY_DATASET || process.env.SANITY_STUDIO_DATASET,
 	"Missing environment variable: NEXT_PUBLIC_SANITY_DATASET"
 );
 
 export const projectId = assertValue(
-	process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+	process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || process.env.SANITY_STUDIO_PROJECT_ID,
 	"Missing environment variable: NEXT_PUBLIC_SANITY_PROJECT_ID"
 );
 
 export const googleMaps = assertValue(
-	process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+	process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || process.env.SANITY_STUDIO_GOOGLE_MAPS_API_KEY,
 	"Missing environment variable: NEXT_PUBLIC_GOOGLE_MAPS_API_KEY"
 );
 

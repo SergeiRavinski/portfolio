@@ -99,35 +99,25 @@ export interface MagazineDataProps {
 	)[];
 }
 
-export interface SanityImageValue {
-	value: {
-		_type: "image";
-		asset: {
-			_ref: string;
-			_type: "reference";
-		};
-		alt?: string;
-		caption?: string;
-	};
-}
-
 export interface PortableTextBlockValue {
 	children: ReactNode;
 	value?: PortableTextBlock;
 }
 
+export interface SanityImageValue {
+	_type: "image";
+	asset: { _ref: string; _type: "reference" };
+	alt?: string;
+	caption?: string;
+}
+
 export interface YouTubeValue {
-	value: {
-		_type: "youtube";
-		url: string;
-	};
+	_type: "youtube";
+	url: string;
 }
 
 export interface LinkValue {
-	children: React.ReactNode;
-	value: {
-		_type: "link";
-		href: string;
-		blank?: boolean;
-	};
+	_type: "link";
+	href: string;
+	blank?: boolean;
 }

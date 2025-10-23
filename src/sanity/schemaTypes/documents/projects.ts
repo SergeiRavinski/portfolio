@@ -1,4 +1,4 @@
-import { AIInput } from "@/sanity/customComponents/AIInput";
+import { AIInput } from "../../../sanity/customComponents/AIInput";
 import { defineField, defineType } from "sanity";
 
 export const projects = defineType({

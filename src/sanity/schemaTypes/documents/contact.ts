@@ -56,7 +56,7 @@ export const contact = defineType({
 	],
 	preview: {
 		select: {
-			title: "title" || "No title",
+			title: "title",
 		},
 	},
 });

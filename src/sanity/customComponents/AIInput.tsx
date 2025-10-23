@@ -5,6 +5,7 @@ import { InputProps } from "sanity";
 export const AIInput = (props: InputProps) => {
 	const [response, setResponse] = useState("");
 	const [loading, setLoading] = useState(false);
+	const { ...rest } = props
 
 	async function handleClick() {
 		if (loading) return;
@@ -34,7 +35,8 @@ export const AIInput = (props: InputProps) => {
 
 	return (
 		<>
-			<div>{props.renderDefault(props)}</div>
+			<div>{props.renderDefault(rest)}</div>
+
 			<Button
 				style={{ margin: "1rem 0" }}
 				onClick={handleClick}
@@ -42,11 +44,12 @@ export const AIInput = (props: InputProps) => {
 			>
 				{loading ? "Loading..." : "Get AI Feedback"}
 			</Button>
+
 			{response && (
 				<Card style={{ padding: "12px" }} tone="primary">
-					{response}
+				{response}
 				</Card>
 			)}
 		</>
-	);
+	);  
 };

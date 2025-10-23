@@ -17,6 +17,8 @@ import { resolve } from "./src/sanity/presentation/resolve";
 import { googleMapsInput } from "@sanity/google-maps-input";
 
 // import { tags } from "sanity-plugin-tags";
+const SANITY_STUDIO_PREVIEW_URL =
+  window.location.hostname === 'localhost' ? 'http://localhost:3000' : 'https://srportfolio.vercel.app'
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set([
@@ -43,10 +45,14 @@ export default defineConfig({
 		presentationTool({
 			resolve,
 			previewUrl: {
+				origin: SANITY_STUDIO_PREVIEW_URL,
+				// initial: "https://srportfolio.vercel",
 				previewMode: {
 					enable: "/api/draft-mode/enable",
+					disable: "/api/draft-mode/disable",
 				},
 			},
+			// allowOrigins: ["https://srportfolio.sanity.studio"],
 		}),
 		googleMapsInput({
 			apiKey: googleMaps,
@@ -66,3 +72,4 @@ export default defineConfig({
 				: input,
 	},
 });
+ 
