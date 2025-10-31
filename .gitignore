@@ -96,3 +96,38 @@ coverage/
 
 # env files (can opt-in for committing if needed)
 .env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# Vite build output
+dist/
+
+# Node modules
+node_modules/
+
+# OS files
+Thumbs.db
+
+# Sanity generated folders
+.sanity/runtime/
+.sanity/
+dist/
+tmp/
+.cache/
+
+# Sanity build output
+studio/dist/
+sanity-dist/
+sanity-template/
+
+# Sanity CLI data
+.sanity-plugin-*/dist/
+.sanity-plugin-*/node_modules/
+
+# testing
+/coverage

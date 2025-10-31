@@ -18,7 +18,9 @@ import { googleMapsInput } from "@sanity/google-maps-input";
 
 // import { tags } from "sanity-plugin-tags";
 const SANITY_STUDIO_PREVIEW_URL =
-  window.location.hostname === 'localhost' ? 'http://localhost:3000' : 'https://srportfolio.vercel.app'
+	window.location.hostname === "localhost"
+		? "http://localhost:3000"
+		: "https://srportfolio.vercel.app";
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set([
@@ -72,4 +74,3 @@ export default defineConfig({
 				: input,
 	},
 });
- 
