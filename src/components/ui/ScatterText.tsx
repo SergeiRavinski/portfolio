@@ -109,8 +109,6 @@ export default function ScatterText({
 				style={{ whiteSpace: "pre-wrap" }}
 			>
 				{chars.map((char, i) => {
-					if (char === "\n") return <br key={`br-${i}`} />;
-
 					return (
 						<ScatterChar
 							key={i}
