@@ -25,6 +25,16 @@ export const PORTFOLIO_QUERY = defineQuery(`*[_type == 'portfolio'][0] {
 	links
 }`);
 
+export const METADATA_QUERY = defineQuery(`*[_type == 'portfolio'][0] {
+	metadata {
+		seoTitle,
+		seoDescription,
+		seoKeywords,
+		seoImage
+	},
+	links
+}`);
+
 export const CONTACT_QUERY = defineQuery(`*[_type == 'contact'][0] {
 	_id,
 	title,
