@@ -113,7 +113,65 @@ export const portfolio = defineType({
 
 		// Profile links (e.g., LinkedIn, GitHub, Twitter)
 		links,
+
+		// SEO Metadata
+		defineField({
+			name: "metadata",
+			title: "Metadata",
+			type: "object",
+			description: "SEO metadata for the portfolio page",
+			options: {
+				collapsible: true,
+				collapsed: true,
+			},
+			fields: [
+				// SEO Title
+				defineField({
+					name: "seoTitle",
+					title: "SEO Title",
+					type: "string",
+					description:
+						"Title for SEO purposes. If not set, the main title will be used.",
+				}),
+
+				// SEO Description
+				defineField({
+					name: "seoDescription",
+					title: "SEO Description",
+					type: "text",
+					rows: 4,
+					description:
+						"Description for SEO purposes. Summarize your portfolio in a few sentences.",
+				}),
+
+				// SEO Keywords
+				defineField({
+					name: "seoKeywords",
+					title: "SEO Keywords",
+					type: "array",
+					of: [{ type: "string" }],
+					description:
+						"Keywords for SEO purposes. Separate keywords with commas.",
+				}),
+
+				// Open Graph Image
+				defineField({
+					name: "seoImage",
+					title: "Open Graph Image",
+					type: "image",
+					description:
+						"Image used for social sharing (Open Graph). Recommended size: 1200x630 pixels.",
+					options: {
+						hotspot: true,
+					},
+				}),
+
+				// Profile Links
+				links,
+			],
+		}),
 	],
+
 	preview: {
 		select: {
 			title: "title",
