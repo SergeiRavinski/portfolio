@@ -1,4 +1,4 @@
-import { SanityLive } from "@/sanity/lib/live";
+import { SanityLive, sanityFetch } from "@/sanity/lib/live";
 import { DisableDraftMode } from "@/components/DisableDraftMode";
 import { VisualEditing } from "next-sanity/visual-editing";
 import { draftMode } from "next/headers";
@@ -9,31 +9,92 @@ import RootWrapper from "@/components/global/RootWrapper";
 import Alert from "@/components/ui/Alert";
 import VerticalScrollWave from "@/components/ui/VerticalScrollWave";
 import { Suspense } from "react";
+import type { Metadata, ResolvingMetadata } from "next";
+import { METADATA_QUERY } from "@/sanity/lib/queries";
+
+export async function generateMetadata(
+	parent: ResolvingMetadata
+): Promise<Metadata> {
+	const { data } = await sanityFetch({ query: METADATA_QUERY });
+	const { seoTitle, seoDescription, seoKeywords, seoImage } =
+		data.metadata ?? {};
+
+	return {
+		title: seoTitle ?? "Sergei Ravinski – Full-stack Developer",
+		description: seoDescription ?? "",
+		keywords: seoKeywords ?? [],
+		openGraph: seoImage
+			? {
+					images: [
+						seoImage,
+						...((await parent).openGraph?.images || []),
+					],
+				}
+			: {},
+	};
+}
 
 export default async function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	return (
-		<RootWrapper>
-			<Aside />
-			<VerticalScrollWave />
-			<MainContentWrapper>
-				<Suspense fallback={<>...</>}>
-					<Header />
-					{children}
-					<Alert />
-				</Suspense>
-			</MainContentWrapper>
-			<SanityLive />
+	const { data } = await sanityFetch({ query: METADATA_QUERY });
+	const { seoTitle, seoDescription, seoImage } = data.metadata ?? {};
 
-			{(await draftMode()).isEnabled && (
-				<>
-					<DisableDraftMode />
-					<VisualEditing />
-				</>
-			)}
-		</RootWrapper>
+	const JsonLD = {
+		"@context": "https://schema.org",
+		"@type": "WebPage",
+		name: seoTitle ?? "Portefølje – Sergei Ravinski",
+		description: seoDescription ?? "",
+		url: "https://sergeiravinski.no/",
+		image: seoImage ?? "",
+		author: {
+			"@type": "Person",
+			name: "Sergei Ravinski",
+			url: "https://sergeiravinski.no",
+		},
+		publisher: {
+			"@type": "Person",
+			name: "Sergei Ravinski",
+		},
+		sameAs:
+			data?.links && data.links.length > 0
+				? data.links.map((link: { url: string }) => link.url)
+				: [
+						"https://github.com/sergeiravinski",
+						"https://www.linkedin.com/in/sergeiravinski",
+					],
+	};
+
+	return (
+		<>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify(JsonLD),
+				}}
+			/>
+
+			<RootWrapper>
+				<Aside />
+				<VerticalScrollWave />
+				<MainContentWrapper>
+					<Suspense fallback={<>...</>}>
+						<Header />
+						{children}
+						<Alert />
+					</Suspense>
+				</MainContentWrapper>
+				<SanityLive />
+
+				{(await draftMode()).isEnabled && (
+					<>
+						<DisableDraftMode />
+						<VisualEditing />
+					</>
+				)}
+			</RootWrapper>
+		</>
 	);
 }
