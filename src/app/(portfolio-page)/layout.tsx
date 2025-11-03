@@ -39,25 +39,62 @@ export default async function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	return (
-		<RootWrapper>
-			<Aside />
-			<VerticalScrollWave />
-			<MainContentWrapper>
-				<Suspense fallback={<>...</>}>
-					<Header />
-					{children}
-					<Alert />
-				</Suspense>
-			</MainContentWrapper>
-			<SanityLive />
+	const { data } = await sanityFetch({ query: METADATA_QUERY });
+	const { seoTitle, seoDescription, seoImage } = data.metadata ?? {};
 
-			{(await draftMode()).isEnabled && (
-				<>
-					<DisableDraftMode />
-					<VisualEditing />
-				</>
-			)}
-		</RootWrapper>
+	const JsonLD = {
+		"@context": "https://schema.org",
+		"@type": "WebPage",
+		name: seoTitle ?? "Portefølje – Sergei Ravinski",
+		description: seoDescription ?? "",
+		url: "https://sergeiravinski.no/",
+		image: seoImage ?? "",
+		author: {
+			"@type": "Person",
+			name: "Sergei Ravinski",
+			url: "https://sergeiravinski.no",
+		},
+		publisher: {
+			"@type": "Person",
+			name: "Sergei Ravinski",
+		},
+		sameAs:
+			data?.links && data.links.length > 0
+				? data.links.map((link: { url: string }) => link.url)
+				: [
+						"https://github.com/sergeiravinski",
+						"https://www.linkedin.com/in/sergeiravinski",
+					],
+	};
+
+	return (
+		<>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify(JsonLD),
+				}}
+			/>
+
+			<RootWrapper>
+				<Aside />
+				<VerticalScrollWave />
+				<MainContentWrapper>
+					<Suspense fallback={<>...</>}>
+						<Header />
+						{children}
+						<Alert />
+					</Suspense>
+				</MainContentWrapper>
+				<SanityLive />
+
+				{(await draftMode()).isEnabled && (
+					<>
+						<DisableDraftMode />
+						<VisualEditing />
+					</>
+				)}
+			</RootWrapper>
+		</>
 	);
 }
