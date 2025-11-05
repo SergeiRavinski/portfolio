@@ -6,18 +6,7 @@ import { ABOUT_QUERY } from "@/sanity/lib/queries";
 
 export default async function About() {
 	const { data } = await sanityFetch({ query: ABOUT_QUERY });
-	const {
-		// _id,
-		title,
-		// name,
-		magazineComponents,
-		promoBlock,
-		// phone,
-		// email,
-		// links,
-		// cv,
-		// location,
-	} = data || {};
+	const { title, magazineComponents, promoBlock } = data ?? {};
 
 	try {
 		if (!data) {

@@ -5,7 +5,7 @@ import { InputProps } from "sanity";
 export const AIInput = (props: InputProps) => {
 	const [response, setResponse] = useState("");
 	const [loading, setLoading] = useState(false);
-	const { ...rest } = props
+	const { ...rest } = props;
 
 	async function handleClick() {
 		if (loading) return;
@@ -47,9 +47,9 @@ export const AIInput = (props: InputProps) => {
 
 			{response && (
 				<Card style={{ padding: "12px" }} tone="primary">
-				{response}
+					{response}
 				</Card>
 			)}
 		</>
-	);  
+	);
 };
