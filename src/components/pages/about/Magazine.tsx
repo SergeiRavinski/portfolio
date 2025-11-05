@@ -26,7 +26,7 @@ export default function Magazine({ magazineData }: MagazineDataProps) {
 						);
 					}
 
-					// // PromoBlock component
+					// PromoBlock component
 					else if (
 						element._type === "promoBlockMagazineObject" &&
 						element.imageUrl
