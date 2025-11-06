@@ -7,7 +7,10 @@ export const PORTFOLIO_QUERY = defineQuery(`*[_type == 'portfolio'][0] {
 	projects[]->{
 		_id,
 		title,
-		image,
+		"imageObject": {
+			image,
+			"lqip": image.asset->metadata.lqip,
+		},
 		date,
 		description,
 		short_description,
@@ -30,7 +33,7 @@ export const METADATA_QUERY = defineQuery(`*[_type == 'portfolio'][0] {
 		seoTitle,
 		seoDescription,
 		seoKeywords,
-		seoImage
+		seoImage,
 	},
 	links
 }`);
@@ -54,9 +57,10 @@ export const ABOUT_QUERY = defineQuery(`*[_type == 'about'][0] {
 		_type == "imageObject" => {
 			_key,
 			_type,
-			image,
-			"imageUrl": image.asset->url,
-			"imageAlt": image.attribution,
+			"imageObject": {
+				image,
+				"lqip": image.asset->metadata.lqip,
+			},
 			size,
 			hoverElement,
 			hoverText
@@ -68,9 +72,10 @@ export const ABOUT_QUERY = defineQuery(`*[_type == 'about'][0] {
 			_type,
 			title,
 			sectionTitle,
-			image,
-			"imageUrl": image.asset->url,
-			"imageAlt": image.attribution,
+			"imageObject": {
+				image,
+				"lqip": image.asset->metadata.lqip,
+			},
 			size,
 			text
 		},
@@ -102,7 +107,10 @@ export const ABOUT_QUERY = defineQuery(`*[_type == 'about'][0] {
 			textButton,
 			link
 		},
-		image,
+		"imageObject": {
+			image,
+			"lqip": image.asset->metadata.lqip,
+		},
 		"imageUrl": image.asset->url,
 		"imageAlt": image.attribution	  
 	},
