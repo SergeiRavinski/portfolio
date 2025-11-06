@@ -281,70 +281,26 @@ export type SanityImageMetadata = {
 export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Post | Author | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
-// Variable: POSTS_QUERY
-// Query: *[_type == "post" && defined(slug.current)][0...12]{  _id, title, slug}
-export type POSTS_QUERYResult = Array<{
-  _id: string;
-  title: string | null;
-  slug: Slug | null;
-}>;
-// Variable: POST_QUERY
-// Query: *[_type == "post" && slug.current == $slug][0]{  title, body, mainImage}
-export type POST_QUERYResult = {
-  title: string | null;
-  body: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
-    listItem?: "bullet";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }> | null;
-  mainImage: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  } | null;
-} | null;
-// Variable: PROJECTS_QUERY
-// Query: *[_type == 'projects'] | order(date desc) {	_id,	title,	image,	date,	description,	short_description,	link,	frontendTechnologies,	backendTechnologies,	tools  }
-export type PROJECTS_QUERYResult = Array<never>;
+// Variable: PORTFOLIO_QUERY
+// Query: *[_type == 'portfolio'][0] {	title,	name,	professionalTitle,	projects[]->{		_id,		title,		"imageObject": {			image,			"lqip": image.asset->metadata.lqip,		},		date,		description,		short_description,		"liveDemoLink": links.liveDemo,		"gitHubLink": links.github,		techStack	},	"frontendTech": skills.frontendTech,	"backendTech": skills.backendTech,	"tools": skills.tools,	"hostingPlatforms": skills.hostingPlatforms,	"animationLibraries": skills.animationLibraries,	"design": skills.design,	"methodologies": skills.methodologies,	links}
+export type PORTFOLIO_QUERYResult = null;
+// Variable: METADATA_QUERY
+// Query: *[_type == 'portfolio'][0] {	metadata {		seoTitle,		seoDescription,		seoKeywords,		seoImage,	},	links}
+export type METADATA_QUERYResult = null;
+// Variable: CONTACT_QUERY
+// Query: *[_type == 'contact'][0] {	_id,	title,	titleLocation,	"lat": location.lat,	"lng": location.lng,	mapStyle,	links	}
+export type CONTACT_QUERYResult = null;
+// Variable: ABOUT_QUERY
+// Query: *[_type == 'about'][0] {	_id,	title,	name,	magazineComponents[]{		// Image object		_type == "imageObject" => {			_key,			_type,			"imageObject": {				image,				"lqip": image.asset->metadata.lqip,			},			size,			hoverElement,			hoverText		},  		// Promoblock object		_type == "promoBlockMagazineObject" => {			_key,			_type,			title,			sectionTitle,			"imageObject": {				image,				"lqip": image.asset->metadata.lqip,			},			size,			text		},  		// Text object		_type == "textMagazineObject" => {			_key,			_type,			sectionTitle,			text,			size,			theme		},  		// Map object		_type == "mapMagazineObject" => {			_key,			_type,			mapStyle,			location		},	},	promoBlock{		title,		text,		layout,		background,		button{				textButton,			link		},		"imageObject": {			image,			"lqip": image.asset->metadata.lqip,		},		"imageUrl": image.asset->url,		"imageAlt": image.attribution	  	},	phone,	email,	links,	cv,	location}
+export type ABOUT_QUERYResult = null;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"post\" && defined(slug.current)][0...12]{\n  _id, title, slug\n}": POSTS_QUERYResult;
-    "*[_type == \"post\" && slug.current == $slug][0]{\n  title, body, mainImage\n}": POST_QUERYResult;
-    "*[_type == 'projects'] | order(date desc) {\n\t_id,\n\ttitle,\n\timage,\n\tdate,\n\tdescription,\n\tshort_description,\n\tlink,\n\tfrontendTechnologies,\n\tbackendTechnologies,\n\ttools\n  }": PROJECTS_QUERYResult;
+    "*[_type == 'portfolio'][0] {\n\ttitle,\n\tname,\n\tprofessionalTitle,\n\tprojects[]->{\n\t\t_id,\n\t\ttitle,\n\t\t\"imageObject\": {\n\t\t\timage,\n\t\t\t\"lqip\": image.asset->metadata.lqip,\n\t\t},\n\t\tdate,\n\t\tdescription,\n\t\tshort_description,\n\t\t\"liveDemoLink\": links.liveDemo,\n\t\t\"gitHubLink\": links.github,\n\t\ttechStack\n\t},\n\t\"frontendTech\": skills.frontendTech,\n\t\"backendTech\": skills.backendTech,\n\t\"tools\": skills.tools,\n\t\"hostingPlatforms\": skills.hostingPlatforms,\n\t\"animationLibraries\": skills.animationLibraries,\n\t\"design\": skills.design,\n\t\"methodologies\": skills.methodologies,\n\tlinks\n}": PORTFOLIO_QUERYResult;
+    "*[_type == 'portfolio'][0] {\n\tmetadata {\n\t\tseoTitle,\n\t\tseoDescription,\n\t\tseoKeywords,\n\t\tseoImage,\n\t},\n\tlinks\n}": METADATA_QUERYResult;
+    "*[_type == 'contact'][0] {\n\t_id,\n\ttitle,\n\ttitleLocation,\n\t\"lat\": location.lat,\n\t\"lng\": location.lng,\n\tmapStyle,\n\tlinks\t\n}": CONTACT_QUERYResult;
+    "*[_type == 'about'][0] {\n\t_id,\n\ttitle,\n\tname,\n\tmagazineComponents[]{\n\t\t// Image object\n\t\t_type == \"imageObject\" => {\n\t\t\t_key,\n\t\t\t_type,\n\t\t\t\"imageObject\": {\n\t\t\t\timage,\n\t\t\t\t\"lqip\": image.asset->metadata.lqip,\n\t\t\t},\n\t\t\tsize,\n\t\t\thoverElement,\n\t\t\thoverText\n\t\t},\n  \n\t\t// Promoblock object\n\t\t_type == \"promoBlockMagazineObject\" => {\n\t\t\t_key,\n\t\t\t_type,\n\t\t\ttitle,\n\t\t\tsectionTitle,\n\t\t\t\"imageObject\": {\n\t\t\t\timage,\n\t\t\t\t\"lqip\": image.asset->metadata.lqip,\n\t\t\t},\n\t\t\tsize,\n\t\t\ttext\n\t\t},\n  \n\t\t// Text object\n\t\t_type == \"textMagazineObject\" => {\n\t\t\t_key,\n\t\t\t_type,\n\t\t\tsectionTitle,\n\t\t\ttext,\n\t\t\tsize,\n\t\t\ttheme\n\t\t},\n  \n\t\t// Map object\n\t\t_type == \"mapMagazineObject\" => {\n\t\t\t_key,\n\t\t\t_type,\n\t\t\tmapStyle,\n\t\t\tlocation\n\t\t},\n\t},\n\tpromoBlock{\n\t\ttitle,\n\t\ttext,\n\t\tlayout,\n\t\tbackground,\n\t\tbutton{\t\n\t\t\ttextButton,\n\t\t\tlink\n\t\t},\n\t\t\"imageObject\": {\n\t\t\timage,\n\t\t\t\"lqip\": image.asset->metadata.lqip,\n\t\t},\n\t\t\"imageUrl\": image.asset->url,\n\t\t\"imageAlt\": image.attribution\t  \n\t},\n\tphone,\n\temail,\n\tlinks,\n\tcv,\n\tlocation\n}": ABOUT_QUERYResult;
   }
 }

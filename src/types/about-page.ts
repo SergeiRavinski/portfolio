@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
 import { PortableTextBlock } from "sanity";
+import { SanityImageProps } from "./components/sanity/sanity-next-image";
 
 export interface ImageMagazineProps {
-	src: string;
-	altText: string;
+	imageObject: SanityImageProps;
 	size: "small" | "large";
 	hoverElement?: boolean;
 	hoverText?: string;
@@ -23,8 +23,7 @@ export interface MapMagazineProps {
 }
 
 export interface PromoBlockMagazineProps {
-	src: string;
-	altText?: string;
+	imageObject: any;
 	size: "small" | "large";
 	sectionTitle?: string;
 	title?: string;
@@ -41,12 +40,16 @@ export interface PromoBlockProps {
 			textButton?: string;
 			link?: string;
 		};
-		image: {
-			src: string;
-			alt: string;
+		imageObject?: {
+			image: {
+				asset: {
+					_ref: string;
+					_type: string;
+				};
+				_type: string;
+			};
+			lqip?: string;
 		};
-		imageUrl: string;
-		imageAlt: string;
 	};
 }
 
@@ -55,10 +58,7 @@ export interface MagazineDataProps {
 		| {
 				_key: string;
 				_type: "imageObject";
-				image: {
-					src: string;
-					altText: string;
-				};
+				imageObject: SanityImageProps;
 				imageUrl: string;
 				imageAlt: string;
 				size: "small" | "large";
@@ -66,6 +66,7 @@ export interface MagazineDataProps {
 				hoverText?: string;
 		  }
 		| {
+				imageObject: boolean;
 				_key: string;
 				_type: "promoBlockMagazineObject";
 				title?: string;
