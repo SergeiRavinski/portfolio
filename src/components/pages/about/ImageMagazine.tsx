@@ -1,8 +1,9 @@
 import Image from "next/image";
 import { ImageMagazineProps } from "@/types/about-page";
+import SanityNextImage from "@/components/sanity/SanityNextImage";
 
 export default function ImageMagazine(props: ImageMagazineProps) {
-	const { src, altText, size, hoverElement, hoverText } = props || {};
+	const { imageObject, size, hoverElement, hoverText } = props || {};
 	const hoverElementStyles =
 		hoverElement &&
 		"relative group transition-all duration-300 ease-in-out overflow-hidden";
@@ -13,12 +14,15 @@ export default function ImageMagazine(props: ImageMagazineProps) {
 
 	return (
 		<div className={styles}>
-			<Image
+			<SanityNextImage
 				className="flex xl:w-full xl:h-full h-full w-full object-cover group-hover:scale-104 group-hover:opacity-90 transition-all duration-300 ease-in-out"
-				src={src}
-				width={500}
-				height={500}
-				alt={altText ? altText : "Image"}
+				value={imageObject.image}
+				lqip={
+					(imageObject.image &&
+						imageObject.image?.asset &&
+						imageObject.lqip) ||
+					undefined
+				}
 			/>
 
 			{/* Hover text element */}

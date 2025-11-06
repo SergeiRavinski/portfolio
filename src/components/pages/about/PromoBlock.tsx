@@ -1,20 +1,12 @@
 import { PromoBlockProps } from "@/types/about-page";
 import Button from "../../ui/Button";
-import Image from "next/image";
 import { RichTextComponents } from "@/components/sanity/RichText";
 import { PortableText } from "next-sanity";
+import SanityNextImage from "@/components/sanity/SanityNextImage";
 
 export default function PromoBlock({ promoBlockData }: PromoBlockProps) {
-	const {
-		title,
-		text,
-		layout,
-		background,
-		button,
-		// image,
-		imageUrl,
-		imageAlt,
-	} = promoBlockData || {};
+	const { title, text, layout, background, button, imageObject } =
+		promoBlockData || {};
 	const { textButton, link } = button || {};
 
 	const colorsClass =
@@ -26,7 +18,7 @@ export default function PromoBlock({ promoBlockData }: PromoBlockProps) {
 
 	return (
 		text &&
-		imageUrl && (
+		imageObject && (
 			<>
 				<section
 					className={`${colorsClass} ${layoutClass} flex w-full h-100 mb-6 normal-case`}
@@ -53,12 +45,15 @@ export default function PromoBlock({ promoBlockData }: PromoBlockProps) {
 					</div>
 
 					<div className="flex w-1/2">
-						<Image
+						<SanityNextImage
 							className="h-full object-cover m-auto"
-							src={imageUrl}
-							width={500}
-							height={500}
-							alt={imageAlt}
+							value={imageObject.image}
+							lqip={
+								(imageObject.image &&
+									imageObject.image?.asset &&
+									imageObject.lqip) ||
+								undefined
+							}
 						/>
 					</div>
 				</section>

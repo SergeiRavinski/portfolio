@@ -21,12 +21,15 @@ export interface MainSectorData {
 export interface Project {
 	_id: string;
 	title: string;
-	image: {
-		asset: {
-			_ref: string;
+	imageObject?: {
+		image: {
+			asset: {
+				_ref: string;
+				_type: string;
+			};
 			_type: string;
 		};
-		_type: string;
+		lqip?: string;
 	};
 	date: string;
 	description?: string;
