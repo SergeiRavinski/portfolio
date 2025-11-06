@@ -1,11 +1,10 @@
-import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
-import Image from "next/image";
 import { CardRandomProps } from "@/types/main-section";
 import { useRef, useState } from "react";
 import { motion, useScroll } from "framer-motion";
 import HoverElement from "@/components/ui/HoverElement";
 import LinkComponent from "@/components/ui/LinkComponent";
+import SanityNextImage from "@/components/sanity/SanityNextImage";
 
 export default function CardRandom({
 	item,
@@ -21,7 +20,6 @@ export default function CardRandom({
 		target: targetRef,
 		axis: "y",
 		offset: ["end start", "start start"],
-		// layoutEffect: false,
 	});
 	const technologies: string[] = item?.techStack || ([] as string[]);
 
@@ -40,16 +38,16 @@ export default function CardRandom({
 					className={`${!item.liveDemoLink && "pointer-events-none"} flex relative`}
 					target="_blank"
 				>
-					{item?.image?.asset?._ref ? (
-						<Image
+					{item.imageObject && item.imageObject.image?.asset?._ref ? (
+						<SanityNextImage
 							className="m-0 w-full object-cover"
-							src={urlFor(item?.image?.asset?._ref)
-								// .width(1000)
-								// .height(1000)
-								.url()}
-							width={1000}
-							height={1000}
-							alt={item?.title || ""}
+							value={item.imageObject.image}
+							lqip={
+								(item.imageObject?.image &&
+									item.imageObject?.image?.asset &&
+									item.imageObject?.lqip) ||
+								undefined
+							}
 							onMouseEnter={() => setVisible(true)}
 							onMouseLeave={() => setVisible(false)}
 						/>
@@ -62,16 +60,16 @@ export default function CardRandom({
 				</Link>
 			) : (
 				<div className="flex relative">
-					{item?.image?.asset?._ref ? (
-						<Image
+					{item.imageObject && item.imageObject.image?.asset?._ref ? (
+						<SanityNextImage
 							className="m-0 w-full object-cover"
-							src={urlFor(item?.image?.asset?._ref)
-								// .width(1000)
-								// .height(1000)
-								.url()}
-							width={1000}
-							height={1000}
-							alt={item?.title || ""}
+							value={item.imageObject.image}
+							lqip={
+								(item.imageObject?.image &&
+									item.imageObject?.image?.asset &&
+									item.imageObject?.lqip) ||
+								undefined
+							}
 							onMouseEnter={() => setVisible(true)}
 							onMouseLeave={() => setVisible(false)}
 						/>

@@ -1,8 +1,8 @@
 import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
-import Image from "next/image";
 import { CardDefaultProps } from "@/types/main-section";
 import GitHubButton from "@/components/ui/GitHubButton";
+import SanityNextImage from "@/components/sanity/SanityNextImage";
 
 export default function CardDefault({
 	index,
@@ -19,13 +19,16 @@ export default function CardDefault({
 				className={`${!item.liveDemoLink && "pointer-events-none"} md:w-1/3 w-full`}
 				target="_blank"
 			>
-				{item?.image?.asset?._ref ? (
-					<Image
+				{item.imageObject && item.imageObject.image?.asset?._ref ? (
+					<SanityNextImage
 						className="float-left m-0 w-full flex"
-						src={urlFor(item?.image?.asset?._ref).url()}
-						width={600}
-						height={600}
-						alt={item?.title || ""}
+						value={item.imageObject.image}
+						lqip={
+							(item.imageObject?.image &&
+								item.imageObject?.image?.asset &&
+								item.imageObject?.lqip) ||
+							undefined
+						}
 					/>
 				) : null}
 			</Link>

@@ -11,14 +11,16 @@ export default function Magazine({ magazineData }: MagazineDataProps) {
 			<section className="grid lg:grid-cols-4 grid-cols-1 gap-3 grid-flow-row w-full h-full mb-6 normal-case">
 				{magazineData.map((element) => {
 					// Image component
-					if (element._type === "imageObject" && element.imageUrl) {
+					if (
+						element._type === "imageObject" &&
+						element.imageObject
+					) {
 						const size = stegaClean(element.size);
 
 						return (
 							<ImageMagazine
 								key={element._key}
-								src={element.imageUrl}
-								altText={element.imageAlt || "Image"}
+								imageObject={element.imageObject}
 								size={size}
 								hoverElement={element.hoverElement}
 								hoverText={element.hoverText}
@@ -29,15 +31,14 @@ export default function Magazine({ magazineData }: MagazineDataProps) {
 					// PromoBlock component
 					else if (
 						element._type === "promoBlockMagazineObject" &&
-						element.imageUrl
+						element.imageObject
 					) {
 						const size = stegaClean(element.size);
 
 						return (
 							<PromoBlockMagazine
 								key={element._key}
-								src={element.imageUrl}
-								altText={element.imageAlt || "Promo Image"}
+								imageObject={element.imageObject}
 								size={size}
 								sectionTitle={element.sectionTitle}
 								text={element.text}
