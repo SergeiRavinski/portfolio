@@ -9,15 +9,13 @@ import RootWrapper from "@/components/global/RootWrapper";
 import Alert from "@/components/ui/Alert";
 import VerticalScrollWave from "@/components/ui/VerticalScrollWave";
 import { Suspense } from "react";
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 import { METADATA_QUERY } from "@/sanity/lib/queries";
 
-export async function generateMetadata(
-	parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
 	const { data } = await sanityFetch({ query: METADATA_QUERY });
 	const { seoTitle, seoDescription, seoKeywords, seoImage } =
-		data.metadata ?? {};
+		data?.metadata ?? {};
 
 	return {
 		title: seoTitle ?? "Sergei Ravinski – Full-stack Developer",
@@ -25,10 +23,7 @@ export async function generateMetadata(
 		keywords: seoKeywords ?? [],
 		openGraph: seoImage
 			? {
-					images: [
-						seoImage,
-						...((await parent).openGraph?.images || []),
-					],
+					images: [seoImage],
 				}
 			: {},
 	};
@@ -40,7 +35,7 @@ export default async function RootLayout({
 	children: React.ReactNode;
 }>) {
 	const { data } = await sanityFetch({ query: METADATA_QUERY });
-	const { seoTitle, seoDescription, seoImage } = data.metadata ?? {};
+	const { seoTitle, seoDescription, seoImage } = data?.metadata ?? {};
 
 	const JsonLD = {
 		"@context": "https://schema.org",
