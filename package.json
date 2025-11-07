@@ -26,7 +26,7 @@
 		"motion": "^12.7.3",
 		"motion-plus": "^0.1.6",
 		"next": "15.5.3",
-		"next-sanity": "^11.5.6",
+		"next-sanity": "^11.6.5",
 		"next-sanity-image": "^6.2.0",
 		"next-themes": "^0.4.6",
 		"nodemailer": "^7.0.3",
