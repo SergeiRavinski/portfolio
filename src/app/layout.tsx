@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ThemeProvider from "@/theme/theme-provider";
 import { Geist, Geist_Mono, Space_Mono } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -50,6 +51,7 @@ export default function RootLayout({
 					disableTransitionOnChange
 				>
 					{children}
+					<SpeedInsights />
 				</ThemeProvider>
 			</body>
 		</html>
