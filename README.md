@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sergei Ravinski — Portfolio
 
-## Getting Started
+A personal portfolio showcasing projects and experience with modern web technologies, built with Next.js, Sanity as a headless CMS, Tailwind CSS, and interactive animations using Framer Motion and GSAP.
 
-First, run the development server:
+![Screenshot of the website](/public/screenshot-sergeiravinski.no.png)
+
+## Tech Stack
+
+### Frontend
+
+- Next.js with App Router
+- React.js
+- TypeScript
+- Tailwind CSS
+- GSAP & Motion for smooth animations
+- Mapbox GL JS for geolocation and maps
+- Dark mode via next-themes
+- Zustand
+
+### Backend / CMS
+
+- Sanity.io
+- Portable Text editor
+- Dynamic content via GROQ
+- Visual editing
+
+### Testing
+
+- Vitest + Testing Library
+
+### CI/CD
+
+- GitHub Actions
+
+### Deployment
+
+- Vercel
+
+## Features
+
+- Interactive animations with GSAP and Motion
+- Dynamic content pages powered by Sanity CMS
+- Visual Editing mode for live content previews
+- Light/dark mode toggle
+- Global state management with Zustand
+- Contact form with SendGrid
+- Map integration using Mapbox
+- Optimized images & server components with Next.js
+
+**Project Structure**
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+    portfolio/
+    │
+    ├─ .github/workflows/
+    │ └─ pr.yaml
+	|
+	├─ public/
+	|
+  	├─ src/
+    │ ├─ app/
+	│ │ ├─ (about-page)/
+    │ │ ├─ (contact-page)/
+    │ │ ├─ (portfolio-page)/
+    │ │ ├─ api/
+    │ │ ├─ studio/
+    │ │ ├─ globals.css
+    │ │ ├─ layout.tsx
+    │ │ └─ not-found.tsx
+	| |
+    │ ├─ components/
+    │ ├─ helpers/
+    │ ├─ hooks/
+    │ ├─ sanity/
+    │ ├─ stores/
+    │ ├─ theme/
+    │ └─ types/
+	|
+    ├─ tests/
+	│ ├─ components/
+	│ ├─ helpers/
+    │ └─ setup.ts
+	|
+    ├─ next.config.ts
+    ├─ package.json
+    ├─ README.md
+    ├─ sanity.cli.ts
+    ├─ sanity.config.ts
+    ├─ sanity.types.ts
+    ├─ tsconfig.json
+    └─ vitest.config.ts
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Local Development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Install dependencies
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+```
 
-## Learn More
+- Set up environment variables
+- Run development server
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+http://localhost:3000
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Testing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run test
+```
