@@ -2,7 +2,7 @@
 
 A personal portfolio showcasing projects and experience with modern web technologies, built with Next.js, Sanity as a headless CMS, Tailwind CSS, and interactive animations using Framer Motion and GSAP.
 
-![Screenshot of the website](/public/screenshot-sergeiravinski.no.png)
+![Screenshot of the website](/public/screenshot-frontpage.png)
 
 ## Tech Stack
 
