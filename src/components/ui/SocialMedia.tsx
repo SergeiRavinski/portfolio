@@ -6,7 +6,8 @@ import LinkComponent from "./LinkComponent";
 
 export default function SocialMedia({ links, isDashed }: LinkProps) {
 	const pathname = usePathname();
-	const isPortfolioPage = pathname === "/";
+
+	const isPortfolioPage = pathname === "/" || !pathname;
 	const isContactPage = pathname === "/contact";
 
 	return (
