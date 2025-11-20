@@ -9,27 +9,7 @@ import ProfileHeader from "./ProfileHeader";
 export default async function Aside() {
 	try {
 		const { data } = await sanityFetch({ query: PORTFOLIO_QUERY });
-		const {
-			name,
-			professionalTitle,
-			frontendTech,
-			backendTech,
-			tools,
-			hostingPlatforms,
-			animationLibraries,
-			design,
-			methodologies,
-			links,
-		} = data || {};
-		const skills = {
-			frontendTech,
-			backendTech,
-			tools,
-			hostingPlatforms,
-			animationLibraries,
-			design,
-			methodologies,
-		};
+		const { name, professionalTitle, skills, links } = data || {};
 
 		return (
 			<aside className="container w-1/3 sticky top-4 m-4 lg:flex hidden flex-col">

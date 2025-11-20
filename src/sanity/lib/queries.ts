@@ -18,13 +18,7 @@ export const PORTFOLIO_QUERY = defineQuery(`*[_type == 'portfolio'][0] {
 		"gitHubLink": links.github,
 		techStack
 	},
-	"frontendTech": skills.frontendTech,
-	"backendTech": skills.backendTech,
-	"tools": skills.tools,
-	"hostingPlatforms": skills.hostingPlatforms,
-	"animationLibraries": skills.animationLibraries,
-	"design": skills.design,
-	"methodologies": skills.methodologies,
+	skills,
 	links
 }`);
 

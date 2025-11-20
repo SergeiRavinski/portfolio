@@ -1,4 +1,5 @@
 import { useLabelRanges } from "@/hooks/use-label-ranges";
+import { ScatterCharProps } from "@/types/portfolio-page";
 import { motion } from "framer-motion";
 
 export function ScatterChar({
@@ -10,16 +11,7 @@ export function ScatterChar({
 	charRefs,
 	rawText,
 	sections,
-}: {
-	char: string;
-	i: number;
-	isOn: boolean;
-	shuffledIndexes: number[];
-	fallDistances: number[];
-	charRefs: React.MutableRefObject<(HTMLSpanElement | null)[]>;
-	rawText: string;
-	sections: unknown[];
-}) {
+}: ScatterCharProps) {
 	const delayIndex = shuffledIndexes.indexOf(i);
 	const delay = isOn ? delayIndex * 0.02 : delayIndex * 0.001;
 	const rotation = Math.random() * 360 - 180;

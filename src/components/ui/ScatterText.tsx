@@ -6,17 +6,7 @@ import { toggleStore } from "@/stores/falling-words-store";
 import { ScatterChar } from "../pages/portfolio/ScatterChar";
 import { SkillsProps } from "@/types/portfolio-page";
 
-export default function ScatterText({
-	skills: {
-		frontendTech,
-		backendTech,
-		tools,
-		hostingPlatforms,
-		animationLibraries,
-		design,
-		methodologies,
-	},
-}: SkillsProps) {
+export default function ScatterText({ skills }: SkillsProps) {
 	const charRefs = useRef<(HTMLSpanElement | null)[]>([]);
 	const [fallDistances, setFallDistances] = useState<number[]>([]);
 
@@ -25,49 +15,27 @@ export default function ScatterText({
 	const isOn = useStore(toggleStore, (state) => state.isOn);
 
 	// Build the text block
-	const rawText = useMemo(
-		() =>
-			[
-				`Frontend: ${frontendTech?.join(", ")}`,
-				"",
-				`Backend: ${backendTech?.join(", ")}`,
-				"",
-				`Tools: ${tools?.join(", ")}`,
-				"",
-				`Hosting: ${hostingPlatforms?.join(", ")}`,
-				"",
-				`Animation: ${animationLibraries?.join(", ")}`,
-				"",
-				`Design: ${design?.join(", ")}`,
-				"",
-				`Methodology: ${methodologies?.join(", ")}`,
-			].join("\n"),
-		[
-			frontendTech,
-			backendTech,
-			tools,
-			hostingPlatforms,
-			animationLibraries,
-			design,
-			methodologies,
-		]
-	);
+	const rawText = useMemo(() => {
+		return skills
+			.map(({ title, technologies }) => {
+				const items = Array.isArray(technologies)
+					? technologies.join(", ")
+					: "";
+				return `${title}: ${items}`;
+			})
+			.join("\n\n");
+	}, [skills]);
 
-	const sections = useMemo(
-		() => [
-			{ label: "Frontend:" },
-			{ label: "Backend:" },
-			{ label: "Tools:" },
-			{ label: "Hosting:" },
-			{ label: "Animation:" },
-			{ label: "Design:" },
-			{ label: "Methodology:" },
-		],
-		[]
-	);
+	// Build dynamic sections from new schema
+	const sections = useMemo(() => {
+		return skills.map(({ title }) => ({
+			label: `${title}:`,
+		}));
+	}, [skills]);
 
 	// Split into characters
 	const chars = useMemo(() => Array.from(rawText), [rawText]);
+
 	// Generate shuffled indexes
 	const shuffledIndexes = useMemo(() => {
 		const indexes = Array.from({ length: chars.length }, (_, i) => i);
@@ -95,9 +63,6 @@ export default function ScatterText({
 		setFallDistances(distances);
 	}, [rawText, chars]);
 
-	const textClasses =
-		"scatter-text normal-case text-[0.8rem] absolute leading-relaxed";
-
 	return (
 		<div
 			ref={containerRef}
@@ -105,7 +70,7 @@ export default function ScatterText({
 		>
 			<p
 				ref={paragraphRef}
-				className={textClasses}
+				className="scatter-text normal-case text-[0.8rem] absolute leading-relaxed"
 				style={{ whiteSpace: "pre-wrap" }}
 			>
 				{chars.map((char, i) => {

@@ -54,9 +54,9 @@ A personal portfolio showcasing projects and experience with modern web technolo
     │
     ├─ .github/workflows/
     │ └─ pr.yaml
-	|
+	│
 	├─ public/
-	|
+	│
   	├─ src/
     │ ├─ app/
 	│ │ ├─ (about-page)/
@@ -67,7 +67,7 @@ A personal portfolio showcasing projects and experience with modern web technolo
     │ │ ├─ globals.css
     │ │ ├─ layout.tsx
     │ │ └─ not-found.tsx
-	| |
+	│ │
     │ ├─ components/
     │ ├─ helpers/
     │ ├─ hooks/
@@ -75,12 +75,12 @@ A personal portfolio showcasing projects and experience with modern web technolo
     │ ├─ stores/
     │ ├─ theme/
     │ └─ types/
-	|
+	│
     ├─ tests/
 	│ ├─ components/
 	│ ├─ helpers/
     │ └─ setup.ts
-	|
+	│
     ├─ next.config.ts
     ├─ package.json
     ├─ README.md
