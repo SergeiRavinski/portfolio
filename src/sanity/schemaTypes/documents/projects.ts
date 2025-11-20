@@ -5,6 +5,14 @@ export const projects = defineType({
 	name: "projects",
 	title: "Projects",
 	type: "document",
+	fieldsets: [
+		{
+			name: "techStack",
+			title: "Stack",
+			description: "Technologies used in the project",
+			options: { collapsible: true, collapsed: false },
+		},
+	],
 	fields: [
 		defineField({
 			title: "Title",
@@ -81,6 +89,7 @@ export const projects = defineType({
 			name: "techStack",
 			title: "Tech Stack",
 			type: "array",
+			fieldset: "techStack",
 			of: [{ type: "string" }],
 		}),
 	],

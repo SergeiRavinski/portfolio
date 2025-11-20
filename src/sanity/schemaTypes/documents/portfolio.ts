@@ -1,6 +1,7 @@
 import { defineField, defineType } from "sanity";
 import { RiPagesLine } from "react-icons/ri";
 import { links } from "../objects/links";
+import { FaStackOverflow } from "react-icons/fa";
 
 export const portfolio = defineType({
 	name: "portfolio",
@@ -46,67 +47,38 @@ export const portfolio = defineType({
 		defineField({
 			name: "skills",
 			title: "Skills",
-			type: "object",
 			description: "List of skills categorized by type",
-			options: {
-				collapsible: true,
-				collapsed: false,
-			},
-			fields: [
-				// Frontend
+			type: "array",
+			of: [
 				defineField({
-					name: "frontendTech",
-					title: "Frontend Technologies",
-					type: "array",
-					of: [{ type: "string" }],
-				}),
+					name: "categorisedSkills",
+					title: "Categorised Skills",
+					type: "object",
+					icon: FaStackOverflow,
+					fields: [
+						defineField({
+							name: "title",
+							title: "Title",
+							type: "string",
+						}),
 
-				// Backend
-				defineField({
-					name: "backendTech",
-					title: "Backend Technologies",
-					type: "array",
-					of: [{ type: "string" }],
-				}),
+						defineField({
+							name: "technologies",
+							title: "Technologies",
+							type: "array",
+							of: [{ type: "string" }],
+						}),
+					],
 
-				// Tools
-				defineField({
-					name: "tools",
-					title: "Tools",
-					type: "array",
-					of: [{ type: "string" }],
-				}),
-
-				// Hosting Platforms
-				defineField({
-					name: "hostingPlatforms",
-					title: "Hosting Platforms",
-					type: "array",
-					of: [{ type: "string" }],
-				}),
-
-				// Animation Libraries
-				defineField({
-					name: "animationLibraries",
-					title: "Animation Libraries",
-					type: "array",
-					of: [{ type: "string" }],
-				}),
-
-				// Design
-				defineField({
-					name: "design",
-					title: "Design",
-					type: "array",
-					of: [{ type: "string" }],
-				}),
-
-				// Methodologies
-				defineField({
-					name: "methodologies",
-					title: "Methodologies",
-					type: "array",
-					of: [{ type: "string" }],
+					preview: {
+						select: { title: "title", categories: "technologies" },
+						prepare({ title, categories }) {
+							return {
+								title: title || "New Skills Group",
+								subtitle: categories?.join(", ") || "",
+							};
+						},
+					},
 				}),
 			],
 		}),
