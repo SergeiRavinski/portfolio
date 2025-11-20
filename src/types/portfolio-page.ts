@@ -9,14 +9,11 @@ export interface HoverElementProps {
 
 export interface SkillsProps {
 	skills: {
-		frontendTech: string[];
-		backendTech: string[];
-		tools: string[];
-		hostingPlatforms: string[];
-		animationLibraries: string[];
-		design: string[];
-		methodologies: string[];
-	};
+		_key: string;
+		_type?: string;
+		title: string;
+		technologies: string[] | null;
+	}[];
 }
 
 export interface LinkProps {
@@ -32,4 +29,15 @@ export interface LinkProps {
 export interface ProfileHeaderProps {
 	name: string;
 	professionalTitle: string;
+}
+
+export interface ScatterCharProps {
+	char: string;
+	i: number;
+	isOn: boolean;
+	shuffledIndexes: number[];
+	fallDistances: number[];
+	charRefs: React.MutableRefObject<(HTMLSpanElement | null)[]>;
+	rawText: string;
+	sections: unknown[];
 }
