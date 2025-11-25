@@ -2,8 +2,8 @@ import { describe, it, expect } from "vitest";
 import { gridStyles } from "@/helpers/grid-styles";
 
 describe("gridStyles", () => {
-	it("should be an array with 6 items", () => {
-		expect(gridStyles).toHaveLength(6);
+	it("should be an array with 7 items", () => {
+		expect(gridStyles).toHaveLength(7);
 	});
 
 	it("each item should have the correct keys", () => {

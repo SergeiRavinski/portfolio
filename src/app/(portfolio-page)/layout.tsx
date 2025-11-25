@@ -11,21 +11,23 @@ import VerticalScrollWave from "@/components/ui/VerticalScrollWave";
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import { METADATA_QUERY } from "@/sanity/lib/queries";
+import { urlForOpenGraphImage } from "@/sanity/lib/image";
 
 export async function generateMetadata(): Promise<Metadata> {
 	const { data } = await sanityFetch({ query: METADATA_QUERY });
 	const { seoTitle, seoDescription, seoKeywords, seoImage } =
 		data?.metadata ?? {};
+	const ogImage = urlForOpenGraphImage(seoImage?.asset?._ref && seoImage);
 
 	return {
 		title: seoTitle ?? "Sergei Ravinski – Full-stack Developer",
 		description: seoDescription ?? "",
 		keywords: seoKeywords ?? [],
-		openGraph: seoImage
-			? {
-					images: [seoImage],
-				}
-			: {},
+		openGraph: {
+			title: seoTitle ?? "Sergei Ravinski – Full-stack Developer",
+			description: seoDescription ?? "",
+			images: ogImage ? [ogImage] : [],
+		},
 	};
 }
 

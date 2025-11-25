@@ -13,35 +13,19 @@
 	}
 }
 
-/* @theme {
-	--color-primary-dark: #29292b;
-	--color-secondary-dark: #d2d2d5;
-	--color-tertiary-dark: #ff552e;
-	--color-dark-hover: #969697;
-
-	--color-primary-light: rgb(250 250 245);
-} */
-
 @layer base {
 	:root {
 		--color-primary-dark: #29292b;
 		--color-secondary-dark: #d2d2d5;
 		--color-tertiary-dark: #ff552e;
 		--color-dark-hover: #969697;
-
 		--color-primary-light: rgb(250 250 245);
 	}
 	.dark {
-		/* --shadow-color: rgba(255, 255, 255, 0.094);
-		--border-color: rgba(255, 255, 255, 0.094);
-		--hover-background: rgba(255, 255, 255, 0.055);
-		--active-background: rgba(255, 255, 255, 0.03); */
-
 		--color-primary-dark: #d2d2d5;
 		--color-secondary-dark: #d2d2d5;
 		--color-tertiary-dark: #ff552e;
 		--color-dark-hover: #969697;
-
 		--color-primary-light: #29292b;
 	}
 }

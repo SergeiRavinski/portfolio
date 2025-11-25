@@ -26,7 +26,7 @@ export default async function Aside() {
 				</div>
 
 				{skills && <ScatterText skills={skills} />}
-				{links && <SocialMedia links={links} />}
+				{links && <SocialMedia links={links} isPortfolioPage />}
 			</aside>
 		);
 	} catch (error) {
