@@ -18,7 +18,7 @@ export default function Header() {
 				<ThemeToggle />
 			</section>
 
-			<nav className="justify-center h-fit">
+			<nav className="justify-center h-fit md:h-7 h-6 flex items-center">
 				<ul className="flex flex-row md:gap-5 gap-3 align-middle items-center justify-self-end border-(--color-secondary-dark) md:text-xl text-[1rem] tracking-tight">
 					<FlipLink href="/" path="/">
 						Portfolio
