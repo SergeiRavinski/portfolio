@@ -41,22 +41,22 @@ export const RichTextComponents = (): Partial<PortableTextReactComponents> => ({
 
 	block: {
 		h1: ({ children }: PortableTextComponentProps<unknown>) => (
-			<h1 className="md:text-[1.9rem] text-[1.75rem] font-bold my-6 leading-snug">
+			<h1 className="md:text-[1.9rem] text-[1.75rem] font-bold my-6">
 				{children}
 			</h1>
 		),
 		h2: ({ children }: PortableTextComponentProps<unknown>) => (
-			<h2 className="md:text-[1.75rem] text-[1.5rem] font-semibold my-6 leading-snug">
+			<h2 className="md:text-[1.75rem] text-[1.5rem] font-semibold my-6">
 				{children}
 			</h2>
 		),
 		h3: ({ children }: PortableTextComponentProps<unknown>) => (
-			<h3 className="md:text-[1.5rem] text-[1.25rem] font-semibold my-6 leading-snug">
+			<h3 className="md:text-[1.5rem] text-[1.25rem] font-semibold my-6">
 				{children}
 			</h3>
 		),
 		h4: ({ children }: PortableTextComponentProps<unknown>) => (
-			<h4 className="md:text-[1.25rem] text-[1rem] font-medium my-6 leading-snug">
+			<h4 className="md:text-[1.25rem] text-[1rem] font-medium my-6">
 				{children}
 			</h4>
 		),
@@ -72,7 +72,7 @@ export const RichTextComponents = (): Partial<PortableTextReactComponents> => ({
 		),
 
 		normal: ({ children }: PortableTextComponentProps<unknown>) => (
-			<p className="md:text-[1rem] text-[0.8rem] leading-snug mb-4 first:mt-4 last:mb-0">
+			<p className="md:text-[1rem] text-[0.8rem] mb-4 first:mt-4 last:mb-0">
 				{children}
 			</p>
 		),
@@ -80,12 +80,12 @@ export const RichTextComponents = (): Partial<PortableTextReactComponents> => ({
 
 	list: {
 		bullet: ({ children }) => (
-			<ul className="list-disc pl-6 space-y-2 mb-4 md:text-[1rem] text-[0.8rem] leading-snug first:mt-4">
+			<ul className="list-disc pl-6 space-y-2 mb-4 md:text-[1rem] text-[0.8rem] first:mt-4">
 				{children}
 			</ul>
 		),
 		number: ({ children }) => (
-			<ol className="list-decimal pl-6 space-y-2 mb-4 md:text-[1rem] text-[0.8rem] leading-snug first:mt-4">
+			<ol className="list-decimal pl-6 space-y-2 mb-4 md:text-[1rem] text-[0.8rem] first:mt-4">
 				{children}
 			</ol>
 		),
