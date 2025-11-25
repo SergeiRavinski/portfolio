@@ -62,7 +62,7 @@ export default function MainSection({ data }: { data: MainSectorData }) {
 				{filteredProjects.length > 0 ? (
 					<section
 						ref={mainRef}
-						className={`${styling ? "grid md:grid-cols-10 grid-cols-1 gap-5 grid-flow-col relative overflow-y-scroll min-h-[calc(100%-4rem)]" : "flex flex-col"}`}
+						className={`${styling ? "grid md:grid-cols-10 grid-cols-1 gap-5 grid-flow-col relative min-h-[calc(100%-4rem)]" : "flex flex-col"}`}
 					>
 						{filteredProjects?.map((item: Project, index) => {
 							const technologies: string[] = item?.techStack;
@@ -102,7 +102,13 @@ export default function MainSection({ data }: { data: MainSectorData }) {
 				)}
 
 				<section className="md:hidden flex">
-					{links && <SocialMedia links={links} isDashed={true} />}
+					{links && (
+						<SocialMedia
+							links={links}
+							isDashed={true}
+							isPortfolioPage
+						/>
+					)}
 				</section>
 				<Footer />
 			</main>
