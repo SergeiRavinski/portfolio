@@ -9,13 +9,11 @@ import RootWrapper from "@/components/global/RootWrapper";
 import Alert from "@/components/ui/Alert";
 import VerticalScrollWave from "@/components/ui/VerticalScrollWave";
 import { Suspense } from "react";
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 import { METADATA_QUERY } from "@/sanity/lib/queries";
 import { urlForOpenGraphImage } from "@/sanity/lib/image";
 
-export async function generateMetadata(
-	parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
 	const { data } = await sanityFetch({ query: METADATA_QUERY });
 	const { seoTitle, seoDescription, seoKeywords, seoImage } =
 		data?.metadata ?? {};
@@ -28,12 +26,7 @@ export async function generateMetadata(
 		openGraph: {
 			title: seoTitle ?? "Sergei Ravinski – Full-stack Developer",
 			description: seoDescription ?? "",
-			images: ogImage
-				? [
-						ogImage,
-						...(((await parent) as any).openGraph?.images || []),
-					]
-				: [],
+			images: ogImage ? [ogImage] : [],
 		},
 	};
 }
