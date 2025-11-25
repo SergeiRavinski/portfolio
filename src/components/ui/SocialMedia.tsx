@@ -4,10 +4,12 @@ import { usePathname } from "next/navigation";
 import { LinkProps } from "@/types/portfolio-page";
 import LinkComponent from "./LinkComponent";
 
-export default function SocialMedia({ links, isDashed }: LinkProps) {
+export default function SocialMedia({
+	links,
+	isDashed,
+	isPortfolioPage,
+}: LinkProps) {
 	const pathname = usePathname();
-
-	const isPortfolioPage = pathname === "/" || !pathname;
 	const isContactPage = pathname === "/contact";
 
 	return (

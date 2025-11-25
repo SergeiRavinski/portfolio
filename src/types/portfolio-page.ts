@@ -24,6 +24,7 @@ export interface LinkProps {
 		url: string;
 	}[];
 	isDashed?: boolean;
+	isPortfolioPage?: boolean;
 }
 
 export interface ProfileHeaderProps {
