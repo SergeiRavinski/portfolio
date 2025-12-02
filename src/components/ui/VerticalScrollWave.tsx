@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { Observer } from "gsap/Observer";
 
@@ -9,44 +9,48 @@ export default function VerticalScrollWave() {
 	const driftRef = useRef(0);
 	const resetTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+	// Wave constants
+	const height = 100;
+	const frequency = 20;
+	const damping = 20;
+	const restX = 0;
+
+	// Generate points for vertical polyline
+	const generatePoints = (amplitude = 0) => {
+		const points: number[] = [];
+		let step = 0;
+
+		for (let y = 0; y <= height; y++) {
+			y < height / 2 ? step++ : step--;
+			const x =
+				(step / damping) *
+				amplitude *
+				Math.sin(((y + driftRef.current) / damping) * frequency);
+			points.push(restX + x, y);
+		}
+
+		return points.join(" ");
+	};
+
+	// Set initial points before paint
+	useLayoutEffect(() => {
+		if (polyRef.current) {
+			polyRef.current.setAttribute("points", generatePoints(0));
+		}
+	}, []);
+
+	// GSAP animation & Observer
 	useEffect(() => {
 		gsap.registerPlugin(Observer);
 
-		const height = 100;
-		const freq = 20;
-		const damp = 20;
-		let points: number[] = [];
-
-		function setPoints(amp = 0) {
-			let step: number = 0;
-			points = [];
-
-			for (let y = 0; y <= height; y++) {
-				// eslint-disable-next-line @typescript-eslint/no-unused-expressions
-				y < height / 2 ? step++ : step--;
-
-				const x =
-					(step / damp) *
-					amp *
-					Math.sin(((y + driftRef.current) / damp) * freq);
-				points.push(x, y);
-			}
-
-			return points.join(" ");
-		}
-
-		function updatePolylinePoints(amp = 0, duration = 0.3) {
+		const updatePolylinePoints = (amplitude = 0, duration = 0.3) => {
 			if (!polyRef.current) return;
-			const pts = setPoints(amp);
 			gsap.to(polyRef.current, {
-				attr: { points: pts },
+				attr: { points: generatePoints(amplitude) },
 				duration,
 				ease: "power2.out",
 			});
-		}
-
-		// initial state
-		updatePolylinePoints();
+		};
 
 		const observer = Observer.create({
 			type: "wheel,touch,scroll,pointer",
@@ -56,9 +60,9 @@ export default function VerticalScrollWave() {
 
 				if (resetTimeout.current) clearTimeout(resetTimeout.current);
 
-				// set a new reset timer
+				// Smooth return to rest
 				resetTimeout.current = setTimeout(() => {
-					updatePolylinePoints(0, 0.6); // smooth return
+					updatePolylinePoints(0, 0.6);
 				}, 150);
 			},
 		});
@@ -71,14 +75,13 @@ export default function VerticalScrollWave() {
 
 	return (
 		<svg
-			className="lg:flex hidden w-[2rem] my-4 text-(--color-secondary-dark)"
+			className="lg:flex hidden w-8 my-4 text-(--color-secondary-dark)"
 			viewBox="0 0 50 100"
 			preserveAspectRatio="none"
 		>
 			<g transform="translate(25, 0)">
 				<polyline
 					ref={polyRef}
-					points=""
 					stroke="var(--color-secondary-dark)"
 					fill="none"
 					strokeWidth="1"

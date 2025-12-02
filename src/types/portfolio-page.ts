@@ -42,3 +42,8 @@ export interface ScatterCharProps {
 	rawText: string;
 	sections: unknown[];
 }
+
+export interface Path {
+	href: string | URL;
+	_updatedAt: string | number | Date;
+}

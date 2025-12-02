@@ -114,3 +114,10 @@ export const ABOUT_QUERY = defineQuery(`*[_type == 'about'][0] {
 	cv,
 	location
 }`);
+
+export const SITEMAP_QUERY = defineQuery(`
+  *[_type == "portfolio" && !defined(slug.current)] {
+    "href": "/",
+    _updatedAt
+  }
+`);
