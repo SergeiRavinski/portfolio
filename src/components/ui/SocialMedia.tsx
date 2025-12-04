@@ -14,7 +14,7 @@ export default function SocialMedia({
 
 	return (
 		<span
-			className={`flex flex-col text-[0.8rem] w-full gap-y-10 ${isPortfolioPage ? "mb-6 md:pr-4 pr-0 md:ml-6 ml-0 md:mt-0 mt-4" : ""}`}
+			className={`flex-col text-[0.8rem] w-full gap-y-10 ${isPortfolioPage ? "mb-6 md:pr-4 pr-0 md:ml-6 ml-0 md:mt-0 mt-4" : ""}`}
 		>
 			<section className="flex flex-col justify-center uppercase text-[0.8rem] gap-1">
 				{links.map((link) => {
