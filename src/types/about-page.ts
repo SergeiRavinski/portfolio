@@ -122,3 +122,8 @@ export interface LinkValue {
 	href: string;
 	blank?: boolean;
 }
+
+export interface DropdownProps {
+	label: string;
+	content: PortableTextBlock[];
+}
