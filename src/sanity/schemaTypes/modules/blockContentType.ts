@@ -1,5 +1,6 @@
 import { defineType, defineArrayMember } from "sanity";
 import { ImageIcon, LinkIcon } from "@sanity/icons";
+import { IoIosArrowDropdown } from "react-icons/io";
 
 /**
  * This is the schema type for block content used in the post document type
@@ -83,6 +84,26 @@ export const blockContentType = defineType({
 		// You can add additional types here. Note that you can't use
 		// primitive types such as 'string' and 'number' in the same array
 		// as a block type.
+		defineArrayMember({
+			type: "object",
+			name: "dropdown",
+			title: "Dropdown",
+			icon: IoIosArrowDropdown,
+			fields: [
+				{
+					name: "label",
+					type: "string",
+					title: "Button label",
+					validation: (Rule) => Rule.required(),
+				},
+				{
+					name: "content",
+					type: "array",
+					title: "Dropdown content",
+					of: [{ type: "block" }],
+				},
+			],
+		}),
 		defineArrayMember({
 			type: "image",
 			icon: ImageIcon,
