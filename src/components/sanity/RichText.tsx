@@ -5,7 +5,13 @@ import {
 	PortableTextReactComponents,
 	PortableTextComponentProps,
 } from "@portabletext/react";
-import { LinkValue, SanityImageValue, YouTubeValue } from "@/types/about-page";
+import {
+	DropdownProps,
+	LinkValue,
+	SanityImageValue,
+	YouTubeValue,
+} from "@/types/about-page";
+import Dropdown from "../pages/about/Dropdown";
 
 export const RichTextComponents = (): Partial<PortableTextReactComponents> => ({
 	types: {
@@ -18,7 +24,9 @@ export const RichTextComponents = (): Partial<PortableTextReactComponents> => ({
 				height={500}
 			/>
 		),
-
+		dropdown: ({ value }) => (
+			<Dropdown label={value.label} content={value.content} />
+		),
 		youtube: ({ value }: PortableTextComponentProps<YouTubeValue>) => {
 			const { url } = value;
 			let videoId = url.split("/").pop() as string;
