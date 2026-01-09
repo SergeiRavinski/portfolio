@@ -52,9 +52,10 @@ export const textMagazineObject = defineField({
 
 	preview: {
 		select: {
+			sectionTitle: "sectionTitle",
 			text: "text",
 		},
-		prepare({ text }) {
+		prepare({ text, sectionTitle }) {
 			const block = (text || []).find(
 				(block: { _type: string }) => block._type === "block"
 			);
@@ -68,7 +69,7 @@ export const textMagazineObject = defineField({
 							)
 							.map((span: { text: unknown }) => span.text)
 							.join("")
-					: "No title",
+					: sectionTitle || "No title",
 				subtitle: "Text component",
 				media: BsJournalText,
 			};
