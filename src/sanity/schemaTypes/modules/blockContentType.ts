@@ -97,6 +97,12 @@ export const blockContentType = defineType({
 					validation: (Rule) => Rule.required(),
 				},
 				{
+					name: "isCollapsed",
+					type: "boolean",
+					title: "Is collapsed",
+					initialValue: true,
+				},
+				{
 					name: "content",
 					type: "array",
 					title: "Dropdown content",

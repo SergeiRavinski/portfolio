@@ -125,5 +125,6 @@ export interface LinkValue {
 
 export interface DropdownProps {
 	label: string;
+	isCollapsed?: boolean;
 	content: PortableTextBlock[];
 }
