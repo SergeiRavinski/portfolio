@@ -8,9 +8,9 @@ export default function Footer() {
 
 	return (
 		<footer
-			className={`w-full normal-case flex mt-6 items-center h-[2.5rem] border-t-solid border-t-1 border-t-(--color-secondary-dark) ${isHomePage ? "pt-4" : "py-4"}`}
+			className={`border-t-solid mt-6 flex h-[2.5rem] w-full items-center border-t-1 border-t-(--color-secondary-dark) normal-case ${isHomePage ? "pt-4" : "py-4"}`}
 		>
-			<p className="text-sm flex h-fit items-center">
+			<p className="flex h-fit items-center text-sm">
 				© {new Date().getFullYear()} Sergei Ravinski
 			</p>
 		</footer>

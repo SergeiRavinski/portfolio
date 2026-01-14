@@ -46,9 +46,9 @@ export default function SplitTextYoyo({
 	return aside ? (
 		<div
 			ref={containerRef}
-			className="relative m-6 h-full normal-case flex overflow-hidden text-(--color-primary-dark)"
+			className="relative m-6 flex h-full overflow-hidden text-(--color-primary-dark) normal-case"
 		>
-			<p className="fall-text text-md absolute text">{text}</p>
+			<p className="fall-text text-md text absolute">{text}</p>
 		</div>
 	) : (
 		<div className="container" ref={containerRef}>

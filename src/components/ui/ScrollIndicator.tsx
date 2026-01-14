@@ -1,10 +1,6 @@
 import { MotionValue, motion } from "motion/react";
 
-export default function ScrollIndicator({
-	scrollY,
-}: {
-	scrollY: MotionValue<number>;
-}) {
+export default function ScrollIndicator({ scrollY }: { scrollY: MotionValue<number> }) {
 	return (
 		<motion.div
 			id="scroll-indicator"

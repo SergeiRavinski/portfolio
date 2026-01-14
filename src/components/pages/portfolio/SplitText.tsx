@@ -14,9 +14,7 @@ export default function SplitText({ text }: { text: string }) {
 			// Hide the container until the fonts are loaded
 			containerRef.current.style.visibility = "visible";
 
-			const { words } = splitText(
-				containerRef.current.querySelector(".word")!
-			);
+			const { words } = splitText(containerRef.current.querySelector(".word")!);
 
 			// Animate the words in the h1
 			animate(
@@ -27,14 +25,14 @@ export default function SplitText({ text }: { text: string }) {
 					duration: 2,
 					bounce: 0,
 					delay: stagger(0.05),
-				}
+				},
 			);
 		});
 	}, []);
 
 	return (
 		<div className="container" ref={containerRef}>
-			<h2 className="text-[1.2rem] uppercase word">{text}</h2>
+			<h2 className="word text-[1.2rem] uppercase">{text}</h2>
 		</div>
 	);
 }

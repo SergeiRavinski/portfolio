@@ -5,7 +5,7 @@ export default function MapMagazine(props: MapMagazineProps) {
 	const { lng, lat, map } = props || {};
 
 	return (
-		<div className="lg:h-[calc(100%-0.75rem)] min-h-70 block w-full overflow-hidden lg:col-span-2 lg:row-span-2 col-span-1 row-span-1 border-1 border-solid border-(--color-secondary-dark) rounded-xs">
+		<div className="col-span-1 row-span-1 block min-h-70 w-full overflow-hidden rounded-xs border-1 border-solid border-(--color-secondary-dark) lg:col-span-2 lg:row-span-2 lg:h-[calc(100%-0.75rem)]">
 			<Map lng={lng} lat={lat} map={map} />
 		</div>
 	);

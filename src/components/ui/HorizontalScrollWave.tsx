@@ -23,9 +23,7 @@ export default function HorizontalScrollWave() {
 		for (let x = 0; x <= width; x++) {
 			x < width / 2 ? step++ : step--;
 			const yOffset =
-				(step / demping) *
-				amp *
-				Math.sin(((x + driftRef.current) / demping) * frequency);
+				(step / demping) * amp * Math.sin(((x + driftRef.current) / demping) * frequency);
 			pts.push(x, restY + yOffset);
 		}
 
@@ -64,7 +62,7 @@ export default function HorizontalScrollWave() {
 					{
 						duration: 0.3,
 						onUpdate: () => updatePolyline(amp, 0.3),
-					}
+					},
 				);
 			});
 			timelineRef.current = tl;
@@ -88,7 +86,7 @@ export default function HorizontalScrollWave() {
 
 	return (
 		<svg
-			className="lg:w-[calc(100%+3px)] w-full lg:h-12 h-12 lg:ml-6 ml-0"
+			className="ml-0 h-12 w-full lg:ml-6 lg:h-12 lg:w-[calc(100%+3px)]"
 			viewBox="0 0 100 50"
 			preserveAspectRatio="none"
 		>

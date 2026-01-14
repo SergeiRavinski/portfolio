@@ -2,16 +2,12 @@
 
 import { usePathname } from "next/navigation";
 
-export default function MainContentWrapper({
-	children,
-}: {
-	children: React.ReactNode;
-}) {
+export default function MainContentWrapper({ children }: { children: React.ReactNode }) {
 	const isContactPage = usePathname() === "/contact";
 
 	return (
 		<section
-			className={`flex flex-col relative md:top-4 top-2 right-0 w-full border-(--color-secondary-dark) md:mx-10 mx-4 ${!isContactPage ? "h-[calc(100vh-2rem)]" : "md:h-[calc(100vh-2rem)] h-full"} `}
+			className={`relative top-2 right-0 mx-4 flex w-full flex-col border-(--color-secondary-dark) md:top-4 md:mx-10 ${!isContactPage ? "h-[calc(100vh-2rem)]" : "h-full md:h-[calc(100vh-2rem)]"} `}
 		>
 			{children}
 		</section>

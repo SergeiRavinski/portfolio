@@ -12,7 +12,7 @@ export default function InputForm({
 }: InputFormProps) {
 	return (
 		<>
-			<label htmlFor={id} className="mb-2 md:text-[0.9rem] text-[0.8rem]">
+			<label htmlFor={id} className="mb-2 text-[0.8rem] md:text-[0.9rem]">
 				{title}
 			</label>
 
@@ -20,7 +20,7 @@ export default function InputForm({
 				id={id}
 				name={id}
 				type={type}
-				className="text-[0.8rem] border-b-1 border-b-solid border-b-(--color-dark-hover) transition-border duration-300 hover:border-b-(--color-primary-dark) p-2 w-full focus:outline-none focus:border-b-(--color-primary-dark) mb-4"
+				className="border-b-solid transition-border mb-4 w-full border-b-1 border-b-(--color-dark-hover) p-2 text-[0.8rem] duration-300 hover:border-b-(--color-primary-dark) focus:border-b-(--color-primary-dark) focus:outline-none"
 				onChange={handleChange}
 				onBlur={handleBlur}
 			/>

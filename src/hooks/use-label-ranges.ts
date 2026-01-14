@@ -12,6 +12,6 @@ export function useLabelRanges(rawText: string, sections: { label: string }[]) {
 					end: start + section.label.length,
 				};
 			}),
-		[rawText, sections]
+		[rawText, sections],
 	);
 }

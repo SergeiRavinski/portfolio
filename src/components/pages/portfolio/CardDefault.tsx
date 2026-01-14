@@ -4,24 +4,17 @@ import { CardDefaultProps } from "@/types/main-section";
 import GitHubButton from "@/components/ui/GitHubButton";
 import SanityNextImage from "@/components/sanity/SanityNextImage";
 
-export default function CardDefault({
-	index,
-	item,
-	technologies,
-}: CardDefaultProps) {
+export default function CardDefault({ index, item, technologies }: CardDefaultProps) {
 	return (
-		<section
-			className="flex md:flex-row flex-col my-6 gap-4 p-4 relative"
-			key={item._id}
-		>
+		<section className="relative my-6 flex flex-col gap-4 p-4 md:flex-row" key={item._id}>
 			<Link
 				href={item.liveDemoLink ? item.liveDemoLink : ""}
-				className={`${!item.liveDemoLink && "pointer-events-none"} md:w-1/3 w-full`}
+				className={`${!item.liveDemoLink && "pointer-events-none"} w-full md:w-1/3`}
 				target="_blank"
 			>
 				{item.imageObject && item.imageObject.image?.asset?._ref ? (
 					<SanityNextImage
-						className="float-left m-0 w-full flex"
+						className="float-left m-0 flex w-full"
 						value={item.imageObject.image}
 						lqip={
 							(item.imageObject?.image &&
@@ -33,16 +26,14 @@ export default function CardDefault({
 				) : null}
 			</Link>
 
-			<div className="flex flex-col md:w-2/3 w-full h-full font-(family-name:--font-space-mono)">
+			<div className="flex h-full w-full flex-col font-(family-name:--font-space-mono) md:w-2/3">
 				<div>
-					<div className="flex flex-row justify-between md:text-[1rem] text-[0.8rem]">
+					<div className="flex flex-row justify-between text-[0.8rem] md:text-[1rem]">
 						{/* Project title */}
-						<h2 className="font-bold text-(--color-primary-dark) uppercase">
-							{item.title}
-						</h2>
+						<h2 className="font-bold text-(--color-primary-dark) uppercase">{item.title}</h2>
 
 						{/* Project number */}
-						<span className="text-(--color-primary-dark) font-light">
+						<span className="font-light text-(--color-primary-dark)">
 							{index <= 9 ? `.0${index + 1}` : `.${index + 1}`}
 						</span>
 					</div>
@@ -52,7 +43,7 @@ export default function CardDefault({
 						<>
 							<hr className="my-2 border-(--color-secondary-dark)" />
 
-							<p className="md:text-[0.9rem] text-[0.8rem] leading-snug normal-case">
+							<p className="text-[0.8rem] leading-snug normal-case md:text-[0.9rem]">
 								{item.description}
 							</p>
 						</>
@@ -61,23 +52,20 @@ export default function CardDefault({
 
 				{/* Technologies used */}
 				{technologies?.length > 0 && (
-					<div className="md:mt-8 mt-4 font-(family-name:--font-space-mono)">
+					<div className="mt-4 font-(family-name:--font-space-mono) md:mt-8">
 						<ul className="flex flex-wrap gap-1">
-							<h2 className="normal-case md:text-[0.9rem] text-[0.8rem]">
-								{" "}
-								Technologies:
-							</h2>
+							<h2 className="text-[0.8rem] normal-case md:text-[0.9rem]"> Technologies:</h2>
 
 							{technologies?.map(
 								(tech, index) =>
 									tech && (
 										<li
 											key={index}
-											className="md:p-1 p-0.5 bg-(--color-primary-dark) text-(--color-primary-light) font-medium md:text-[0.75rem] text-[0.70rem] rounded-xs"
+											className="rounded-xs bg-(--color-primary-dark) p-0.5 text-[0.70rem] font-medium text-(--color-primary-light) md:p-1 md:text-[0.75rem]"
 										>
 											{tech}
 										</li>
-									)
+									),
 							)}
 						</ul>
 					</div>
@@ -88,12 +76,12 @@ export default function CardDefault({
 			</div>
 
 			{/* Top-left & Bottom-right corners */}
-			<div className="absolute top-0 left-0 pointer-events-none w-4 h-4 border-t-1 border-l-1 border-(--color-dark-hover)"></div>
-			<div className="absolute bottom-0 right-0 w-4 h-4 pointer-events-none border-b-1 border-r-1 border-(--color-dark-hover)"></div>
+			<div className="pointer-events-none absolute top-0 left-0 h-4 w-4 border-t-1 border-l-1 border-(--color-dark-hover)"></div>
+			<div className="pointer-events-none absolute right-0 bottom-0 h-4 w-4 border-r-1 border-b-1 border-(--color-dark-hover)"></div>
 
 			{/* Top-right & Bottom-left corners */}
-			<div className="absolute top-0 right-0 w-4 h-4 pointer-events-none border-t-1 border-r-1 border-(--color-dark-hover)"></div>
-			<div className="absolute bottom-0 left-0 w-4 h-4 pointer-events-none border-b-1 border-l-1 border-(--color-dark-hover)"></div>
+			<div className="pointer-events-none absolute top-0 right-0 h-4 w-4 border-t-1 border-r-1 border-(--color-dark-hover)"></div>
+			<div className="pointer-events-none absolute bottom-0 left-0 h-4 w-4 border-b-1 border-l-1 border-(--color-dark-hover)"></div>
 		</section>
 	);
 }

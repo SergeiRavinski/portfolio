@@ -28,7 +28,7 @@ describe("Alert", () => {
 			() => {
 				expect(message).toHaveClass("opacity-0");
 			},
-			{ timeout: 3100 }
+			{ timeout: 3100 },
 		);
 	});
 });

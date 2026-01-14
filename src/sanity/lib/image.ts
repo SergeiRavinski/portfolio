@@ -12,7 +12,5 @@ export const urlFor = (source: SanityImageSource) => {
 };
 
 export function urlForOpenGraphImage(image: Image | undefined) {
-	return image
-		? urlFor(image).width(1200).height(627).fit("crop").url()
-		: undefined;
+	return image ? urlFor(image).width(1200).height(627).fit("crop").url() : undefined;
 }

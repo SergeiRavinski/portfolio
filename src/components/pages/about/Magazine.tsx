@@ -8,13 +8,10 @@ import { stegaClean } from "next-sanity";
 export default function Magazine({ magazineData }: MagazineDataProps) {
 	return (
 		magazineData && (
-			<section className="grid lg:grid-cols-4 grid-cols-1 gap-3 grid-flow-row w-full h-full mb-6 normal-case">
+			<section className="mb-6 grid h-full w-full grid-flow-row grid-cols-1 gap-3 normal-case lg:grid-cols-4">
 				{magazineData.map((element) => {
 					// Image component
-					if (
-						element._type === "imageObject" &&
-						element.imageObject
-					) {
+					if (element._type === "imageObject" && element.imageObject) {
 						const size = stegaClean(element.size);
 
 						return (
@@ -29,10 +26,7 @@ export default function Magazine({ magazineData }: MagazineDataProps) {
 					}
 
 					// PromoBlock component
-					else if (
-						element._type === "promoBlockMagazineObject" &&
-						element.imageObject
-					) {
+					else if (element._type === "promoBlockMagazineObject" && element.imageObject) {
 						const size = stegaClean(element.size);
 
 						return (
@@ -48,10 +42,7 @@ export default function Magazine({ magazineData }: MagazineDataProps) {
 					}
 
 					// Text component
-					else if (
-						element._type === "textMagazineObject" &&
-						element.text
-					) {
+					else if (element._type === "textMagazineObject" && element.text) {
 						const size = stegaClean(element.size);
 						const theme = stegaClean(element.theme);
 
@@ -67,14 +58,9 @@ export default function Magazine({ magazineData }: MagazineDataProps) {
 					}
 
 					// Map component
-					else if (
-						element._type === "mapMagazineObject" &&
-						element.location
-					) {
+					else if (element._type === "mapMagazineObject" && element.location) {
 						const { lng, lat } = element.location;
-						const stegaCleanedMapStyle = stegaClean(
-							element.mapStyle
-						);
+						const stegaCleanedMapStyle = stegaClean(element.mapStyle);
 
 						return (
 							<MapMagazine

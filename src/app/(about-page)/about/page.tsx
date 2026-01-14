@@ -15,7 +15,7 @@ export default async function About() {
 
 		return (
 			<section className="flex flex-col">
-				<h2 className=" md:text-[1.25rem] uppercase text-[1rem] mb-4">
+				<h2 className="mb-4 text-[1rem] uppercase md:text-[1.25rem]">
 					<SplitTextYoyo text={title} />
 				</h2>
 

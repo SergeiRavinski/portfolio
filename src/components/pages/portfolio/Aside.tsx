@@ -12,17 +12,14 @@ export default async function Aside() {
 		const { name, professionalTitle, skills, links } = data || {};
 
 		return (
-			<aside className="container w-1/3 sticky top-4 m-4 lg:flex hidden flex-col">
+			<aside className="sticky top-4 container m-4 hidden w-1/3 flex-col lg:flex">
 				<div className="flex flex-col">
-					<section className="flex flex-row p-6 items-center text-xl tracking-tight gap-6">
+					<section className="flex flex-row items-center gap-6 p-6 text-xl tracking-tight">
 						<HamburgerMenu />
 						<ThemeToggle />
 					</section>
 
-					<ProfileHeader
-						name={name}
-						professionalTitle={professionalTitle}
-					/>
+					<ProfileHeader name={name} professionalTitle={professionalTitle} />
 				</div>
 
 				{skills && <ScatterText skills={skills} />}

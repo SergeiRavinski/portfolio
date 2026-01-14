@@ -18,9 +18,7 @@ export default function ScatterText({ skills }: SkillsProps) {
 	const rawText = useMemo(() => {
 		return skills
 			.map(({ title, technologies }) => {
-				const items = Array.isArray(technologies)
-					? technologies.join(", ")
-					: "";
+				const items = Array.isArray(technologies) ? technologies.join(", ") : "";
 				return `${title}: ${items}`;
 			})
 			.join("\n\n");
@@ -66,11 +64,11 @@ export default function ScatterText({ skills }: SkillsProps) {
 	return (
 		<div
 			ref={containerRef}
-			className="relative ml-6 mb-6 h-full flex text-(--color-primary-dark) overflow-vissible"
+			className="overflow-vissible relative mb-6 ml-6 flex h-full text-(--color-primary-dark)"
 		>
 			<p
 				ref={paragraphRef}
-				className="normal-case absolute text-[clamp(0.7em,5%,1.2em)] xl:leading-[1.3] leading-[1.2]"
+				className="absolute text-[clamp(0.7em,5%,1.2em)] leading-[1.2] normal-case xl:leading-[1.3]"
 				style={{ whiteSpace: "pre-wrap" }}
 			>
 				{chars.map((char, i) => {

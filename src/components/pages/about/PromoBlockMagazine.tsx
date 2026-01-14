@@ -14,33 +14,22 @@ export default function PromoBlockMagazine(props: PromoBlockMagazineProps) {
 		<div className={styles}>
 			{imageObject?.image?.asset && (
 				<SanityNextImage
-					className="w-full h-full object-cover"
+					className="h-full w-full object-cover"
 					value={imageObject.image}
-					lqip={
-						imageObject?.image?.asset && imageObject.lqip
-							? imageObject.lqip
-							: undefined
-					}
+					lqip={imageObject?.image?.asset && imageObject.lqip ? imageObject.lqip : undefined}
 				/>
 			)}
 
-			<div className="absolute flex justify-end flex-col gap-4 text-(--color-primary-light) overflow-hidden p-4 pt-20 left-0 bottom-0 w-full h-fit bg-gradient-to-t from-(--color-primary-dark) to-transparent">
+			<div className="absolute bottom-0 left-0 flex h-fit w-full flex-col justify-end gap-4 overflow-hidden bg-gradient-to-t from-(--color-primary-dark) to-transparent p-4 pt-20 text-(--color-primary-light)">
 				{sectionTitle && (
-					<h2 className="col-span-4 h-fit text-2xl font-bold border-b-1">
-						{sectionTitle}
-					</h2>
+					<h2 className="col-span-4 h-fit border-b-1 text-2xl font-bold">{sectionTitle}</h2>
 				)}
 
-				{title && (
-					<h2 className="text-xl normal-case font-bold">{title}</h2>
-				)}
+				{title && <h2 className="text-xl font-bold normal-case">{title}</h2>}
 
 				{text && (
 					<div className="flex">
-						<PortableText
-							value={text}
-							components={RichTextComponents()}
-						/>
+						<PortableText value={text} components={RichTextComponents()} />
 					</div>
 				)}
 			</div>
