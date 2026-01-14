@@ -26,9 +26,7 @@ export default function InputComponent({
 		const filtered = projects?.filter((project) => {
 			const technologies = [...(project?.techStack ?? [])];
 			const matchesTitle = project?.title?.toLowerCase().includes(lower);
-			const matchesTech = technologies.some((tech) =>
-				tech?.toLowerCase().includes(lower)
-			);
+			const matchesTech = technologies.some((tech) => tech?.toLowerCase().includes(lower));
 
 			return matchesTitle || matchesTech;
 		});
@@ -37,7 +35,7 @@ export default function InputComponent({
 	}, [debouncedSearch, projects, setFilteredProjects]);
 
 	return (
-		<div className="relative group flex h-full w-full">
+		<div className="group relative flex h-full w-full">
 			<label htmlFor="search" className="sr-only">
 				Search projects
 			</label>
@@ -46,19 +44,19 @@ export default function InputComponent({
 				id="search"
 				type="text"
 				placeholder="Search…"
-				className="border pl-10 text-[0.8rem] border-solid border-(--color-secondary-dark) transition-border duration-300 hover:border-(--color-dark-hover) p-2 rounded-xs w-full focus:outline-none focus:border-(--color-dark-hover)"
+				className="transition-border w-full rounded-xs border border-solid border-(--color-secondary-dark) p-2 pl-10 text-[0.8rem] duration-300 hover:border-(--color-dark-hover) focus:border-(--color-dark-hover) focus:outline-none"
 				aria-label="Search"
 				aria-describedby="search"
 				autoComplete="off"
 				value={searchTerm}
 				onChange={(e) => setSearchTerm(e.target.value)}
 			/>
-			<div className="absolute top-0 left-0 h-full w-10 flex justify-center items-center">
+			<div className="absolute top-0 left-0 flex h-full w-10 items-center justify-center">
 				<IoSearch className="text-(--color-primary-dark)" />
 			</div>
 
-			<div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 bg-(--color-tertiary-dark) w-[1px] h-[40%] group-hover:h-[60%] group-focus:h-[60%] transition-all duration-300" />
-			<div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 bg-(--color-tertiary-dark) w-[1px] h-[40%] group-hover:h-[60%] transition-all duration-300" />
+			<div className="absolute top-1/2 left-0 h-[40%] w-[1px] -translate-x-1/2 -translate-y-1/2 bg-(--color-tertiary-dark) transition-all duration-300 group-hover:h-[60%] group-focus:h-[60%]" />
+			<div className="absolute top-1/2 right-0 h-[40%] w-[1px] translate-x-1/2 -translate-y-1/2 bg-(--color-tertiary-dark) transition-all duration-300 group-hover:h-[60%]" />
 		</div>
 	);
 }

@@ -16,9 +16,7 @@ export const AIInput = (props: InputProps) => {
 				method: "POST",
 				body: JSON.stringify({
 					value: props.value,
-					hint:
-						props.schemaType.options?.openAI?.hint ||
-						props.schemaType.description,
+					hint: props.schemaType.options?.openAI?.hint || props.schemaType.description,
 				}),
 			});
 
@@ -37,11 +35,7 @@ export const AIInput = (props: InputProps) => {
 		<>
 			<div>{props.renderDefault(rest)}</div>
 
-			<Button
-				style={{ margin: "1rem 0" }}
-				onClick={handleClick}
-				disabled={loading}
-			>
+			<Button style={{ margin: "1rem 0" }} onClick={handleClick} disabled={loading}>
 				{loading ? "Loading..." : "Get AI Feedback"}
 			</Button>
 

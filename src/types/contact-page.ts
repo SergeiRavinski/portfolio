@@ -3,9 +3,7 @@ export interface TextareaFormProps {
 	title: string;
 	errors?: string[];
 	errorMessage: string;
-	handleChange: (
-		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-	) => void;
+	handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 	handleBlur?: () => void;
 }
 
@@ -15,9 +13,7 @@ export interface InputFormProps {
 	type: string;
 	errors?: string[];
 	errorMessage: string;
-	handleChange: (
-		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-	) => void;
+	handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 	handleBlur?: () => void;
 }
 

@@ -54,24 +54,24 @@ export default function Button({
 			<button
 				type="submit"
 				onClick={clickEvent}
-				className={`flex justify-center group normal-case p-2 items-center relative border-1 group border-solid transition-border duration-300 rounded-xs ${color === "dark" ? "bg-(--color-primary-dark) text-(--color-primary-light) border-white hover:border-(--color-dark-hover)" : "border-(--color-secondary-dark) hover:border-(--color-dark-hover)"} ${type === "styling" ? "w-[2.5rem] h-[2.5rem]" : ""}`}
+				className={`group group transition-border relative flex items-center justify-center rounded-xs border-1 border-solid p-2 normal-case duration-300 ${color === "dark" ? "border-white bg-(--color-primary-dark) text-(--color-primary-light) hover:border-(--color-dark-hover)" : "border-(--color-secondary-dark) hover:border-(--color-dark-hover)"} ${type === "styling" ? "h-[2.5rem] w-[2.5rem]" : ""}`}
 			>
 				{buttonType()}
 
-				<div className="absolute left-0 top-1/2 -translate-y-2/4 -translate-x-2/4 bg-(--color-tertiary-dark) w-[1px] h-[40%] group-hover:h-[60%]"></div>
-				<div className="absolute right-0 top-1/2 -translate-y-2/4 translate-x-2/4 bg-(--color-tertiary-dark) w-[1px] h-[40%] group-hover:h-[60%] transition-h duration-300"></div>
+				<div className="absolute top-1/2 left-0 h-[40%] w-[1px] -translate-x-2/4 -translate-y-2/4 bg-(--color-tertiary-dark) group-hover:h-[60%]"></div>
+				<div className="transition-h absolute top-1/2 right-0 h-[40%] w-[1px] translate-x-2/4 -translate-y-2/4 bg-(--color-tertiary-dark) duration-300 group-hover:h-[60%]"></div>
 			</button>
 		</Link>
 	) : (
 		<button
 			type="submit"
 			onClick={clickEvent}
-			className={`flex justify-center group normal-case p-2 items-center relative border-1 group border-solid transition-border duration-300 rounded-xs ${color === "dark" ? "bg-(--color-primary-dark) text-(--color-primary-light) border-white hover:border-(--color-dark-hover)" : "border-(--color-secondary-dark) hover:border-(--color-dark-hover)"} ${type === "styling" ? "w-[2.5rem] h-[2.5rem]" : ""}`}
+			className={`group group transition-border relative flex items-center justify-center rounded-xs border-1 border-solid p-2 normal-case duration-300 ${color === "dark" ? "border-white bg-(--color-primary-dark) text-(--color-primary-light) hover:border-(--color-dark-hover)" : "border-(--color-secondary-dark) hover:border-(--color-dark-hover)"} ${type === "styling" ? "h-[2.5rem] w-[2.5rem]" : ""}`}
 		>
 			{buttonType()}
 
-			<div className="absolute left-0 top-1/2 -translate-y-2/4 -translate-x-2/4 bg-(--color-tertiary-dark) w-[1px] h-[40%] group-hover:h-[60%]"></div>
-			<div className="absolute right-0 top-1/2 -translate-y-2/4 translate-x-2/4 bg-(--color-tertiary-dark) w-[1px] h-[40%] group-hover:h-[60%] transition-h duration-300"></div>
+			<div className="absolute top-1/2 left-0 h-[40%] w-[1px] -translate-x-2/4 -translate-y-2/4 bg-(--color-tertiary-dark) group-hover:h-[60%]"></div>
+			<div className="transition-h absolute top-1/2 right-0 h-[40%] w-[1px] translate-x-2/4 -translate-y-2/4 bg-(--color-tertiary-dark) duration-300 group-hover:h-[60%]"></div>
 		</button>
 	);
 }

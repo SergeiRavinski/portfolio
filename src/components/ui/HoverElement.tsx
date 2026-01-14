@@ -3,13 +3,8 @@
 import { useEffect, useState } from "react";
 import { HoverElementProps } from "@/types/portfolio-page";
 
-export default function HoverElement({
-	visible,
-	technologies,
-}: HoverElementProps) {
-	const [position, setPosition] = useState<
-		NonNullable<HoverElementProps["position"]>
-	>({
+export default function HoverElement({ visible, technologies }: HoverElementProps) {
+	const [position, setPosition] = useState<NonNullable<HoverElementProps["position"]>>({
 		x: 0,
 		y: 0,
 	});
@@ -34,29 +29,22 @@ export default function HoverElement({
 				left: position.x,
 				top: position.y,
 				display:
-					visible &&
-					technologies &&
-					position.x !== 0 &&
-					position.y !== 0
-						? "flex"
-						: "none",
+					visible && technologies && position.x !== 0 && position.y !== 0 ? "flex" : "none",
 			}}
-			className="group-hover:flex hidden fixed h-fit w-50 left-0 bottom-0 flex-wrap gap-1 bg-(--color-primary-dark) p-2 z-10 leading-snug"
+			className="fixed bottom-0 left-0 z-10 hidden h-fit w-50 flex-wrap gap-1 bg-(--color-primary-dark) p-2 leading-snug group-hover:flex"
 		>
-			<h2 className="font-semibold normal-case text-(--color-primary-light)">
-				Technologies:
-			</h2>
+			<h2 className="font-semibold text-(--color-primary-light) normal-case">Technologies:</h2>
 
 			{technologies?.map(
 				(tech, index) =>
 					tech && (
 						<li
 							key={index}
-							className="p-1 text-(--color-primary-light) font-medium text-xs rounded-xs"
+							className="rounded-xs p-1 text-xs font-medium text-(--color-primary-light)"
 						>
 							{tech},
 						</li>
-					)
+					),
 			)}
 		</ul>
 	);

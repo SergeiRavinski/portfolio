@@ -19,12 +19,9 @@ export default function FlipLink({
 		<motion.li
 			initial="initial"
 			whileHover="hovered"
-			className={`overflow-hidden relative flex leading-none uppercase hover:opacity-100 transition-opacity duration-300
-		`}
+			className={`relative flex overflow-hidden leading-none uppercase transition-opacity duration-300 hover:opacity-100`}
 		>
-			<div
-				className={`${pathName === path ? "opacity-100 font-bold" : "opacity-60"}`}
-			>
+			<div className={`${pathName === path ? "font-bold opacity-100" : "opacity-60"}`}>
 				<Link href={href}>
 					{children.split("").map((letter, index) => {
 						return (
@@ -49,7 +46,7 @@ export default function FlipLink({
 			</div>
 
 			<div
-				className={`${pathName === path ? "opacity-100 font-bold" : "opacity-60"} absolute inset-0`}
+				className={`${pathName === path ? "font-bold opacity-100" : "opacity-60"} absolute inset-0`}
 			>
 				<Link href={href}>
 					{children.split("").map((letter, index) => {

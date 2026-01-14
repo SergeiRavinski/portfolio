@@ -25,9 +25,7 @@ export default function ContactPage({ data }: { data: ContactPageData }) {
 	const [errors, setErrors] = useState<string[]>([]);
 
 	// Function to handle input changes
-	const handleChange = (
-		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-	) => {
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 		setFormData({
 			...formData,
 			[e.target.name]: capitalizeFirstLetter(e.target.value),
@@ -88,24 +86,21 @@ export default function ContactPage({ data }: { data: ContactPageData }) {
 	}
 
 	return (
-		<section className="md:my-20 my-10 flex justify-between md:flex-row flex-col items-end relative h-full lg:mx-[10%] md:mx-[3%] mx-[1%]">
-			<fieldset className="flex flex-col content-end md:w-[45%] w-full h-full">
-				<div className="flex flex-col w-full h-full normal-case">
-					<h2 className="md:text-[1.25rem] text-[1rem] uppercase  mb-4">
+		<section className="relative mx-[1%] my-10 flex h-full flex-col items-end justify-between md:mx-[3%] md:my-20 md:flex-row lg:mx-[10%]">
+			<fieldset className="flex h-full w-full flex-col content-end md:w-[45%]">
+				<div className="flex h-full w-full flex-col normal-case">
+					<h2 className="mb-4 text-[1rem] uppercase md:text-[1.25rem]">
 						<SplitTextYoyo text={title} />
 					</h2>
 
-					<p className="md:text-[1rem] text-[0.8rem] mb-4">
-						I am always open to discussing new projects, creative
-						ideas, or opportunities to be part of your vision.
+					<p className="mb-4 text-[0.8rem] md:text-[1rem]">
+						I am always open to discussing new projects, creative ideas, or opportunities to
+						be part of your vision.
 					</p>
 				</div>
 
-				<div className="flex flex-col w-full h-full normal-case">
-					<form
-						className="flex flex-col w-full h-full"
-						onSubmit={handleSubmit}
-					>
+				<div className="flex h-full w-full flex-col normal-case">
+					<form className="flex h-full w-full flex-col" onSubmit={handleSubmit}>
 						{/* First Name */}
 						<InputForm
 							id={"firstName"}
@@ -152,13 +147,13 @@ export default function ContactPage({ data }: { data: ContactPageData }) {
 				</div>
 			</fieldset>
 
-			<div className="flex flex-col md:w-[45%] w-full h-full md:mt-0 mt-10 justify-between">
+			<div className="mt-10 flex h-full w-full flex-col justify-between md:mt-0 md:w-[45%]">
 				{links && <SocialMedia links={links} />}
 
 				<section>
-					<span className="flex flex-row items-center uppercase mt-10 mb-4 h-4">
+					<span className="mt-10 mb-4 flex h-4 flex-row items-center uppercase">
 						<LocationIcon className="flex h-full text-(--color-primary-dark)" />
-						<p className="text-[0.8rem] ml-2">{titleLocation}</p>
+						<p className="ml-2 text-[0.8rem]">{titleLocation}</p>
 					</span>
 
 					<div>

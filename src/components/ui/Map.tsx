@@ -13,12 +13,8 @@ export default function Map(props: MapMagazineProps) {
 	const mapContainerRef = useRef<HTMLDivElement>(null);
 	const isContactPage = usePathname().includes("contact");
 	const mapStyle =
-		map === "light"
-			? "mapbox://styles/mapbox/light-v11"
-			: "mapbox://styles/mapbox/streets-v12";
-	const style = isContactPage
-		? "flex md:h-[300px] h-[200px] w-full"
-		: "block w-full h-full";
+		map === "light" ? "mapbox://styles/mapbox/light-v11" : "mapbox://styles/mapbox/streets-v12";
+	const style = isContactPage ? "flex md:h-[300px] h-[200px] w-full" : "block w-full h-full";
 
 	useEffect(() => {
 		if (!mapContainerRef.current) return;
@@ -43,7 +39,7 @@ export default function Map(props: MapMagazineProps) {
 					trackUserLocation: true,
 					showUserHeading: true,
 				}),
-				"top-right"
+				"top-right",
 			);
 
 			// Add a marker at the specified coordinates

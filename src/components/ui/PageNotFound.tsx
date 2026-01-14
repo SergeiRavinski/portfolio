@@ -10,7 +10,7 @@ export default function PageNotFound() {
 			<MainContentWrapper>
 				<Header />
 
-				<main className="flex z-50 h-full flex-col items-center justify-center bg-(--color-primary-light) px-6 text-center text-(--color-primary-dark)">
+				<main className="z-50 flex h-full flex-col items-center justify-center bg-(--color-primary-light) px-6 text-center text-(--color-primary-dark)">
 					<SplitTextYoyo text="404" isNotFound />
 
 					<p className="mb-8 max-w-md text-lg text-(--color-primary-dark) sm:text-xl">

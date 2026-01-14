@@ -11,17 +11,14 @@ export default function TextareaForm({
 }: TextareaFormProps) {
 	return (
 		<>
-			<label
-				htmlFor="message"
-				className="mb-2 md:text-[0.9rem] text-[0.8rem]"
-			>
+			<label htmlFor="message" className="mb-2 text-[0.8rem] md:text-[0.9rem]">
 				{title}
 			</label>
 
 			<textarea
 				id={id}
 				name={id}
-				className="text-[0.8rem] border-1 border-solid border-(--color-dark-hover) transitionorder duration-300 hover:border-(--color-primary-dark) p-2 w-full rounded-xs focus:outline-none focus:border-(--color-primary-dark) mb-6"
+				className="transitionorder mb-6 w-full rounded-xs border-1 border-solid border-(--color-dark-hover) p-2 text-[0.8rem] duration-300 hover:border-(--color-primary-dark) focus:border-(--color-primary-dark) focus:outline-none"
 				rows={8}
 				onChange={handleChange}
 				onBlur={handleBlur}

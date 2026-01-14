@@ -16,7 +16,7 @@ export default function TextMagazine(props: TextMagazineProps) {
 	return (
 		<div className={styles}>
 			{sectionTitle && (
-				<h2 className="col-span-4 h-fit text-2xl font-bold pb-1 border-b-1 border-solid border-(--color-secondary-dark)">
+				<h2 className="col-span-4 h-fit border-b-1 border-solid border-(--color-secondary-dark) pb-1 text-2xl font-bold">
 					{sectionTitle}
 				</h2>
 			)}

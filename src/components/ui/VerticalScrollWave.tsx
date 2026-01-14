@@ -23,9 +23,7 @@ export default function VerticalScrollWave() {
 		for (let y = 0; y <= height; y++) {
 			y < height / 2 ? step++ : step--;
 			const x =
-				(step / damping) *
-				amplitude *
-				Math.sin(((y + driftRef.current) / damping) * frequency);
+				(step / damping) * amplitude * Math.sin(((y + driftRef.current) / damping) * frequency);
 			points.push(restX + x, y);
 		}
 
@@ -75,7 +73,7 @@ export default function VerticalScrollWave() {
 
 	return (
 		<svg
-			className="lg:flex hidden w-8 my-4 text-(--color-secondary-dark)"
+			className="my-4 hidden w-8 text-(--color-secondary-dark) lg:flex"
 			viewBox="0 0 50 100"
 			preserveAspectRatio="none"
 		>

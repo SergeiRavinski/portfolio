@@ -15,8 +15,7 @@ import { urlForOpenGraphImage } from "@/sanity/lib/image";
 
 export async function generateMetadata(): Promise<Metadata> {
 	const { data } = await sanityFetch({ query: METADATA_QUERY });
-	const { seoTitle, seoDescription, seoKeywords, seoImage } =
-		data?.metadata ?? {};
+	const { seoTitle, seoDescription, seoKeywords, seoImage } = data?.metadata ?? {};
 	const ogImage = urlForOpenGraphImage(seoImage?.asset?._ref && seoImage);
 
 	return {
@@ -58,10 +57,7 @@ export default async function RootLayout({
 		sameAs:
 			data?.links && data.links.length > 0
 				? data.links.map((link: { url: string }) => link.url)
-				: [
-						"https://github.com/sergeiravinski",
-						"https://www.linkedin.com/in/sergeiravinski",
-					],
+				: ["https://github.com/sergeiravinski", "https://www.linkedin.com/in/sergeiravinski"],
 	};
 
 	return (

@@ -15,10 +15,7 @@ export function ScatterChar({
 	const delayIndex = shuffledIndexes.indexOf(i);
 	const delay = isOn ? delayIndex * 0.02 : delayIndex * 0.001;
 	const rotation = Math.random() * 360 - 180;
-	const labelRanges = useLabelRanges(
-		rawText,
-		sections as { label: string }[]
-	);
+	const labelRanges = useLabelRanges(rawText, sections as { label: string }[]);
 	const isBold = labelRanges.some(({ start, end }) => i >= start && i < end);
 
 	if (char === "\n") return <br key={`br-${i}`} />;
